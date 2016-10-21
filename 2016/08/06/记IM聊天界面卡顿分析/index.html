@@ -128,7 +128,7 @@ iOS设备目前使用的是双">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006y8lVagw1f909je5sutj30gj048wf5.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006y8lVagw1f909jumtrmj30mi04oq5j.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f909kghwezj30lz01xmxr.jpg">
-<meta property="og:updated_time" content="2016-10-21T15:28:52.000Z">
+<meta property="og:updated_time" content="2016-10-21T15:30:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记IM聊天界面卡顿分析">
 <meta name="twitter:description" content="记IM聊天界面卡顿分析开始测试快速滚动视图
@@ -386,25 +386,23 @@ iOS设备目前使用的是双">
 </li>
 <li><p>Tiler Utilization    </p>
 <blockquote>
-<p>如果Tiler Utilization的百分比超过了50%, 很有可能是屏幕上有太多的图层覆盖</p>
+<p>如果Tiler Utilization的百分比超过了50%, 很有可能是屏幕上有太多的图层覆盖<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908if5qvwj30jn0hlq69.jpg" alt=""> </p>
 </blockquote>
 </li>
 </ul>
-<p><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908if5qvwj30jn0hlq69.jpg" alt=""> </p>
 <p>可以判断, GPU并不是影响性能的罪魁恶首</p>
 <h3 id="检测CPU"><a href="#检测CPU" class="headerlink" title="检测CPU"></a>检测CPU</h3><p><img src="http://ww4.sinaimg.cn/large/006y8lVagw1f908of007vj30wl0f0wla.jpg" alt=""> </p>
 <p>勾上Separate by Thread 和 Hide System Libraties : 分离线程, 方便查看各条线程和隐藏系统库.</p>
-<p>明显看见CPU占用率特别高,首当其冲的是分别是占<strong>- cellForRowAtIndexPath</strong>和<strong>- heightForRowAtIndexPath</strong>的两句代码.    </p>
+<p>明显看见CPU占用率特别高,首当其冲的是分别是占<strong>- cellForRowAtIndexPath</strong>和<strong>- heightForRowAtIndexPath</strong>的两句代码.  </p>
 <p><strong>1.检测cellForRowAtIndexPath代码</strong><br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908t1aj10j30gb08mwhp.jpg" alt=""></p>
 <p>点开小箭头, 发现里面<code>emotionStringWithWH:</code>消耗了大量CPU的性能.<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908y25l56j30gz0b9425.jpg" alt=""><br>双击进去查看代码, 可以看到消耗性能的代码是在cell模型赋值的方法.<br><code>_msgLabel.attributedText =[session.fullText emotionStringWithWH:23];</code></p>
 <p><strong>猜想:</strong>tableView每次滚动, cell的set方法都会调用<code>emotionStringWithWH:</code>,为了避免每次给富文本赋值都调用此方法, 新增一个属性<code>NSAttributedString *text</code>.</p>
-<p>当前代码修改成:<br><code>_msgLabel.attributedText = session.text;</code></p>
-<p>因此, 我们需要给text在合适的地方赋值, 本demo在点击发送文本的方法中添加<br><code>session.text = [session.fullText emotionStringWithWH:23];</code></p>
+<p>当前代码修改成:<br>`_msgLabel.attributedText = session.text;<br>`</p>
+<p>因此, 我们需要给text在合适的地方赋值, 本demo在点击发送文本的方法中添加<br>`<br>   session.text = [session.fullText emotionStringWithWH:23];<br>`</p>
 <p><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f908zuayblj30kh0hq7a3.jpg" alt=""></p>
 <p>重新运行项目, 再次检测</p>
 <p><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f90914j1h3j30kb0c0403.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f909909vnsj30l70bn75j.jpg" alt=""><br>可以看出帧率提升了一小部分 保持在45~55 FPS, 快速滑动CPU的使用率在40%左右.</p>
-<p><strong>2.检测heightForRowAtIndexPath代码</strong><br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f9092evlcpj30nq0bptel.jpg" alt=""><br>从图中红色箭头所示, 可以看出, 计算高度的方法:<code>cellHeight</code>占用了比较多的开销.<br>查看当前的代码发现,每次滑动都会重复计算高度:<br><code>self.baseChatCellTool.session = self.dataSource[indexPath.row];</code><br><code>return
-self.baseChatCellTool.cellHeight;</code></p>
+<p><strong>2.检测heightForRowAtIndexPath代码</strong><br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f9092evlcpj30nq0bptel.jpg" alt=""><br>从图中红色箭头所示, 可以看出, 计算高度的方法:<code>cellHeight</code>占用了比较多的开销.<br>查看当前的代码发现,每次滑动都会重复计算高度:<br>`<br>self.baseChatCellTool.session = self.dataSource[indexPath.row];`<br>`                                                           return<br>self.baseChatCellTool.cellHeight;`</p>
 <p>因此, 第一感觉就是应该将计算过的高度给缓存起来,于是乎将代码修改为:</p>
 <pre><code>LCSession *session = self.dataSource[indexPath.row];
 if (!session.cellHeight) {
@@ -417,7 +415,29 @@ if (!session.cellHeight) {
 }
 return session.cellHeight;
 </code></pre><p>重新运行项目, 再次检测<br><img src="http://ww4.sinaimg.cn/large/006y8lVagw1f909dk785oj30lm0avgqs.jpg" alt=""><br>我们发现<code>cellForRowAtIndexPath</code>依旧占用了比较多的开销,点击查看, 如绿色框所示, 发现, 里面全部都为%0的开销<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f909ejipnrj30ya0djn4c.jpg" alt=""><br> 我们将<code>Hide System Libraties</code>选项取消勾选, 找到与上图中同样的方法<code>setSession</code>, 发现是UILabel设置富文本的时候, 占用了大量的开销, 这个话题, 我们暂且打住.<br>继续看回上图, 我么发现还有一个方法占用了比较大的开销:<code>layoutSubviews</code>, 当我们滚动视图的时候, 就会调用<code>layoutSubviews</code>, 我们查看一下, 在此方法中, 做了什么事情:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        make.right.equalTo(self.contentView).offset(-7);</div><div class="line">        make.top.equalTo(self.contentView).offset(7);</div><div class="line">        make.width.height.equalTo(@(46));</div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    [self.nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        make.top.equalTo(self.headerImageView).offset(-2);</div><div class="line">        make.right.equalTo(self.headerImageView.mas_left).offset(-15);</div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    [self.msgLabel mas_remakeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        if (self.session.messageType == messageTypeImage || self.session.messageType == messageTypeMap) &#123;</div><div class="line">            make.right.equalTo(self.headerImageView.mas_left).offset(-4);</div><div class="line">        &#125; else &#123;</div><div class="line">            make.right.equalTo(self.headerImageView.mas_left).offset(-20);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        make.top.equalTo(self.nicknameLabel.mas_bottom).offset(13);</div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    [self.backgroundMsgView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">        </div><div class="line">        make.edges.equalTo(self.msgLabel).insets(UIEdgeInsetsMake(-8, -10, -10, -15));</div><div class="line">        </div><div class="line">    &#125;];</div><div class="line">    .....</div></pre></td></tr></table></figure>
+<p>```<br>[self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {<br>        make.right.equalTo(self.contentView).offset(-7);<br>        make.top.equalTo(self.contentView).offset(7);<br>        make.width.height.equalTo(@(46));<br>    }];</p>
+<pre><code>[self.nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.headerImageView).offset(-2);
+    make.right.equalTo(self.headerImageView.mas_left).offset(-15);
+}];
+
+[self.msgLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    if (self.session.messageType == messageTypeImage || self.session.messageType == messageTypeMap) {
+        make.right.equalTo(self.headerImageView.mas_left).offset(-4);
+    } else {
+        make.right.equalTo(self.headerImageView.mas_left).offset(-20);
+    }
+
+    make.top.equalTo(self.nicknameLabel.mas_bottom).offset(13);
+}];
+
+[self.backgroundMsgView mas_makeConstraints:^(MASConstraintMaker *make) {
+
+    make.edges.equalTo(self.msgLabel).insets(UIEdgeInsetsMake(-8, -10, -10, -15));
+
+}];
+.....
+</code></pre><p>```</p>
 <p>里面都是些布局的代码. 我们知道, 自动布局的消耗是昂贵的, 特别是每次滚动都需要布局. 由此产生第一个优化方案: 现有的自动布局替换为坐标系(frame), 我们也都知道, 利用frame计算是一件非常痛苦的事情.</p>
 <blockquote>
 <p>当然, 最终的方案,利用coreText排版, 肯定是利用frame, 但是是已经提前计算好的frame.</p>
@@ -432,10 +452,48 @@ return session.cellHeight;
 <p>coreText优点: 占用内存少,可以预先排版对象, 保留对象供绘制使用, 对象创建好后，能直接获取文本的宽高等信息，避免了多次计算.</p>
 </blockquote>
 <h3 id="继续搜罗"><a href="#继续搜罗" class="headerlink" title="继续搜罗"></a>继续搜罗</h3><p><strong>imageNamed:</strong><br><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909j34h07j30hv096q6f.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909je5sutj30gj048wf5.jpg" alt=""><br>我们将代码还原,发现多次调用[UIImage imageNamed:]对于内存的开销相对较大, 在创建Image或者CGImageSource对象时,图片数据并不会立即解码,而是等到设置到ImageView或者layer.contents，layer被提交到GPU之前,才解码,并且这些操作都是在主线程进行,是相当耗性能的.因此应该开启子线程把图片绘制到CGBitmapContext,然后从Bitmap直接创建图片, 常见的网络图片库都自带这些功能.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 简略思路</div><div class="line">dispatch_async(backgroundQueue, ^&#123;</div><div class="line">	CGContextRef ctx = CGBitmapContextCreate(...);</div><div class="line">	CGImageRef img = CGBitmapContextCreateImage(ctx);</div><div class="line">	CFRelease(ctx);</div><div class="line">	dispatch_async(mainQueue, ^&#123;</div><div class="line">		layer.contents = img;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">例如AFN中对于图片的处理:</div><div class="line">	// 部分代码</div><div class="line">    CGContextRef context = CGBitmapContextCreate(NULL, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);</div><div class="line"></div><div class="line">    CGColorSpaceRelease(colorSpace);</div><div class="line"></div><div class="line">    if (!context) &#123;</div><div class="line">        CGImageRelease(imageRef);</div><div class="line"></div><div class="line">        return image;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), imageRef);</div><div class="line">    CGImageRef inflatedImageRef = CGBitmapContextCreateImage(context);</div><div class="line"></div><div class="line">    CGContextRelease(context);</div><div class="line"></div><div class="line">    UIImage *inflatedImage = [[UIImage alloc] initWithCGImage:inflatedImageRef scale:scale orientation:image.imageOrientation];</div><div class="line"></div><div class="line">    CGImageRelease(inflatedImageRef);</div><div class="line">    CGImageRelease(imageRef);</div><div class="line"></div><div class="line">    return inflatedImage;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">例如SD中对于图片的处理:</div><div class="line">            // Workaround for iOS anamorphic image</div><div class="line">            if (partialImageRef) &#123;</div><div class="line">                const size_t partialHeight = CGImageGetHeight(partialImageRef);</div><div class="line">                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();</div><div class="line">                CGContextRef bmContext = CGBitmapContextCreate(NULL, width, height, 8, width * 4, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);</div><div class="line">                CGColorSpaceRelease(colorSpace);</div><div class="line">                if (bmContext) &#123;</div><div class="line">                    CGContextDrawImage(bmContext, (CGRect)&#123;.origin.x = 0.0f, .origin.y = 0.0f, .size.width = width, .size.height = partialHeight&#125;, partialImageRef);</div><div class="line">                    CGImageRelease(partialImageRef);</div><div class="line">                    partialImageRef = CGBitmapContextCreateImage(bmContext);</div><div class="line">                    CGContextRelease(bmContext);</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    CGImageRelease(partialImageRef);</div><div class="line">                    partialImageRef = nil;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            if (partialImageRef) &#123;</div><div class="line">                UIImage *image = [UIImage imageWithCGImage:partialImageRef scale:1 orientation:orientation];</div><div class="line">                // 存储key</div><div class="line">                NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:self.request.URL];</div><div class="line">                UIImage *scaledImage = [self scaledImageForKey:key image:image];</div><div class="line">                if (self.shouldDecompressImages) &#123;</div><div class="line">                    image = [UIImage decodedImageWithImage:scaledImage];</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    image = scaledImage;</div><div class="line">                &#125;</div><div class="line">                CGImageRelease(partialImageRef);</div><div class="line">                dispatch_main_sync_safe(^&#123; // 回到主线程</div><div class="line">                    if (self.completedBlock) &#123;</div><div class="line">                        self.completedBlock(image, nil, nil, NO);</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div></pre></td></tr></table></figure>
-<p><strong>渲染时机</strong><br>Core Animation 在 RunLoop 中注册了一个 Observer,监听了 BeforeWaiting 和 Exit 事件.当一个触摸事件到来时,RunLoop 被唤醒,App 中的代码会执行一些操作，比如创建和调整视图层级、设置 UIView 的 frame、修改 CALayer 的透明度、为视图添加一个动画;这些操作最终都会被 CALayer 标记,并通过 CATransaction 提交到一个中间状态去.当上面所有操作结束后,RunLoop 即将进入休眠（或者退出）时,关注该事件的 Observer 都会得到通知.       </p>
+<p>```<br>// 简略思路<br>dispatch_async(backgroundQueue, ^{<br>    CGContextRef ctx = CGBitmapContextCreate(…);<br>    CGImageRef img = CGBitmapContextCreateImage(ctx);<br>    CFRelease(ctx);<br>    dispatch_async(mainQueue, ^{<br>        layer.contents = img;<br>    });<br>});</p>
+<p>```</p>
+<p>```<br>例如AFN中对于图片的处理:<br>    // 部分代码<br>    CGContextRef context = CGBitmapContextCreate(NULL, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);</p>
+<pre><code>CGColorSpaceRelease(colorSpace);
+
+if (!context) {
+    CGImageRelease(imageRef);
+
+    return image;
+}
+
+CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), imageRef);
+CGImageRef inflatedImageRef = CGBitmapContextCreateImage(context);
+
+CGContextRelease(context);
+
+UIImage *inflatedImage = [[UIImage alloc] initWithCGImage:inflatedImageRef scale:scale orientation:image.imageOrientation];
+
+CGImageRelease(inflatedImageRef);
+CGImageRelease(imageRef);
+
+return inflatedImage;
+</code></pre><p>```<br>```<br>例如SD中对于图片的处理:<br>            // Workaround for iOS anamorphic image<br>            if (partialImageRef) {<br>                const size_t partialHeight = CGImageGetHeight(partialImageRef);<br>                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();<br>                CGContextRef bmContext = CGBitmapContextCreate(NULL, width, height, 8, width * 4, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);<br>                CGColorSpaceRelease(colorSpace);<br>                if (bmContext) {<br>                    CGContextDrawImage(bmContext, (CGRect){.origin.x = 0.0f, .origin.y = 0.0f, .size.width = width, .size.height = partialHeight}, partialImageRef);<br>                    CGImageRelease(partialImageRef);<br>                    partialImageRef = CGBitmapContextCreateImage(bmContext);<br>                    CGContextRelease(bmContext);<br>                }<br>                else {<br>                    CGImageRelease(partialImageRef);<br>                    partialImageRef = nil;<br>                }<br>            }</p>
+<pre><code>if (partialImageRef) {
+    UIImage *image = [UIImage imageWithCGImage:partialImageRef scale:1 orientation:orientation];
+    // 存储key
+    NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:self.request.URL];
+    UIImage *scaledImage = [self scaledImageForKey:key image:image];
+    if (self.shouldDecompressImages) {
+        image = [UIImage decodedImageWithImage:scaledImage];
+    }
+    else {
+        image = scaledImage;
+    }
+    CGImageRelease(partialImageRef);
+    dispatch_main_sync_safe(^{ // 回到主线程
+        if (self.completedBlock) {
+            self.completedBlock(image, nil, nil, NO);
+        }
+    });
+}
+</code></pre><p>```<br><strong>渲染时机</strong><br>Core Animation 在 RunLoop 中注册了一个 Observer,监听了 BeforeWaiting 和 Exit 事件.当一个触摸事件到来时,RunLoop 被唤醒,App 中的代码会执行一些操作，比如创建和调整视图层级、设置 UIView 的 frame、修改 CALayer 的透明度、为视图添加一个动画;这些操作最终都会被 CALayer 标记,并通过 CATransaction 提交到一个中间状态去.当上面所有操作结束后,RunLoop 即将进入休眠（或者退出）时,关注该事件的 Observer 都会得到通知.  </p>
 <p>这个回调函数的调用栈大概是这样:</p>
 <p><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909jumtrmj30mi04oq5j.jpg" alt=""></p>
 <p><strong>文本计算</strong><br><img src="http://ww1.sinaimg.cn/large/006y8lVagw1f909kghwezj30lz01xmxr.jpg" alt=""><br>UILabel 内部的实现方式：用 [NSAttributedString boundingRectWithSize:options:context:] 来计算文本宽高,用 -[NSAttributedString drawWithRect:options:context:] 来绘制文本.优化点:放到子线程进行以避免阻塞主线程.</p>
