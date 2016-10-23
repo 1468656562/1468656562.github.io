@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -99,7 +99,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -143,13 +143,6 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
-  
-    <div class="site-meta-headline">
-      <a>
-        <img class="custom-logo-image" src="images/logo.svg"
-             alt="西蒙の小📚坊"/>
-      </a>
-    </div>
   
 
   <div class="custom-logo-site-title">
@@ -327,54 +320,16 @@
       
         
           
-            <hr>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.</p>
-<h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><h4 id="General"><a href="#General" class="headerlink" title="General"></a>General</h4><p>Xcode8中通过<code>Automatically manage signing</code>, 让苹果为我们管理整数和配置文件.<br>想要设置安装后显示在手机上的APP的名字, 可以直接修改<strong>Display Name</strong>, 这个修改和<strong>Info.plist</strong>修改是同步的.<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dmnilo1j20g20arq45.jpg" alt=""></p>
-<p>手动管理证书和描述文件, 去掉<code>Automatically manage signing</code>的勾即可.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dn5338yj20gg0dmq4b.jpg" alt=""></p>
-<h4 id="ATS问题"><a href="#ATS问题" class="headerlink" title="ATS问题"></a>ATS问题</h4><p>在iOS9中,我们可以通过设置<code>NSAllowsArbitraryLoads</code>为<code>YES</code>, 来使用HTTP网络; iOS10从2017年1月1日开始, 苹果不允许我们通过这个方法跳过ATS, 强制使用HTTPS.我们可以用过<code>NSExceptionDomains</code>对特定的域名开放HTTP.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dni65g2j20x007rta9.jpg" alt=""></p>
-<h4 id="隐私权限的设置"><a href="#隐私权限的设置" class="headerlink" title="隐私权限的设置"></a>隐私权限的设置</h4><p>iOS10 对隐私权限更加严格, 如果不设置, 会直接崩溃.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dnv67gxj20zb03tjul.jpg" alt=""><br>根据错误提示: 我们可以在<code>info.plist</code>文件中 添加对应的键值就可以了.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92do7ykoaj20w70dw0vr.jpg" alt=""></p>
-<ul>
-<li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
-<li>相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？<ul>
-<li>相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？</li>
-<li>通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？</li>
-<li>蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？</li>
-<li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
-<li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
-<li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-</ul>
-</li>
-</ul>
-<h4 id="Interface-Builder"><a href="#Interface-Builder" class="headerlink" title="Interface Builder"></a>Interface Builder</h4><p>Xcode8之前的 <code>Size Class</code><br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg" alt=""><br>Xcode8之后的就不叫<code>Size Class</code>, 就是一个预览当前当前<code>XIB</code>或<code>SB</code>在不同屏幕尺寸下的图形界面.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg" alt=""></p>
-<p>Xcode8打开之前的旧项目的<code>XIB</code>或<code>SB</code>文件时, 会弹出一个选择初始化设置视图的窗口, 一般选择<code>Choose Device</code>.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg" alt=""></p>
-<p>如果Xcode8打开过当前的<code>XIB</code>文件, 并选择<code>Choose Device</code>后, 低于Xcode8版本的编译器将无法打开这个<code>XIB</code>文件, 并会报一下错误:</p>
-<blockquote>
-<p>The document “ViewController.xib” requires Xcode 8.0 or later. This version does not support documents saved in the Xcode 8 format. Open this document with Xcode 8.0 or later.</p>
-</blockquote>
-<p>有两种方法解决:<br>1.删除<code>XIB</code>或<code>SB</code>文件中的 <strong>xml</strong>中的代码.</p>
-<blockquote>
-<p>打开方式右键 -&gt; Open as -&gt; Source Code <code>&lt;capability name=&quot;documents saved in the Xcode 8 format&quot; minToolsVersion=&quot;8.0&quot;/&gt;</code></p>
-</blockquote>
-<p>2.大家一起升级到Xcode8.</p>
-<h4 id="禁用系统log"><a href="#禁用系统log" class="headerlink" title="禁用系统log"></a>禁用系统log</h4><p>Xcode 8在调试和运行过程中, 会打印很多不认识的log.这些是系统打印的.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dqhhcvbj20xm05kadd.jpg" alt=""><br>解决办法是:在<code>Target -&gt; Edit Scheme -&gt; Run -&gt; Arguments</code>中，添加<code>OS_ACTIVITY_MODE</code>字段，并设置为<code>Disable</code>即可。<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dqvs2f7j21ax0l7mzr.jpg" alt=""></p>
-<h4 id="插件问题"><a href="#插件问题" class="headerlink" title="插件问题"></a>插件问题</h4><p>苹果为了避免类似 <a href="https://en.wikipedia.org/wiki/XcodeGhost" target="_blank" rel="external">Xcode Ghost:</a> 事件的再次发生,Xcode8 禁用了插件机制,而开放了另一种形式： <a href="https://developer.apple.com/videos/play/wwdc2016/414/" target="_blank" rel="external">Source Editor extensions</a> 但是这种形式局限性太大.<br>这里有一边文章介绍, 让你的Xcode8继续使用插件:<a href="http://vongloo.me/2016/09/10/Make-Your-Xcode8-Great-Again/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">Xcode8继续使用插件</a></p>
-<p>如果出现<code>command＋／</code>注释代码失效, 可以执行<br><code>sudo /usr/libexec/xpccachectl</code>后重启电脑.</p>
-<p><strong>VVDocumenter-Xcode</strong>已经在Xcode8中集成了注释插件, 使用方法不是以前的<code>///</code>, 而是<code>option＋command＋／</code>.</p>
-<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h5 id="UIColor新增方法"><a href="#UIColor新增方法" class="headerlink" title="UIColor新增方法"></a>UIColor新增方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (UIColor *)colorWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div><div class="line"></div><div class="line">- (UIColor *)initWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div></pre></td></tr></table></figure>
-<p>据苹果官方建议使用<code>sRGB</code>, 理由是性能好, 色彩更丰富.</p>
-<h5 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(10_0) @protocol UIContentSizeCategoryAdjusting &lt;NSObject&gt;</div><div class="line"></div><div class="line">/*</div><div class="line"> Indicates whether the corresponding element should automatically update its font when the device’s UIContentSizeCategory is changed.</div><div class="line"> For this property to take effect, the element’s font must be a font vended using +preferredFontForTextStyle: or +preferredFontForTextStyle:compatibleWithTraitCollection: with a valid UIFontTextStyle.</div><div class="line"> */</div><div class="line">@property (nonatomic) BOOL adjustsFontForContentSizeCategory;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p><strong>adjustsFontForContentSizeCategory</strong> 字体是否随着手机系统字体的变化而变化.</p>
-<h5 id="refreshControl"><a href="#refreshControl" class="headerlink" title="refreshControl"></a>refreshControl</h5><p>iOS10以前:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED @interface UIRefreshControl : UIControl</div></pre></td></tr></table></figure></p>
-<p> iOS10以后:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong, nullable) UIRefreshControl *refreshControl NS_AVAILABLE_IOS(10_0) __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
-<p>iOS10 以后只要是集成与<code>UIScrollView</code>, 即可获得此属性.</p>
-<h5 id="systemVersion"><a href="#systemVersion" class="headerlink" title="systemVersion"></a>systemVersion</h5><p>判断系统版本号建议用法:<br><code>[[UIDevice currentDevice] systemVersion]</code></p>
-<h5 id="UICollectionView"><a href="#UICollectionView" class="headerlink" title="UICollectionView"></a>UICollectionView</h5><p>iOS10 对UICollectionView进一步的优化, 详情可参考<a href="http://www.jianshu.com/p/e97780a24224" target="_blank" rel="external">UICollectionView新特性
-</a></p>
-<h5 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a>Notification</h5><p>iOS10所有的通知都属于<code>UserNotifications.framework</code><br>增加了撤回单条通知,更新已展示通知,中途修改通知内容,在通知中展示图片视频,自定义通知 UI 等一系列新功能,非常强大.<br>详情可以参考:<br><a href="https://onevcat.com/2016/08/notification/" target="_blank" rel="external">活久见的重构 - iOS 10 UserNotifications 框架解析</a><br><a href="https://developer.apple.com/reference/usernotifications" target="_blank" rel="external">UserNotifications </a></p>
-
           
+简介9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.
+新特性GeneralXcode8中通过Automatically manage signing, 让苹果为我们管理整数和配置
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/03/Xcode8新特性/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -483,104 +438,21 @@
       
         
           
-            <hr>
-<h3 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h3><p>快速滚动视图</p>
-<p><img src="http://ww4.sinaimg.cn/large/006y8lVagw1f909vpp8x6j305z0argn9.jpg" alt=""></p>
-<h3 id="开启GPU-Driver检测"><a href="#开启GPU-Driver检测" class="headerlink" title="开启GPU Driver检测"></a>开启GPU Driver检测</h3><p><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f908hv7ia4j30kk0bkq4v.jpg" alt=""></p>
-<p><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908if5qvwj30jn0hlq69.jpg" alt=""> </p>
-<p>图中可以看出当前的帧率非常的低, 保持在 40~50 FPS, 明显可以感觉到卡顿.</p>
-<h3 id="卡顿产生的原因"><a href="#卡顿产生的原因" class="headerlink" title="卡顿产生的原因"></a>卡顿产生的原因</h3><p><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908kgyq1ej30fp06o0tc.jpg" alt=""></p>
-<p><strong>图像显示原理</strong>:<br>简单来说, CPU计算好显示的内容提交到GPU, GPU渲染完成后将渲染的结果放入帧缓冲区, 视频控制器会逐行读取帧缓冲区的数据, 进过一些转换(数模转换)传递给显示器显示.</p>
-<blockquote>
-<p>iOS设备目前使用的是双缓存+垂直同步, 安卓系统是三缓存+垂直同步, 感兴趣的看官, 可自行搜索.</p>
-</blockquote>
-<p><strong>结论</strong>:<br><img src="http://ww1.sinaimg.cn/large/006y8lVagw1f908jsi16aj30is052t91.jpg" alt=""><br>从流程图可以看出, CPU和GPU不论哪个阻碍了图像显示流程, 均会造成掉帧, 产生屏幕卡顿的现象.</p>
-<blockquote>
-<p>CPU: 一般处理视图的创建、布局计算、图片解码、文本的绘制、图像绘制等等.</p>
-<p>GPU: 对CPU提交的内容(纹理、顶点)进行应用变换、混合、渲染. 例如:纹理的渲染、视图的混合、图形的生成.</p>
-</blockquote>
-<p>下面对GPU和CPU分别进行检测.</p>
-<h3 id="检测GPU"><a href="#检测GPU" class="headerlink" title="检测GPU"></a>检测GPU</h3><ul>
-<li><p>Renderer Utilization</p>
-<blockquote>
-<p>如果Renderer Utilization的百分比超过了50%, 有可能是因为离屏渲染或者是重绘导致</p>
-</blockquote>
-</li>
-<li><p>Tiler Utilization    </p>
-<blockquote>
-<p>如果Tiler Utilization的百分比超过了50%, 很有可能是屏幕上有太多的图层覆盖<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908if5qvwj30jn0hlq69.jpg" alt=""> </p>
-</blockquote>
-</li>
-</ul>
-<p>可以判断, GPU并不是影响性能的罪魁恶首</p>
-<h3 id="检测CPU"><a href="#检测CPU" class="headerlink" title="检测CPU"></a>检测CPU</h3><p><img src="http://ww4.sinaimg.cn/large/006y8lVagw1f908of007vj30wl0f0wla.jpg" alt=""> </p>
-<p>勾上Separate by Thread 和 Hide System Libraties : 分离线程, 方便查看各条线程和隐藏系统库.</p>
-<p>明显看见CPU占用率特别高,首当其冲的是分别是占<strong>- cellForRowAtIndexPath</strong>和<strong>- heightForRowAtIndexPath</strong>的两句代码.  </p>
-<p><strong>1.检测cellForRowAtIndexPath代码</strong><br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908t1aj10j30gb08mwhp.jpg" alt=""></p>
-<p>点开小箭头, 发现里面<code>emotionStringWithWH:</code>消耗了大量CPU的性能.<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f908y25l56j30gz0b9425.jpg" alt=""><br>双击进去查看代码, 可以看到消耗性能的代码是在cell模型赋值的方法.<br><code>_msgLabel.attributedText =[session.fullText emotionStringWithWH:23];</code></p>
-<p><strong>猜想:</strong>tableView每次滚动, cell的set方法都会调用<code>emotionStringWithWH:</code>,为了避免每次给富文本赋值都调用此方法, 新增一个属性<code>NSAttributedString *text</code>.</p>
-<p>当前代码修改成:<br><code>_msgLabel.attributedText = session.text;</code></p>
-<p>因此, 我们需要给text在合适的地方赋值, 本demo在点击发送文本的方法中添加<br><code>session.text = [session.fullText emotionStringWithWH:23];</code></p>
-<p><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f908zuayblj30kh0hq7a3.jpg" alt=""></p>
-<p>重新运行项目, 再次检测</p>
-<p><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f90914j1h3j30kb0c0403.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f909909vnsj30l70bn75j.jpg" alt=""><br>可以看出帧率提升了一小部分 保持在45~55 FPS, 快速滑动CPU的使用率在40%左右.</p>
-<p><strong>2.检测heightForRowAtIndexPath代码</strong><br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f9092evlcpj30nq0bptel.jpg" alt=""><br>从图中红色箭头所示, 可以看出, 计算高度的方法:<code>cellHeight</code>占用了比较多的开销.<br>查看当前的代码发现,每次滑动都会重复计算高度:<br><code>self.baseChatCellTool.session = self.dataSource[indexPath.row];</code><br><code>return
-self.baseChatCellTool.cellHeight;</code></p>
-<p>因此, 第一感觉就是应该将计算过的高度给缓存起来,于是乎将代码修改为:</p>
-<pre><code>LCSession *session = self.dataSource[indexPath.row];
-if (!session.cellHeight) {
-    self.baseChatCellTool.session = session;
-    session.cellHeight = self.baseChatCellTool.cellHeight;
-
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [LCCachesTool addSession:session];
-    });
-}
-return session.cellHeight;
-</code></pre><p>重新运行项目, 再次检测<br><img src="http://ww4.sinaimg.cn/large/006y8lVagw1f909dk785oj30lm0avgqs.jpg" alt=""><br>我们发现<code>cellForRowAtIndexPath</code>依旧占用了比较多的开销,点击查看, 如绿色框所示, 发现, 里面全部都为%0的开销<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f909ejipnrj30ya0djn4c.jpg" alt=""><br> 我们将<code>Hide System Libraties</code>选项取消勾选, 找到与上图中同样的方法<code>setSession</code>, 发现是UILabel设置富文本的时候, 占用了大量的开销, 这个话题, 我们暂且打住.<br>继续看回上图, 我么发现还有一个方法占用了比较大的开销:<code>layoutSubviews</code>, 当我们滚动视图的时候, 就会调用<code>layoutSubviews</code>, 我们查看一下, 在此方法中, 做了什么事情:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">[self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">	    make.right.equalTo(self.contentView).offset(-7);</div><div class="line">	    make.top.equalTo(self.contentView).offset(7);</div><div class="line">	    make.width.height.equalTo(@(46));</div><div class="line">	&#125;];</div><div class="line">	</div><div class="line">	[self.nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">	    make.top.equalTo(self.headerImageView).offset(-2);</div><div class="line">	    make.right.equalTo(self.headerImageView.mas_left).offset(-15);</div><div class="line">	&#125;];</div><div class="line">	</div><div class="line">	[self.msgLabel mas_remakeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">	    if (self.session.messageType == messageTypeImage || self.session.messageType == messageTypeMap) &#123;</div><div class="line">	        make.right.equalTo(self.headerImageView.mas_left).offset(-4);</div><div class="line">	    &#125; else &#123;</div><div class="line">	        make.right.equalTo(self.headerImageView.mas_left).offset(-20);</div><div class="line">	    &#125;</div><div class="line">	</div><div class="line">	    make.top.equalTo(self.nicknameLabel.mas_bottom).offset(13);</div><div class="line">	&#125;];</div><div class="line">	</div><div class="line">	[self.backgroundMsgView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">	</div><div class="line">	    make.edges.equalTo(self.msgLabel).insets(UIEdgeInsetsMake(-8, -10, -10, -15));</div><div class="line">	</div><div class="line">	&#125;];</div><div class="line">	.....</div></pre></td></tr></table></figure>
-<p>里面都是些布局的代码. 我们知道, 自动布局的消耗是昂贵的, 特别是每次滚动都需要布局. 由此产生第一个优化方案: 现有的自动布局替换为坐标系(frame), 我们也都知道, 利用frame计算是一件非常痛苦的事情.</p>
-<blockquote>
-<p>当然, 最终的方案,利用coreText排版, 肯定是利用frame, 但是是已经提前计算好的frame.</p>
-</blockquote>
-<p>当前基于系统的UILabel, 和为了方便书写布局代码, 我们从这个方向来优化, 首先自动布局是需要的, 其次避免调用layoutSubViews(因为每次滚动视图都会调用), 在init方法中, 布局一次:   <code>[self layout];</code></p>
-<p>重新运行项目, 再次检测:<br><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909gz55z0j30ko0cgdh2.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909otf69fj30ql0iutdp.jpg" alt=""><br>CPU最高使用率为34%,平均在23%左右 帧率提保持在50~55 FPS<br><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909hseqorj30s20d8q8b.jpg" alt=""><br>我们发现<code>cellForRowAtIndexPath</code>依旧占用了比较多的开销,点击查看, 发现, 里面全部都为%0的开销, 由此可见,这些开销基本都属于系统级的开销了. </p>
-<blockquote>
-<p>常见的文本控件 （UILabel、UITextView 等），其排版和绘制都是在主线程进行的，当显示大量文本时，CPU 的压力会非常大。对此解决方案只有一个，那就是自定义文本控件</p>
-</blockquote>
-<p>那么发现基本也就只有一条路可以走了, 那就是基于coreText对文本进行异步的绘制.基于coreText对文本进行异步的绘制我们后续再说.</p>
-<blockquote>
-<p>coreText优点: 占用内存少,可以预先排版对象, 保留对象供绘制使用, 对象创建好后，能直接获取文本的宽高等信息，避免了多次计算.</p>
-</blockquote>
-<h3 id="继续搜罗"><a href="#继续搜罗" class="headerlink" title="继续搜罗"></a>继续搜罗</h3><p><strong>imageNamed:</strong><br><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909j34h07j30hv096q6f.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909je5sutj30gj048wf5.jpg" alt=""><br>我们将代码还原,发现多次调用[UIImage imageNamed:]对于内存的开销相对较大, 在创建Image或者CGImageSource对象时,图片数据并不会立即解码,而是等到设置到ImageView或者layer.contents，layer被提交到GPU之前,才解码,并且这些操作都是在主线程进行,是相当耗性能的.因此应该开启子线程把图片绘制到CGBitmapContext,然后从Bitmap直接创建图片, 常见的网络图片库都自带这些功能.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 简略思路</div><div class="line">dispatch\_async(backgroundQueue, ^&#123;</div><div class="line">	CGContextRef ctx = CGBitmapContextCreate(...);</div><div class="line">	CGImageRef img = CGBitmapContextCreateImage(ctx);</div><div class="line">	CFRelease(ctx);</div><div class="line">	dispatch_async(mainQueue, ^&#123;</div><div class="line">	    layer.contents = img;</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">例如AFN中对于图片的处理:</div><div class="line">	// 部分代码</div><div class="line">	CGContextRef context = CGBitmapContextCreate(NULL, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);</div><div class="line">	</div><div class="line">	CGColorSpaceRelease(colorSpace);</div><div class="line">	</div><div class="line">	if (!context) &#123;</div><div class="line">	    CGImageRelease(imageRef);</div><div class="line">	</div><div class="line">	    return image;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), imageRef);</div><div class="line">	CGImageRef inflatedImageRef = CGBitmapContextCreateImage(context);</div><div class="line">	</div><div class="line">	CGContextRelease(context);</div><div class="line">	</div><div class="line">	UIImage *inflatedImage = [[UIImage alloc] initWithCGImage:inflatedImageRef scale:scale orientation:image.imageOrientation];</div><div class="line">	</div><div class="line">	CGImageRelease(inflatedImageRef);</div><div class="line">	CGImageRelease(imageRef);</div><div class="line">	</div><div class="line">	return inflatedImage;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">例如SD中对于图片的处理:</div><div class="line">	        // Workaround for iOS anamorphic image</div><div class="line">	        if (partialImageRef) &#123;</div><div class="line">	            const size_t partialHeight = CGImageGetHeight(partialImageRef);</div><div class="line">	            CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();</div><div class="line">	            CGContextRef bmContext = CGBitmapContextCreate(NULL, width, height, 8, width * 4, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);</div><div class="line">	            CGColorSpaceRelease(colorSpace);</div><div class="line">	            if (bmContext) &#123;</div><div class="line">	                CGContextDrawImage(bmContext, (CGRect)&#123;.origin.x = 0.0f, .origin.y = 0.0f, .size.width = width, .size.height = partialHeight&#125;, partialImageRef);</div><div class="line">	                CGImageRelease(partialImageRef);</div><div class="line">	                partialImageRef = CGBitmapContextCreateImage(bmContext);</div><div class="line">	                CGContextRelease(bmContext);</div><div class="line">	            &#125;</div><div class="line">	            else &#123;</div><div class="line">	                CGImageRelease(partialImageRef);</div><div class="line">	                partialImageRef = nil;</div><div class="line">	            &#125;</div><div class="line">	        &#125;</div><div class="line">	</div><div class="line">	        if (partialImageRef) &#123;</div><div class="line">	            UIImage *image = [UIImage imageWithCGImage:partialImageRef scale:1 orientation:orientation];</div><div class="line">	            // 存储key</div><div class="line">	            NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:self.request.URL];</div><div class="line">	            UIImage *scaledImage = [self scaledImageForKey:key image:image];</div><div class="line">	            if (self.shouldDecompressImages) &#123;</div><div class="line">	                image = [UIImage decodedImageWithImage:scaledImage];</div><div class="line">	            &#125;</div><div class="line">	            else &#123;</div><div class="line">	                image = scaledImage;</div><div class="line">	            &#125;</div><div class="line">	            CGImageRelease(partialImageRef);</div><div class="line">	            dispatch_main_sync_safe(^&#123; // 回到主线程</div><div class="line">	                if (self.completedBlock) &#123;</div><div class="line">	                    self.completedBlock(image, nil, nil, NO);</div><div class="line">	                &#125;</div><div class="line">	            &#125;);</div><div class="line">	        &#125;</div></pre></td></tr></table></figure>
-<p><strong>渲染时机</strong><br>Core Animation 在 RunLoop 中注册了一个 Observer,监听了 BeforeWaiting 和 Exit 事件.当一个触摸事件到来时,RunLoop 被唤醒,App 中的代码会执行一些操作，比如创建和调整视图层级、设置 UIView 的 frame、修改 CALayer 的透明度、为视图添加一个动画;这些操作最终都会被 CALayer 标记,并通过 CATransaction 提交到一个中间状态去.当上面所有操作结束后,RunLoop 即将进入休眠（或者退出）时,关注该事件的 Observer 都会得到通知.  </p>
-<p>这个回调函数的调用栈大概是这样:</p>
-<p><img src="http://ww3.sinaimg.cn/large/006y8lVagw1f909jumtrmj30mi04oq5j.jpg" alt=""></p>
-<p><strong>文本计算</strong><br><img src="http://ww1.sinaimg.cn/large/006y8lVagw1f909kghwezj30lz01xmxr.jpg" alt=""><br>UILabel 内部的实现方式：用 [NSAttributedString boundingRectWithSize:options:context:] 来计算文本宽高,用 -[NSAttributedString drawWithRect:options:context:] 来绘制文本.优化点:放到子线程进行以避免阻塞主线程.</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>从上面可知,几个CPU资源消耗的原因:</p>
-<ul>
-<li>布局计算<ul>
-<li>视图的布局计算是常见消耗CPU的资源. 一般在子线程中提前计算好视图的布局、对布局进行缓存, 基本上就没有啥问题了.</li>
-</ul>
-</li>
-<li>Autolayout<ul>
-<li>由于手动计算frame等属性,比较复杂、开发效率相对较低<br>,自动布局很极大的提升开发效率, 复杂的视图使用自动布局会产生严重的性能问题,随着视图的数量增长, CPU的消耗会呈指数级的提升.其最终都会落到对视图的frame/bounds/center 等属性的调整.</li>
-</ul>
-</li>
-<li>文本渲染<ul>
-<li>常见的系统文本控件(UILabel, UITextView…), 其排版和绘制都是在主线程执行, 当有大量的文本/富文本/图文混排等, 对于CPU的消耗是非常昂贵的, 同时伴有严重的界面卡顿现象.当下的解决方案是基于CoreText对文本进行异步的绘制.</li>
-</ul>
-</li>
-<li>图像解码<ul>
-<li>图片设置到UIImageView/layer.contents，layer被提交到GPU之前,才解码,并且这些操作都是在主线程进行,是相当耗性能的.因此应该开启子线程把图片绘制到CGBitmapContext,然后从Bitmap直接创建图片.</li>
-</ul>
-</li>
-</ul>
-
           
+开始测试快速滚动视图
+
+开启GPU Driver检测
+ 
+图中可以看出当前的帧率非常的低, 保持在 40~50 FPS, 明显可以感觉到卡顿.
+卡顿产生的原因
+图像显示原理:简单来说, CPU计算好显示的内容提交到GPU, GPU渲染完成后将渲染的结果放入帧缓冲区, 视频控制器会逐行读取帧缓冲区的
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/06/记IM聊天界面卡顿分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -730,7 +602,7 @@ return session.cellHeight;
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -795,6 +667,13 @@ return session.cellHeight;
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
 
   
 
