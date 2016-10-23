@@ -1,0 +1,721 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="新特性," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="简介9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.
+新特性GeneralXcode8中通过Automatically manage signing, 让苹果为我们管理整数和配置文件.想要设置安装后显示在手机上的APP的名字, 可以直接修改Display Name, 这个修改和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode8新特性">
+<meta property="og:url" content="https://github.com/icoderRo/2016/10/03/Xcode8新特性/index.html">
+<meta property="og:site_name" content="西蒙の小📚坊">
+<meta property="og:description" content="简介9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.
+新特性GeneralXcode8中通过Automatically manage signing, 让苹果为我们管理整数和配置文件.想要设置安装后显示在手机上的APP的名字, 可以直接修改Display Name, 这个修改和">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dmnilo1j20g20arq45.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dn5338yj20gg0dmq4b.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dni65g2j20x007rta9.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dnv67gxj20zb03tjul.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92do7ykoaj20w70dw0vr.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dqhhcvbj20xm05kadd.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dqvs2f7j21ax0l7mzr.jpg">
+<meta property="og:updated_time" content="2016-10-23T10:30:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xcode8新特性">
+<meta name="twitter:description" content="简介9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.
+新特性GeneralXcode8中通过Automatically manage signing, 让苹果为我们管理整数和配置文件.想要设置安装后显示在手机上的APP的名字, 可以直接修改Display Name, 这个修改和">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dmnilo1j20g20arq45.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2016/10/03/Xcode8新特性/"/>
+
+  <title> Xcode8新特性 | 西蒙の小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">西蒙の小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">劳逸结合</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Xcode8新特性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T11:26:31+08:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.</p>
+<h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><h4 id="General"><a href="#General" class="headerlink" title="General"></a>General</h4><p>Xcode8中通过<code>Automatically manage signing</code>, 让苹果为我们管理整数和配置文件.<br>想要设置安装后显示在手机上的APP的名字, 可以直接修改<strong>Display Name</strong>, 这个修改和<strong>Info.plist</strong>修改是同步的.<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dmnilo1j20g20arq45.jpg" alt=""></p>
+<p>手动管理证书和描述文件, 去掉<code>Automatically manage signing</code>的勾即可.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dn5338yj20gg0dmq4b.jpg" alt=""></p>
+<h4 id="ATS问题"><a href="#ATS问题" class="headerlink" title="ATS问题"></a>ATS问题</h4><p>在iOS9中,我们可以通过设置<code>NSAllowsArbitraryLoads</code>为<code>YES</code>, 来使用HTTP网络; iOS10从2017年1月1日开始, 苹果不允许我们通过这个方法跳过ATS, 强制使用HTTPS.我们可以用过<code>NSExceptionDomains</code>对特定的域名开放HTTP.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dni65g2j20x007rta9.jpg" alt=""></p>
+<h4 id="隐私权限的设置"><a href="#隐私权限的设置" class="headerlink" title="隐私权限的设置"></a>隐私权限的设置</h4><p>iOS10 对隐私权限更加严格, 如果不设置, 会直接崩溃.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dnv67gxj20zb03tjul.jpg" alt=""><br>根据错误提示: 我们可以在<code>info.plist</code>文件中 添加对应的键值就可以了.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92do7ykoaj20w70dw0vr.jpg" alt=""></p>
+<ul>
+<li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
+<li>相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？<ul>
+<li>相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？</li>
+<li>通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？</li>
+<li>蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？</li>
+<li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
+<li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
+<li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="Interface-Builder"><a href="#Interface-Builder" class="headerlink" title="Interface Builder"></a>Interface Builder</h4><p>Xcode8之前的 <code>Size Class</code><br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg" alt=""><br>Xcode8之后的就不叫<code>Size Class</code>, 就是一个预览当前当前<code>XIB</code>或<code>SB</code>在不同屏幕尺寸下的图形界面.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg" alt=""></p>
+<p>Xcode8打开之前的旧项目的<code>XIB</code>或<code>SB</code>文件时, 会弹出一个选择初始化设置视图的窗口, 一般选择<code>Choose Device</code>.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg" alt=""></p>
+<p>如果Xcode8打开过当前的<code>XIB</code>文件, 并选择<code>Choose Device</code>后, 低于Xcode8版本的编译器将无法打开这个<code>XIB</code>文件, 并会报一下错误:</p>
+<blockquote>
+<p>The document “ViewController.xib” requires Xcode 8.0 or later. This version does not support documents saved in the Xcode 8 format. Open this document with Xcode 8.0 or later.</p>
+</blockquote>
+<p>有两种方法解决:<br>1.删除<code>XIB</code>或<code>SB</code>文件中的 <strong>xml</strong>中的代码.</p>
+<blockquote>
+<p>打开方式右键 -&gt; Open as -&gt; Source Code <code>&lt;capability name=&quot;documents saved in the Xcode 8 format&quot; minToolsVersion=&quot;8.0&quot;/&gt;</code></p>
+</blockquote>
+<p>2.大家一起升级到Xcode8.</p>
+<h4 id="禁用系统log"><a href="#禁用系统log" class="headerlink" title="禁用系统log"></a>禁用系统log</h4><p>Xcode 8在调试和运行过程中, 会打印很多不认识的log.这些是系统打印的.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dqhhcvbj20xm05kadd.jpg" alt=""><br>解决办法是:在<code>Target -&gt; Edit Scheme -&gt; Run -&gt; Arguments</code>中，添加<code>OS_ACTIVITY_MODE</code>字段，并设置为<code>Disable</code>即可。<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dqvs2f7j21ax0l7mzr.jpg" alt=""></p>
+<h4 id="插件问题"><a href="#插件问题" class="headerlink" title="插件问题"></a>插件问题</h4><p>苹果为了避免类似 <a href="https://en.wikipedia.org/wiki/XcodeGhost" target="_blank" rel="external">Xcode Ghost:</a> 事件的再次发生,Xcode8 禁用了插件机制,而开放了另一种形式： <a href="https://developer.apple.com/videos/play/wwdc2016/414/" target="_blank" rel="external">Source Editor extensions</a> 但是这种形式局限性太大.<br>这里有一边文章介绍, 让你的Xcode8继续使用插件:<a href="http://vongloo.me/2016/09/10/Make-Your-Xcode8-Great-Again/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">Xcode8继续使用插件</a></p>
+<p>如果出现<code>command＋／</code>注释代码失效, 可以执行<br><code>sudo /usr/libexec/xpccachectl</code>后重启电脑.</p>
+<p><strong>VVDocumenter-Xcode</strong>已经在Xcode8中集成了注释插件, 使用方法不是以前的<code>///</code>, 而是<code>option＋command＋／</code>.</p>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h5 id="UIColor新增方法"><a href="#UIColor新增方法" class="headerlink" title="UIColor新增方法"></a>UIColor新增方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (UIColor *)colorWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div><div class="line"></div><div class="line">- (UIColor *)initWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div></pre></td></tr></table></figure>
+<p>据苹果官方建议使用<code>sRGB</code>, 理由是性能好, 色彩更丰富.</p>
+<h5 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(10_0) @protocol UIContentSizeCategoryAdjusting &lt;NSObject&gt;</div><div class="line"></div><div class="line">/*</div><div class="line"> Indicates whether the corresponding element should automatically update its font when the device’s UIContentSizeCategory is changed.</div><div class="line"> For this property to take effect, the element’s font must be a font vended using +preferredFontForTextStyle: or +preferredFontForTextStyle:compatibleWithTraitCollection: with a valid UIFontTextStyle.</div><div class="line"> */</div><div class="line">@property (nonatomic) BOOL adjustsFontForContentSizeCategory;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><strong>adjustsFontForContentSizeCategory</strong> 字体是否随着手机系统字体的变化而变化.</p>
+<h5 id="refreshControl"><a href="#refreshControl" class="headerlink" title="refreshControl"></a>refreshControl</h5><p>iOS10以前:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED @interface UIRefreshControl : UIControl</div></pre></td></tr></table></figure></p>
+<p> iOS10以后:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong, nullable) UIRefreshControl *refreshControl NS_AVAILABLE_IOS(10_0) __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
+<p>iOS10 以后只要是集成与<code>UIScrollView</code>, 即可获得此属性.</p>
+<h5 id="systemVersion"><a href="#systemVersion" class="headerlink" title="systemVersion"></a>systemVersion</h5><p>判断系统版本号建议用法:<br><code>[[UIDevice currentDevice] systemVersion]</code></p>
+<h5 id="UICollectionView"><a href="#UICollectionView" class="headerlink" title="UICollectionView"></a>UICollectionView</h5><p>iOS10 对UICollectionView进一步的优化, 详情可参考<a href="http://www.jianshu.com/p/e97780a24224" target="_blank" rel="external">UICollectionView新特性
+</a></p>
+<h5 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a>Notification</h5><p>iOS10所有的通知都属于<code>UserNotifications.framework</code><br>增加了撤回单条通知,更新已展示通知,中途修改通知内容,在通知中展示图片视频,自定义通知 UI 等一系列新功能,非常强大.<br>详情可以参考:<br><a href="https://onevcat.com/2016/08/notification/" target="_blank" rel="external">活久见的重构 - iOS 10 UserNotifications 框架解析</a><br><a href="https://developer.apple.com/reference/usernotifications" target="_blank" rel="external">UserNotifications </a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/新特性/" rel="tag">#新特性</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/06/记IM聊天界面卡顿分析/" rel="next" title="记IM聊天界面卡顿分析">
+                <i class="fa fa-chevron-left"></i> 记IM聊天界面卡顿分析
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="simon" />
+          <p class="site-author-name" itemprop="name">simon</p>
+          <p class="site-description motion-element" itemprop="description">始于颜值，陷于才华，忠于人品</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/icoderRo" title="github" target="_blank">github</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新特性"><span class="nav-number">2.</span> <span class="nav-text">新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General"><span class="nav-number">2.1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ATS问题"><span class="nav-number">2.2.</span> <span class="nav-text">ATS问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐私权限的设置"><span class="nav-number">2.3.</span> <span class="nav-text">隐私权限的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interface-Builder"><span class="nav-number">2.4.</span> <span class="nav-text">Interface Builder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁用系统log"><span class="nav-number">2.5.</span> <span class="nav-text">禁用系统log</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件问题"><span class="nav-number">2.6.</span> <span class="nav-text">插件问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API"><span class="nav-number">2.7.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#UIColor新增方法"><span class="nav-number">2.7.1.</span> <span class="nav-text">UIColor新增方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字体"><span class="nav-number">2.7.2.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#refreshControl"><span class="nav-number">2.7.3.</span> <span class="nav-text">refreshControl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#systemVersion"><span class="nav-number">2.7.4.</span> <span class="nav-text">systemVersion</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UICollectionView"><span class="nav-number">2.7.5.</span> <span class="nav-text">UICollectionView</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Notification"><span class="nav-number">2.7.6.</span> <span class="nav-text">Notification</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  1991 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

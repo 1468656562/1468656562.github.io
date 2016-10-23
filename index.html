@@ -259,6 +259,162 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/03/Xcode8新特性/" itemprop="url">
+                  Xcode8新特性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T11:26:31+08:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.</p>
+<h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><h4 id="General"><a href="#General" class="headerlink" title="General"></a>General</h4><p>Xcode8中通过<code>Automatically manage signing</code>, 让苹果为我们管理整数和配置文件.<br>想要设置安装后显示在手机上的APP的名字, 可以直接修改<strong>Display Name</strong>, 这个修改和<strong>Info.plist</strong>修改是同步的.<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dmnilo1j20g20arq45.jpg" alt=""></p>
+<p>手动管理证书和描述文件, 去掉<code>Automatically manage signing</code>的勾即可.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dn5338yj20gg0dmq4b.jpg" alt=""></p>
+<h4 id="ATS问题"><a href="#ATS问题" class="headerlink" title="ATS问题"></a>ATS问题</h4><p>在iOS9中,我们可以通过设置<code>NSAllowsArbitraryLoads</code>为<code>YES</code>, 来使用HTTP网络; iOS10从2017年1月1日开始, 苹果不允许我们通过这个方法跳过ATS, 强制使用HTTPS.我们可以用过<code>NSExceptionDomains</code>对特定的域名开放HTTP.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dni65g2j20x007rta9.jpg" alt=""></p>
+<h4 id="隐私权限的设置"><a href="#隐私权限的设置" class="headerlink" title="隐私权限的设置"></a>隐私权限的设置</h4><p>iOS10 对隐私权限更加严格, 如果不设置, 会直接崩溃.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dnv67gxj20zb03tjul.jpg" alt=""><br>根据错误提示: 我们可以在<code>info.plist</code>文件中 添加对应的键值就可以了.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92do7ykoaj20w70dw0vr.jpg" alt=""></p>
+<ul>
+<li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
+<li>相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？<ul>
+<li>相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？</li>
+<li>通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？</li>
+<li>蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？</li>
+<li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
+<li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
+<li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="Interface-Builder"><a href="#Interface-Builder" class="headerlink" title="Interface Builder"></a>Interface Builder</h4><p>Xcode8之前的 <code>Size Class</code><br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg" alt=""><br>Xcode8之后的就不叫<code>Size Class</code>, 就是一个预览当前当前<code>XIB</code>或<code>SB</code>在不同屏幕尺寸下的图形界面.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg" alt=""></p>
+<p>Xcode8打开之前的旧项目的<code>XIB</code>或<code>SB</code>文件时, 会弹出一个选择初始化设置视图的窗口, 一般选择<code>Choose Device</code>.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg" alt=""></p>
+<p>如果Xcode8打开过当前的<code>XIB</code>文件, 并选择<code>Choose Device</code>后, 低于Xcode8版本的编译器将无法打开这个<code>XIB</code>文件, 并会报一下错误:</p>
+<blockquote>
+<p>The document “ViewController.xib” requires Xcode 8.0 or later. This version does not support documents saved in the Xcode 8 format. Open this document with Xcode 8.0 or later.</p>
+</blockquote>
+<p>有两种方法解决:<br>1.删除<code>XIB</code>或<code>SB</code>文件中的 <strong>xml</strong>中的代码.</p>
+<blockquote>
+<p>打开方式右键 -&gt; Open as -&gt; Source Code <code>&lt;capability name=&quot;documents saved in the Xcode 8 format&quot; minToolsVersion=&quot;8.0&quot;/&gt;</code></p>
+</blockquote>
+<p>2.大家一起升级到Xcode8.</p>
+<h4 id="禁用系统log"><a href="#禁用系统log" class="headerlink" title="禁用系统log"></a>禁用系统log</h4><p>Xcode 8在调试和运行过程中, 会打印很多不认识的log.这些是系统打印的.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dqhhcvbj20xm05kadd.jpg" alt=""><br>解决办法是:在<code>Target -&gt; Edit Scheme -&gt; Run -&gt; Arguments</code>中，添加<code>OS_ACTIVITY_MODE</code>字段，并设置为<code>Disable</code>即可。<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dqvs2f7j21ax0l7mzr.jpg" alt=""></p>
+<h4 id="插件问题"><a href="#插件问题" class="headerlink" title="插件问题"></a>插件问题</h4><p>苹果为了避免类似 <a href="https://en.wikipedia.org/wiki/XcodeGhost" target="_blank" rel="external">Xcode Ghost:</a> 事件的再次发生,Xcode8 禁用了插件机制,而开放了另一种形式： <a href="https://developer.apple.com/videos/play/wwdc2016/414/" target="_blank" rel="external">Source Editor extensions</a> 但是这种形式局限性太大.<br>这里有一边文章介绍, 让你的Xcode8继续使用插件:<a href="http://vongloo.me/2016/09/10/Make-Your-Xcode8-Great-Again/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">Xcode8继续使用插件</a></p>
+<p>如果出现<code>command＋／</code>注释代码失效, 可以执行<br><code>sudo /usr/libexec/xpccachectl</code>后重启电脑.</p>
+<p><strong>VVDocumenter-Xcode</strong>已经在Xcode8中集成了注释插件, 使用方法不是以前的<code>///</code>, 而是<code>option＋command＋／</code>.</p>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h5 id="UIColor新增方法"><a href="#UIColor新增方法" class="headerlink" title="UIColor新增方法"></a>UIColor新增方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (UIColor *)colorWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div><div class="line"></div><div class="line">- (UIColor *)initWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div></pre></td></tr></table></figure>
+<p>据苹果官方建议使用<code>sRGB</code>, 理由是性能好, 色彩更丰富.</p>
+<h5 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(10_0) @protocol UIContentSizeCategoryAdjusting &lt;NSObject&gt;</div><div class="line"></div><div class="line">/*</div><div class="line"> Indicates whether the corresponding element should automatically update its font when the device’s UIContentSizeCategory is changed.</div><div class="line"> For this property to take effect, the element’s font must be a font vended using +preferredFontForTextStyle: or +preferredFontForTextStyle:compatibleWithTraitCollection: with a valid UIFontTextStyle.</div><div class="line"> */</div><div class="line">@property (nonatomic) BOOL adjustsFontForContentSizeCategory;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><strong>adjustsFontForContentSizeCategory</strong> 字体是否随着手机系统字体的变化而变化.</p>
+<h5 id="refreshControl"><a href="#refreshControl" class="headerlink" title="refreshControl"></a>refreshControl</h5><p>iOS10以前:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED @interface UIRefreshControl : UIControl</div></pre></td></tr></table></figure></p>
+<p> iOS10以后:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong, nullable) UIRefreshControl *refreshControl NS_AVAILABLE_IOS(10_0) __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
+<p>iOS10 以后只要是集成与<code>UIScrollView</code>, 即可获得此属性.</p>
+<h5 id="systemVersion"><a href="#systemVersion" class="headerlink" title="systemVersion"></a>systemVersion</h5><p>判断系统版本号建议用法:<br><code>[[UIDevice currentDevice] systemVersion]</code></p>
+<h5 id="UICollectionView"><a href="#UICollectionView" class="headerlink" title="UICollectionView"></a>UICollectionView</h5><p>iOS10 对UICollectionView进一步的优化, 详情可参考<a href="http://www.jianshu.com/p/e97780a24224" target="_blank" rel="external">UICollectionView新特性
+</a></p>
+<h5 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a>Notification</h5><p>iOS10所有的通知都属于<code>UserNotifications.framework</code><br>增加了撤回单条通知,更新已展示通知,中途修改通知内容,在通知中展示图片视频,自定义通知 UI 等一系列新功能,非常强大.<br>详情可以参考:<br><a href="https://onevcat.com/2016/08/notification/" target="_blank" rel="external">活久见的重构 - iOS 10 UserNotifications 框架解析</a><br><a href="https://developer.apple.com/reference/usernotifications" target="_blank" rel="external">UserNotifications </a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/06/记IM聊天界面卡顿分析/" itemprop="url">
                   记IM聊天界面卡顿分析
                 </a>
@@ -485,7 +641,7 @@ return session.cellHeight;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -502,7 +658,7 @@ return session.cellHeight;
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
