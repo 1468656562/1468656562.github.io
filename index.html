@@ -610,6 +610,126 @@ iOS设备目前使用的是双缓存+垂直同步, 安卓系统是三缓存+垂�
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/12/netty-socket编解码/" itemprop="url">
+                  基于netty LengthFieldBasedFrameDecoder编解码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-12T00:00:00+08:00" content="2016-06-12">
+              2016-06-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+###前言1234服务器传输协议协议:  基于netty LengthFieldBasedFrameDecoder(100000000,0,4,0,4) 总长度 = 4byte + 包体内容接收二进制的json字符串
+###正文
+######思路:1231.在发送数据包前, 拼接4个字节带有包体内容长度的数据.2.在接受数时, 需要考虑 粘包和半包的情况.根据包头长度,判断包  的完整性.将完整的包解析出去,不完整的等待下一次的数据拼接.
+####设计1231.采用面向协议的方式编码与解码2.
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/12/netty-socket编解码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -651,7 +771,7 @@ iOS设备目前使用的是双缓存+垂直同步, 安卓系统是三缓存+垂�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -668,7 +788,7 @@ iOS设备目前使用的是双缓存+垂直同步, 安卓系统是三缓存+垂�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
