@@ -95,7 +95,7 @@ AVAudioRecorderAVAudioRecorder构建与Audio Queue Services之上">
 AVAudioRecorder 与 AVAudioPlayer都属于音频专用类(Audio-only classes),这些类是该框架中最古老, 也是最常用的几个类.
 AVAudioRecorderAVAudioRecorder构建与Audio Queue Services之上">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6gw1f937o0amtdj20gp09ct8y.jpg">
-<meta property="og:updated_time" content="2016-10-24T04:20:03.000Z">
+<meta property="og:updated_time" content="2016-10-24T04:22:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="封装AVAudioRecorder && AVAudioPlayer">
 <meta name="twitter:description" content="简言近期由于要实现一个本地录音与播放的小功能, 想着把录音与播放集成在一个类中, 提供统一的接口, 方便其他同事调用.
@@ -327,7 +327,7 @@ AVAudioRecorderAVAudioRecorder构建与Audio Queue Services之上">
 <p>AVAudioRecorder 与 AVAudioPlayer都属于音频专用类(Audio-only classes),这些类是该框架中最古老, 也是最常用的几个类.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f937o0amtdj20gp09ct8y.jpg" alt=""></p>
 <h3 id="AVAudioRecorder"><a href="#AVAudioRecorder" class="headerlink" title="AVAudioRecorder"></a>AVAudioRecorder</h3><p>AVAudioRecorder构建与Audio Queue Services之上, 是一个功能强大且代码简单易用的OC接口.我们可以在iOS设备上使用这个类来从内置的麦克风录制音频, 也可以从外部音频设备进行录制, 比如耳机, USB麦克风等.</p>
 <p><strong>创建AVAudioRecorder</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (nullable instancetype)initWithURL:&apos;(NSURL *)url&apos;</div><div class="line">settings:&apos;(NSDictionary&lt;NSString *, id&gt; *)settings&apos; </div><div class="line">error:&apos;(NSError **)outError&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> - (nullable instancetype)initWithURL: &apos;(NSURL *)url&apos; </div><div class="line">settings:&apos;(NSDictionary&lt;NSString *, id&gt; *)settings&apos; </div><div class="line">error:&apos;(NSError **)outError&apos;;</div></pre></td></tr></table></figure>
 <p>可见创建AVAudioRecorder实例, 需要为</p>
 <ul>
 <li></li>
