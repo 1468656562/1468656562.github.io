@@ -95,7 +95,7 @@ AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人�
 AVAudioRecorder 与 AVAudioPlayer都属于音频专用类(Audio-only classes),这些类是该框架中最古老, 也是最常用的几个类.
 AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人的角色.规定了应用程">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6gw1f937o0amtdj20gp09ct8y.jpg">
-<meta property="og:updated_time" content="2016-10-25T06:38:01.000Z">
+<meta property="og:updated_time" content="2016-10-25T06:42:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="录音与本地播放">
 <meta name="twitter:description" content="简言近期由于要实现一个本地录音与播放的小功能, 想着把录音与播放集成在一个类中, 提供统一的接口, 方便其他同事调用.
@@ -409,7 +409,7 @@ AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人�
 <li><p>音频格式</p>
 <ul>
 <li><p>AVFormatIDKey键定义了写入内容的音频格式,常用的音频格式所支持的值: </p>
-<p>  | AVFormatIDKey             |<br>  | ———————–   |<br>  | kAudioFormatLinearPCM     |<br>  | kAudioFormatMPEG4AAC      |<br>  | kAudioFormatAppleIMA4     |<br>  | kAudioFormatMPEGLayer3    |<br>  | kAudioFormatAMR           |<br>  | …    | </p>
+<p>   AVFormatIDKey             |<br>   ———————–   |<br>   kAudioFormatLinearPCM     |<br>   kAudioFormatMPEG4AAC      |<br>   kAudioFormatAppleIMA4     |<br>   kAudioFormatMPEGLayer3    |<br>   kAudioFormatAMR           |<br>   …                       | </p>
 <blockquote>
 <p>指定kAudioFormatLinearPCM 会将未压缩的音频流写入到文件中, 这种格式的保真度最高,相应的文件也是最大.选择AAC(kAudioFormatMPEG4AAC)或者kAudioFormatAppleIMA4的压缩格式会缩小文件, 同时还能保证高质量的音频内容. 录制的音频格式必须和参数定义的文件类型兼容.例如:录制一个aaa.wav的文件, 那么录制的音频必须满足WAVE的格式要求,即LinerPCM.</p>
 </blockquote>
