@@ -751,7 +751,7 @@ iOS设备目前使用的是双缓存+垂直同步, 安卓系统是三缓存+垂�
               
                 
                 <a class="post-title-link" href="/2016/03/31/封装录音与播放/" itemprop="url">
-                  封装AVAudioRecorder && AVAudioPlayer
+                  录音与本地播放
                 </a>
               
             
@@ -814,7 +814,7 @@ iOS设备目前使用的是双缓存+垂直同步, 安卓系统是三缓存+垂�
           
 简言近期由于要实现一个本地录音与播放的小功能, 想着把录音与播放集成在一个类中, 提供统一的接口, 方便其他同事调用.
 AVAudioRecorder 与 AVAudioPlayer都属于音频专用类(Audio-only classes),这些类是该框架中最古老, 也是最常用的几个类.
-AVAudioRecorderAVAudioRecorder构建与Audio Queue Services之上, 是一个功能强大且代码简单易用的OC接口.我们可以在iOS设备上使用这个类来从内置的麦克风录制音频
+AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人的角色.规定了应用程序(app)与系统音频行为交互的规范, 一个应用程序只有一个AVAudioSession的实例.应用
           ...
 
           <div class="post-more-link text-center">
