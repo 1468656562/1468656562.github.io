@@ -84,24 +84,24 @@
 
 
 
-<meta name="description" content="自定义TabBarController1231.自定义继承于UITabBarController2.利用KVC 替换系统的tabBar3. 利用appearance 全局统一设置UITabBarItem
+<meta name="description" content="自定义TabBarController123自定义继承于UITabBarController利用KVC 替换系统的tabBar利用appearance 全局统一设置UITabBarItem
 1[self setValue:[[LCTabBar alloc] init] forKeyPath:@&amp;quot;tabBar&amp;quot;];
-123456789NSMutableDictio">
+123456789NSMutableDictionary *n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="封装 tabBar">
 <meta property="og:url" content="https://github.com/icoderRo/2015/07/10/封装tabBar/index.html">
 <meta property="og:site_name" content="西蒙の小📚坊">
-<meta property="og:description" content="自定义TabBarController1231.自定义继承于UITabBarController2.利用KVC 替换系统的tabBar3. 利用appearance 全局统一设置UITabBarItem
+<meta property="og:description" content="自定义TabBarController123自定义继承于UITabBarController利用KVC 替换系统的tabBar利用appearance 全局统一设置UITabBarItem
 1[self setValue:[[LCTabBar alloc] init] forKeyPath:@&amp;quot;tabBar&amp;quot;];
-123456789NSMutableDictio">
+123456789NSMutableDictionary *n">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f94iwf1y9ij30m305m3z5.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006y8lVagw1f94ixfcnyjj30m607cjsb.jpg">
-<meta property="og:updated_time" content="2016-10-25T07:04:58.000Z">
+<meta property="og:updated_time" content="2016-10-25T07:06:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="封装 tabBar">
-<meta name="twitter:description" content="自定义TabBarController1231.自定义继承于UITabBarController2.利用KVC 替换系统的tabBar3. 利用appearance 全局统一设置UITabBarItem
+<meta name="twitter:description" content="自定义TabBarController123自定义继承于UITabBarController利用KVC 替换系统的tabBar利用appearance 全局统一设置UITabBarItem
 1[self setValue:[[LCTabBar alloc] init] forKeyPath:@&amp;quot;tabBar&amp;quot;];
-123456789NSMutableDictio">
+123456789NSMutableDictionary *n">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f94iwf1y9ij30m305m3z5.jpg">
 
 
@@ -324,10 +324,10 @@
 
       
         <hr>
-<h3 id="自定义TabBarController"><a href="#自定义TabBarController" class="headerlink" title="自定义TabBarController"></a>自定义TabBarController</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.自定义继承于UITabBarController</div><div class="line">2.利用KVC 替换系统的tabBar</div><div class="line">3. 利用appearance 全局统一设置UITabBarItem</div></pre></td></tr></table></figure>
+<h3 id="自定义TabBarController"><a href="#自定义TabBarController" class="headerlink" title="自定义TabBarController"></a>自定义TabBarController</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">自定义继承于UITabBarController</div><div class="line">利用KVC 替换系统的tabBar</div><div class="line">利用appearance 全局统一设置UITabBarItem</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self setValue:[[LCTabBar alloc] init] forKeyPath:@&quot;tabBar&quot;];</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];</div><div class="line"> normalAttrs[NSForegroundColorAttributeName] = [UIColor grayColor]; normalAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];</div><div class="line"></div><div class="line"> NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];</div><div class="line">  selectedAttrs[NSForegroundColorAttributeName] = [UIColor darkGrayColor];</div><div class="line">   </div><div class="line">UITabBarItem *item = [UITabBarItem appearance];</div><div class="line"> [item setTitleTextAttributes:normalAttrs forState:UIControlStateNormal];</div><div class="line"> [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];</div></pre></td></tr></table></figure>
-<h3 id="自定义tabBar"><a href="#自定义tabBar" class="headerlink" title="自定义tabBar"></a>自定义tabBar</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.自定义继承于UITabBar</div><div class="line">2.初始化</div><div class="line">3.布局</div></pre></td></tr></table></figure>
+<h3 id="自定义tabBar"><a href="#自定义tabBar" class="headerlink" title="自定义tabBar"></a>自定义tabBar</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">自定义继承于UITabBar</div><div class="line">初始化</div><div class="line">布局</div></pre></td></tr></table></figure>
 <h4 id="中间有线条的tabBar"><a href="#中间有线条的tabBar" class="headerlink" title="中间有线条的tabBar"></a>中间有线条的tabBar</h4><p><img src="http://ww1.sinaimg.cn/large/006y8lVagw1f94iwf1y9ij30m305m3z5.jpg" alt=""></p>
 <p>解决方案: 布局子控件地方, 将中间按钮 bringSubviewToFront</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">- (void)layoutSubviews</div><div class="line">&#123;</div><div class="line">    [super layoutSubviews];</div><div class="line">    </div><div class="line">    CGFloat width = self.width;</div><div class="line">    CGFloat height = self.height;</div><div class="line">    </div><div class="line">    self.plusButton.center = CGPointMake(width * 0.5, height * 0.5);</div><div class="line">    self.plusButton.y = -20;</div><div class="line">    </div><div class="line">    int index = 0;</div><div class="line">    </div><div class="line">    CGFloat tabBarButtonW = width / 5;</div><div class="line">    CGFloat tabBarButtonH = height;</div><div class="line">    CGFloat tabBarButtonY = 0;</div><div class="line"></div><div class="line">    for (UIView *tabBarButton in self.subviews) &#123;</div><div class="line">        if (![NSStringFromClass(tabBarButton.class) isEqualToString:@&quot;UITabBarButton&quot;]) continue;</div><div class="line">        </div><div class="line">        </div><div class="line">        CGFloat tabBarButtonX = index * tabBarButtonW;</div><div class="line">        if (index &gt;= 2) &#123;</div><div class="line">            tabBarButtonX += tabBarButtonW;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        tabBarButton.frame = CGRectMake(tabBarButtonX, tabBarButtonY, tabBarButtonW, tabBarButtonH);</div><div class="line">        </div><div class="line">        index++;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    [self bringSubviewToFront:self.plusButton];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
