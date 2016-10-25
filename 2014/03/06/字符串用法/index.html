@@ -110,7 +110,7 @@ alloc或者类方法创建
 alloc或者类方法创建
 
 1234NSString *str2 = [[NSString alloc] initWithString:@&amp;quot;lc&amp;quot;];NSSt">
-<meta property="og:updated_time" content="2016-10-25T09:51:18.000Z">
+<meta property="og:updated_time" content="2016-10-25T09:52:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串用法">
 <meta name="twitter:description" content="NSString创建NSString
@@ -396,10 +396,9 @@ alloc或者类方法创建
 </ul>
 </li>
 </ul>
-<pre><code>    &gt; flag = (str1 == str2);比较的是两个字符串的&quot;地址&quot;是否相同
-
-
-* 比较字符串的大小
+<pre><code>&gt; flag = (str1 == str2);比较的是两个字符串的&quot;地址&quot;是否相同
+</code></pre><p>–</p>
+<pre><code>* 比较字符串的大小
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">switch ([str1 compare:str2]) &#123;</div><div class="line">       case NSOrderedAscending:</div><div class="line">           NSLog(@&quot;str1小于str2&quot;);</div><div class="line">           break;</div><div class="line">       case NSOrderedSame:</div><div class="line">           NSLog(@&quot;str1等于str2&quot;);</div><div class="line">           break;</div><div class="line">       case NSOrderedDescending:</div><div class="line">           NSLog(@&quot;str1大于str2&quot;);</div><div class="line">           break;</div><div class="line">       default:</div><div class="line">           break;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 
