@@ -95,7 +95,7 @@ AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人�
 AVAudioRecorder 与 AVAudioPlayer都属于音频专用类(Audio-only classes),这些类是该框架中最古老, 也是最常用的几个类.
 AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人的角色.规定了应用程">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6gw1f937o0amtdj20gp09ct8y.jpg">
-<meta property="og:updated_time" content="2016-10-25T06:44:35.000Z">
+<meta property="og:updated_time" content="2016-10-25T06:47:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="录音与本地播放">
 <meta name="twitter:description" content="简言近期由于要实现一个本地录音与播放的小功能, 想着把录音与播放集成在一个类中, 提供统一的接口, 方便其他同事调用.
@@ -411,18 +411,18 @@ AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人�
 </ul>
 </li>
 </ul>
-<pre><code> AVFormatIDKey             | 
- -----------------------   |
- kAudioFormatLinearPCM     | 
- kAudioFormatMPEG4AAC      | 
- kAudioFormatAppleIMA4     | 
- kAudioFormatMPEGLayer3    | 
- kAudioFormatAMR           | 
- ...                       | 
-
-
-&gt; 指定kAudioFormatLinearPCM 会将未压缩的音频流写入到文件中, 这种格式的保真度最高,相应的文件也是最大.选择AAC(kAudioFormatMPEG4AAC)或者kAudioFormatAppleIMA4的压缩格式会缩小文件, 同时还能保证高质量的音频内容. 录制的音频格式必须和参数定义的文件类型兼容.例如:录制一个aaa.wav的文件, 那么录制的音频必须满足WAVE的格式要求,即LinerPCM.
-</code></pre><ul>
+<pre><code>AVFormatIDKey             | 
+-----------------------   |
+kAudioFormatLinearPCM     | 
+kAudioFormatMPEG4AAC      | 
+kAudioFormatAppleIMA4     | 
+kAudioFormatMPEGLayer3    | 
+kAudioFormatAMR           | 
+...                       | 
+</code></pre><blockquote>
+<p>指定kAudioFormatLinearPCM 会将未压缩的音频流写入到文件中, 这种格式的保真度最高,相应的文件也是最大.选择AAC(kAudioFormatMPEG4AAC)或者kAudioFormatAppleIMA4的压缩格式会缩小文件, 同时还能保证高质量的音频内容. 录制的音频格式必须和参数定义的文件类型兼容.例如:录制一个aaa.wav的文件, 那么录制的音频必须满足WAVE的格式要求,即LinerPCM.</p>
+</blockquote>
+<ul>
 <li><p>采样率</p>
 <ul>
 <li><p>AVSampleRateKey用于定义录音器的采样率.输入的模拟音频信号每一秒的采样数,是影响音频质量和音频文件大小,非常重要的一个因素,采样率越小,文件越小,质量越低.标准的采样率有:8000、16000、22050、44100</p>
