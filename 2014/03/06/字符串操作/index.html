@@ -1,0 +1,948 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="NSString创建NSString
+直接创建
+
+1NSString *str1 = @&amp;quot;lc&amp;quot;
+
+通过@””创建字符串, 那么会将字符串放到常量区中,字符串常量, 只要内容相同, 不会重复创建
+
+
+alloc或者类方法创建
+
+1234NSString *str2 = [[NSString alloc] initWithString:@&amp;quot;lc&amp;quot;];NSSt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串操作">
+<meta property="og:url" content="https://github.com/icoderRo/2014/03/06/字符串操作/index.html">
+<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:description" content="NSString创建NSString
+直接创建
+
+1NSString *str1 = @&amp;quot;lc&amp;quot;
+
+通过@””创建字符串, 那么会将字符串放到常量区中,字符串常量, 只要内容相同, 不会重复创建
+
+
+alloc或者类方法创建
+
+1234NSString *str2 = [[NSString alloc] initWithString:@&amp;quot;lc&amp;quot;];NSSt">
+<meta property="og:updated_time" content="2016-10-26T05:19:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字符串操作">
+<meta name="twitter:description" content="NSString创建NSString
+直接创建
+
+1NSString *str1 = @&amp;quot;lc&amp;quot;
+
+通过@””创建字符串, 那么会将字符串放到常量区中,字符串常量, 只要内容相同, 不会重复创建
+
+
+alloc或者类方法创建
+
+1234NSString *str2 = [[NSString alloc] initWithString:@&amp;quot;lc&amp;quot;];NSSt">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2014/03/06/字符串操作/"/>
+
+  <title> 字符串操作 | simonの小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">simonの小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">劳逸结合</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                字符串操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-06T00:00:00+08:00" content="2014-03-06">
+              2014-03-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h3 id="NSString"><a href="#NSString" class="headerlink" title="NSString"></a>NSString</h3><h4 id="创建NSString"><a href="#创建NSString" class="headerlink" title="创建NSString"></a>创建NSString</h4><ul>
+<li>直接创建</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSString *str1 = @&quot;lc&quot;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>通过@””创建字符串, 那么会将字符串放到常量区中,字符串常量, 只要内容相同, 不会重复创建</p>
+</blockquote>
+<ul>
+<li>alloc或者类方法创建</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSString *str2 = [[NSString alloc] initWithString:@&quot;lc&quot;];</div><div class="line">NSString *str3 = [NSString stringWithFormat:@&quot;lcc&quot;];</div><div class="line">NSString *str3 = [[NSString alloc] initWithString:@&quot;lcc&quot;];</div><div class="line">NSString *str3 = [NSString stringWithFormat:@&quot;age is %i&quot;, 10];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>通过alloc或者类工厂方法创建, 那么会将字符串放到堆区中</p>
+</blockquote>
+<h4 id="字符串文件读写"><a href="#字符串文件读写" class="headerlink" title="字符串文件读写"></a>字符串文件读写</h4><ul>
+<li>从文件中读取字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *path = @&quot;/Users/lc/Desktop/lc.txt&quot;;</div><div class="line">NSError *error = nil;</div><div class="line">NSString *str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&amp;error];</div></pre></td></tr></table></figure>
+<blockquote>
+<p> encoding: 编码英文 iOS-5988-1 中文 GBK GBK2312,UTF-8;…..OfFile(全路径)</p>
+</blockquote>
+<ul>
+<li>将字符串写入到文件中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">NSString *str = @&quot;iOS&quot;;</div><div class="line">NSString *path2 = @&quot;/Users/lc/Desktop/lc.txt&quot;;</div><div class="line">BOOL flag = [str writeToFile:path2 atomically:YES encoding:NSUTF8StringEncoding error:nil];</div><div class="line"></div><div class="line">NSString *str = @&quot;abcdef&quot;;</div><div class="line">NSURL *url = [NSURL fileURLWithPath:@&quot;/Users/lc/Desktop/123.txt&quot;];</div><div class="line">[str writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>atomically 如果传入YES, 字符串写入文件的过程中如果没有写完, 那么不会生成文件</li>
+<li>如果传入NO, 字符串写入文件的过程中如果没有写完, 会生成文件</li>
+</ul>
+</blockquote>
+<ul>
+<li>NSString -&gt; NSURL</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *path = @&quot;file://本机IP/Users/lc/Desktop/123.txt&quot;;</div><div class="line">path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSURL *url = [NSURL URLWithString:path];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果访问本机的文件, 可以省略主机地址  NSString *path = @”file:///Users/lc/Desktop/123.txt”;</p>
+</blockquote>
+<ul>
+<li>NSURL -&gt; NSString</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">NSURL *url = [NSURL fileURLWithPath:@&quot;/Users/lc/Desktop/123.txt&quot;];</div><div class="line">NSError *error = nil;</div><div class="line">NSString *str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error];</div><div class="line"></div><div class="line">NSURL *url = [NSURL URLWithString:@&quot;http://www.baidu.com&quot;];</div><div class="line">NSString *str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];</div></pre></td></tr></table></figure>
+<ul>
+<li><p>字符串比较</p>
+<ul>
+<li><p>比较字符串内容是否相同</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BOOL flag = [str1 isEqualToString:str2];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>flag = (str1 == str2);比较的是两个字符串的”地址”是否相同</p>
+</blockquote>
+</li>
+<li><p>比较字符串的大小</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">switch ([str1 compare:str2]) &#123;</div><div class="line">	case NSOrderedAscending:</div><div class="line">          	NSLog(@&quot;str1小于str2&quot;);</div><div class="line">          	break;</div><div class="line">      	case NSOrderedSame:</div><div class="line">          	NSLog(@&quot;str1等于str2&quot;);</div><div class="line">          	break;</div><div class="line">      	case NSOrderedDescending:</div><div class="line">          	NSLog(@&quot;str1大于str2&quot;);</div><div class="line">          	break;</div><div class="line">      	default:</div><div class="line">          	break;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* 忽略大小写进行比较
+
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">switch ([str1 caseInsensitiveCompare:str2]) &#123;</div><div class="line">      	case NSOrderedAscending:</div><div class="line">          	NSLog(@&quot;str1小于str2&quot;);</div><div class="line">          	break;</div><div class="line">      	case NSOrderedSame:</div><div class="line">          	NSLog(@&quot;str1等于str2&quot;);</div><div class="line">          	break;</div><div class="line">      	case NSOrderedDescending:</div><div class="line">          	NSLog(@&quot;str1大于str2&quot;);</div><div class="line">          	break;</div><div class="line">      	default:</div><div class="line">          	break;</div><div class="line">  	&#125;</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>字符串搜索</p>
+<ul>
+<li><p>判断以什么开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if ([str hasPrefix:@&quot;http://&quot;]) &#123;</div><div class="line">       NSLog(@&quot;是一个URL&quot;);</div><div class="line">   &#125;else</div><div class="line">   &#123;</div><div class="line">       NSLog(@&quot;不是一个URL&quot;);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>本质就是从字符串的第一个字符开始匹配, 只要不匹配就返回NO</p>
+</blockquote>
+</li>
+<li><p>判断以什么结尾</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if ([str hasSuffix:@&quot;.gif&quot;]) &#123;</div><div class="line">       NSLog(@&quot;动态图片&quot;);</div><div class="line">   &#125;else&#123;</div><div class="line">       NSLog(@&quot;不是动态图片&quot;);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>本质就是从字符串的最后一个字符开始匹配, 只要不匹配就返回NO</p>
+</blockquote>
+</li>
+<li><p>判断字符串中是否包含XX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">	NSString *str = @&quot;abcd&quot;;</div><div class="line">	NSRange range =  [str rangeOfString:@&quot;lc&quot;];</div><div class="line">//    if (range.location == NSNotFound) &#123;</div><div class="line">    if (range.length == 0)&#123;</div><div class="line">        NSLog(@&quot;str中没有需要查找的字符串&quot;);</div><div class="line">    &#125;else&#123;</div><div class="line">        NSLog(@&quot;str中有需要查找的字符串&quot;);</div><div class="line">        NSLog(@&quot;location = %lu, length = %lu&quot;, range.location, range.length);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>只要str中包含该字符串, 那么就会返回该字符串在str中的起始位置以及该字符串的长度    </li>
+<li>location从0开始 , length从1开始   </li>
+<li>如果str中没有需要查找的字符串, 那么返回的range的length=0, location = NSNotFound</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>字符串截取<br><code>NSString *str = @&quot;&lt;head&gt;小西哥&lt;/head&gt;&quot;;</code></p>
+<ul>
+<li><p>动态获取截取的起始位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSUInteger location = [str rangeOfString:@&quot;&gt;&quot;].location + 1;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* 动态获取截取的长度
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSUInteger length = [str rangeOfString:@&quot;&lt;&quot; options:NSBackwardsSearch].location - location;</div><div class="line">NSUInteger length = [str rangeOfString:@&quot;&lt;/&quot;].location - location;</div><div class="line">NSRange range = NSMakeRange(location, length);</div><div class="line">NSString *newStr = [str substringWithRange:range];</div></pre></td></tr></table></figure>
+
+&gt; options:NSBackwardsSearch:从后往前
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSString *newStr = [str substringFromIndex:6];</div></pre></td></tr></table></figure>
+
+&gt; 从什么地方开始截取, 一直截取到最后
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSString *newStr = [str substringToIndex:6];</div></pre></td></tr></table></figure>
+
+&gt; 从开头开始截取, 一直截取到什么位置
+</code></pre><ul>
+<li><p>字符串的替换</p>
+<ul>
+<li><p>替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str stringByReplacingOccurrencesOfString:@&quot;&amp;&quot; withString:@&quot;/&quot;]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>&gt; 将&amp;符号替换为/
+
+* 去空格
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];</div></pre></td></tr></table></figure>
+
+
+* 删除字符串头尾空白
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">	NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];</div><div class="line">NSString *newStr = [str stringByTrimmingCharactersInSet:set];</div></pre></td></tr></table></figure>
+
+
+* 返回大写字符串
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSCharacterSet *set = [NSCharacterSet uppercaseLetterCharacterSet];</div><div class="line">   NSString *newStr = [str stringByTrimmingCharactersInSet:set];</div></pre></td></tr></table></figure>
+
+...
+</code></pre><ul>
+<li><p>字符串与路径</p>
+<ul>
+<li><p>判断是否是绝对路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str isAbsolutePath]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>判断字符串是否以/开头</p>
+</blockquote>
+</li>
+<li><p>获取文件路径中的最后一个目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str lastPathComponent];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>获取路径中最后一个/后面的内容</p>
+</blockquote>
+</li>
+<li><p>删除文件路径中的最后一个目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str stringByDeletingLastPathComponent];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>删除最后一个/后面的内容, “/“也会被删除</p>
+</blockquote>
+</li>
+<li><p>给文件路径添加一个目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str stringByAppendingPathComponent:@&quot;lcc&quot;];</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>就是在字符串的末尾加上一个”/“ 和指定的内容</li>
+<li>如果路径后面已经有了/, 那么就不会添加了</li>
+<li>如果路径后面有多个/, 那么会自动删除多余的/, 只保留一个</li>
+</ul>
+</blockquote>
+</li>
+<li><p>获取路径中文件的扩展名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str pathExtension];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>从字符串的末尾开始查找., 截取第一个.后面的内容</p>
+</blockquote>
+</li>
+<li><p>删除路径中文件的扩展名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str stringByDeletingPathExtension];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>从字符串的末尾开始查找.,删除第一个”.”和后面的内容</p>
+</blockquote>
+</li>
+<li><p>给文件路径添加一个扩展名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str stringByAppendingPathExtension:@&quot;jpg&quot;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在字符串的末尾加上一个.和指定的内容</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>字符串替换</p>
+<ul>
+<li><p>将字符串转换为大写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str uppercaseString];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* 将字符串转换为小写
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str lowercaseString];</div></pre></td></tr></table></figure>
+
+
+* 将字符串的首字符转换为大写
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[str capitalizedString];</div></pre></td></tr></table></figure>
+
+
+* 字符串与基本数据类型的转换
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">NSString *str1 = @&quot;110&quot;;</div><div class="line">  NSString *str2 = @&quot;120&quot;;</div><div class="line">  int value1 = [str1 intValue];</div><div class="line">  int value2 = [str2 intValue];</div></pre></td></tr></table></figure>
+
+
+* C语言字符串和OC字符串之间的转换
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">char *cStr = &quot;lcc&quot;;</div><div class="line">   NSString *str = [NSString stringWithUTF8String:cStr];</div><div class="line">   </div><div class="line">   NSString *newStr = @&quot;lccc&quot;;</div><div class="line">   const char *cStr2 = [newStr UTF8String];</div></pre></td></tr></table></figure>
+</code></pre><h3 id="NSMutableString"><a href="#NSMutableString" class="headerlink" title="NSMutableString"></a>NSMutableString</h3><h4 id="创建NSMutableString"><a href="#创建NSMutableString" class="headerlink" title="创建NSMutableString"></a>创建NSMutableString</h4><ul>
+<li>创建空字符串,在append</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> NSMutableString *str = [NSMutableString string];</div><div class="line"> 或者</div><div class="line"> NSMutableString *str = [[NSMutableString alloc] init];</div><div class="line"> </div><div class="line">[str appendString:@&quot;lcc&quot;];</div></pre></td></tr></table></figure>
+<ul>
+<li>直接赋值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">strM = [NSMutableString alloc] initWithFormat:&lt;#(NSString *), ...#&gt;</div><div class="line"></div><div class="line">strM = [NSMutableString stringWithFormat:&lt;#(NSString *), ...#&gt;]</div></pre></td></tr></table></figure>
+<h4 id="NSMutableString增删改"><a href="#NSMutableString增删改" class="headerlink" title="NSMutableString增删改"></a>NSMutableString增删改</h4><ul>
+<li>添加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[strM appendString:@&quot;/image&quot;];</div><div class="line">[strM appendFormat:@&quot;/age is %i&quot;, 10];</div></pre></td></tr></table></figure>
+<ul>
+<li>删除字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSRange range = [strM rangeOfString:@&quot;520&quot;];</div><div class="line">[strM deleteCharactersInRange:range];</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>利用rangeOfString查找出520在字符串中的位置</li>
+<li>deleteCharactersInRange方法删除指定的range的字符串</li>
+</ul>
+</blockquote>
+<ul>
+<li>插入字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSRange range = [strM rangeOfString:@&quot;520&quot;];</div><div class="line">[strM insertString:@&quot;love&quot; atIndex:range.location];</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>insertString : 需要插入的字符串</li>
+<li>atIndex: 从哪里开始插入</li>
+</ul>
+</blockquote>
+<ul>
+<li>字符串中替换</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[strM replaceOccurrencesOfString:@&quot;520&quot; withString:@&quot;530&quot; options:0 range:NSMakeRange(0, strM.length)];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果是调用NSString的字符串替换方法, 不会修改原有字符串, 而是生产一个新的字符串 <code>NSString *newStr =[strM stringByReplacingOccurrencesOfString:@&quot;520&quot; withString:@&quot;530&quot;];</code></p>
+<ul>
+<li>OccurrencesOfString: 需要替换的字符串</li>
+<li>withString: 用什么替换</li>
+<li>options: 替换时的搜索方式</li>
+<li>range: 搜索的范围</li>
+<li>返回值: 代表替换了多少个字符串</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/03/22/ 集合操作/" rel="prev" title="集合操作">
+                集合操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="simon" />
+          <p class="site-author-name" itemprop="name">simon</p>
+          <p class="site-description motion-element" itemprop="description">始于颜值，陷于才华，忠于人品</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/icoderRo" title="github" target="_blank">github</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSString"><span class="nav-number">1.</span> <span class="nav-text">NSString</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建NSString"><span class="nav-number">1.1.</span> <span class="nav-text">创建NSString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串文件读写"><span class="nav-number">1.2.</span> <span class="nav-text">字符串文件读写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMutableString"><span class="nav-number">2.</span> <span class="nav-text">NSMutableString</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建NSMutableString"><span class="nav-number">2.1.</span> <span class="nav-text">创建NSMutableString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSMutableString增删改"><span class="nav-number">2.2.</span> <span class="nav-text">NSMutableString增删改</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

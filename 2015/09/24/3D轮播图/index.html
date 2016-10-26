@@ -1,0 +1,750 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CAAnimation," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="简介在开发一些项目的首页,或者需要信息展示类界面的时候,往往需要用到轮播图效果. 常见的轮播图都是以2D的形式, 平面展示, 对于3D旋转的的轮播图, 又应该如何实现.
+
+思路
+2D轮播图
+
+一种是利用collectionView实现无限滚动,因为collectionView本身存在着复用的问题,所以不用担心内存的消耗问题.
+另外一种就是基于scrollView来实现, 比如我们现在有5张图片.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D轮播图">
+<meta property="og:url" content="https://github.com/icoderRo/2015/09/24/3D轮播图/index.html">
+<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:description" content="简介在开发一些项目的首页,或者需要信息展示类界面的时候,往往需要用到轮播图效果. 常见的轮播图都是以2D的形式, 平面展示, 对于3D旋转的的轮播图, 又应该如何实现.
+
+思路
+2D轮播图
+
+一种是利用collectionView实现无限滚动,因为collectionView本身存在着复用的问题,所以不用担心内存的消耗问题.
+另外一种就是基于scrollView来实现, 比如我们现在有5张图片.">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006y8lVagw1f95v7bv7dzj308g04rweq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f95vtsso7fj30fr09aq3w.jpg">
+<meta property="og:updated_time" content="2016-10-26T11:45:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3D轮播图">
+<meta name="twitter:description" content="简介在开发一些项目的首页,或者需要信息展示类界面的时候,往往需要用到轮播图效果. 常见的轮播图都是以2D的形式, 平面展示, 对于3D旋转的的轮播图, 又应该如何实现.
+
+思路
+2D轮播图
+
+一种是利用collectionView实现无限滚动,因为collectionView本身存在着复用的问题,所以不用担心内存的消耗问题.
+另外一种就是基于scrollView来实现, 比如我们现在有5张图片.">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/006y8lVagw1f95v7bv7dzj308g04rweq.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2015/09/24/3D轮播图/"/>
+
+  <title> 3D轮播图 | simonの小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">simonの小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">劳逸结合</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                3D轮播图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-24T00:00:00+08:00" content="2015-09-24">
+              2015-09-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在开发一些项目的首页,或者需要信息展示类界面的时候,往往需要用到轮播图效果. 常见的轮播图都是以2D的形式, 平面展示, 对于3D旋转的的轮播图, 又应该如何实现.</p>
+<p><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f95v7bv7dzj308g04rweq.jpg" alt=""></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li><p>2D轮播图</p>
+<ul>
+<li>一种是利用collectionView实现无限滚动,因为collectionView本身存在着复用的问题,所以不用担心内存的消耗问题.</li>
+<li>另外一种就是基于scrollView来实现, 比如我们现在有5张图片.最简单的就是我们直接创建5+2个，也就是7个imageView.而我们的存放顺序为，图片5，图片1、图片2、图片3、图片4、图片5、图片1。默认显示第2张（图片1,一直向右滑动到第6张（图片5),再向右滑动显示第7张（图片1）显示完成后,将UIScrollView的contentOffset设置到第2个imageView上（图片1,这时候便可继续向右滑动实现循环的效果;同理，向左滑动时,滑动到第1张（图片5）后,将UIScrollView的contentOffset设置到第6个imageView上（图片5),这样便可以继续向左滑动实现循环效果.</li>
+</ul>
+</li>
+<li><p>3D录播图</p>
+<ul>
+<li><p>首先, 3D翻转效果, 我们会想到可能会与动画相关, 这种轮播图的切换有点类似转场动画(CATransition), 我们去查一下CATransition相关资料, 发现其type有一个<strong>cube</strong>属性有3D翻滚的效果.接下来, 直接上代码看看.</p>
+<p>  <img src="http://ww1.sinaimg.cn/large/006y8lVagw1f95vtsso7fj30fr09aq3w.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h3><ul>
+<li>创建一个imageView, 用来装载图片, 实现图片的3D翻转, 就是给当前这个imageView添加3D动画后.在将里面的image给替换.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (UIImageView *)imageV</div><div class="line">&#123;</div><div class="line">    if (!_imageV) &#123;</div><div class="line">        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];</div><div class="line">        imageView.backgroundColor = [UIColor lightGrayColor];</div><div class="line">        imageView.userInteractionEnabled = YES;</div><div class="line">        _imageV = imageView;</div><div class="line">        [self addSubview:_imageV];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return _imageV;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>设置imageView的默认图片为第一张图, 并给当前视图添加向左和向右轻扫的手势.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">self.imageV.image = [UIImage imageNamed:self.imagArr[self.currentPage]];</div><div class="line">        </div><div class="line">UISwipeGestureRecognizer *rightRe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipFromRight)];</div><div class="line">[rightRe setDirection:UISwipeGestureRecognizerDirectionLeft];</div><div class="line">        </div><div class="line">UISwipeGestureRecognizer *leftRe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipFromLeft)];</div><div class="line">[leftRe setDirection:UISwipeGestureRecognizerDirectionRight];</div><div class="line">        </div><div class="line">[self.imageV addGestureRecognizer:rightRe];</div><div class="line">[self.imageV addGestureRecognizer:leftRe];</div></pre></td></tr></table></figure>
+<ul>
+<li>添加pageControl, 用以显示当前图片的index</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (UIPageControl *)pageControl</div><div class="line">&#123;</div><div class="line">    if (!_pageControl) &#123;</div><div class="line">        UIPageControl *pageControl = [[UIPageControl alloc] init];</div><div class="line">        pageControl.numberOfPages = self.imagArr.count;</div><div class="line">        CGSize size = [pageControl sizeForNumberOfPages:self.imagArr.count];</div><div class="line">        pageControl.frame = CGRectMake(0, 0, size.width, size.height);</div><div class="line">        pageControl.center = CGPointMake(self.center.x, Height-10);</div><div class="line">        pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];</div><div class="line">        pageControl.pageIndicatorTintColor = [UIColor grayColor];</div><div class="line">        _pageControl = pageControl;</div><div class="line">        [self addSubview:_pageControl];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return _pageControl;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>添加定时器, 让imageView按照一定的节奏, 自动轮播.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (NSTimer *)timer</div><div class="line">&#123;</div><div class="line">    if (!_timer) &#123;</div><div class="line">        _timer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(swipFromRight) userInfo:nil repeats:YES];</div><div class="line">        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return _timer;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>NSRunLoopCommonModes: 不受当前线程的影响.</p>
+</blockquote>
+<ul>
+<li>实现监听方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">- (void)swipFromRight</div><div class="line">&#123;</div><div class="line">    self.currentPage++;</div><div class="line">    if (self.currentPage &gt;= self.imagArr.count) self.currentPage = 0;</div><div class="line">    self.pageControl.currentPage = self.currentPage;</div><div class="line">    </div><div class="line">    self.imageV.image = [UIImage imageNamed:self.imagArr[self.currentPage]];</div><div class="line">    </div><div class="line">    CATransition *transition = [[CATransition alloc] init];</div><div class="line">    transition.type = @&quot;cube&quot;;</div><div class="line">    transition.subtype = kCATransitionFromRight;</div><div class="line">    transition.duration = 1.5;</div><div class="line">    transition.delegate = self;</div><div class="line">    [self.imageV.layer addAnimation:transition forKey:nil];</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)swipFromLeft</div><div class="line">&#123;</div><div class="line">    self.currentPage--;</div><div class="line">    if (self.currentPage &lt; 0) self.currentPage = self.imagArr.count -1;</div><div class="line">    self.pageControl.currentPage = self.currentPage;</div><div class="line">    </div><div class="line">    self.imageV.image = [UIImage imageNamed:self.imagArr[self.currentPage]];</div><div class="line">    </div><div class="line">    CATransition *transition2 = [[CATransition alloc] init];</div><div class="line">    transition2.type = @&quot;cube&quot;;</div><div class="line">    transition2.subtype = kCATransitionFromLeft;</div><div class="line">    transition2.duration = 1.5;</div><div class="line">    transition2.delegate = self;</div><div class="line">    [self.imageV.layer addAnimation:transition2 forKey:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>核心动画, 都是添加到视图的layer上.</p>
+</blockquote>
+<p>这样之后, 还会有问题, 例如:3秒切换一张图片, 当2.9秒的时候, 手动切换了新的图片, 在0.1秒后, 定时器又会帮我们自动切换一张新的图片. 我们想做到, 当手动切换图片后, 仍然需要等待3秒, 定时器才会自动切换下一张图片.我们监听CAAnimationDelegate方法:<strong>animationDidStart:</strong> 和<strong>animationDidStop:</strong></p>
+<blockquote>
+<p>CAAnimation在分类中定义了代理方法,是给NSObject添加的分类,所以任何对象,成为CAAnimation的代理,都可以。</p>
+</blockquote>
+<ul>
+<li>动画开始时候调用animationDidStart:, 禁用交互</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)animationDidStart:(CAAnimation *)anim</div><div class="line">&#123;</div><div class="line">    if (self.timer) &#123;</div><div class="line">        [self.timer invalidate];</div><div class="line">        self.timer = nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    self.imageV.userInteractionEnabled = NO;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>动画停止的时候调用animationDidStop:, 开启交互, 重置timer</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag</div><div class="line">&#123;</div><div class="line">    if (self.timer) &#123;</div><div class="line">        [self.timer invalidate];</div><div class="line">        self.timer = nil;</div><div class="line">        </div><div class="line">        [self timer];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    self.imageV.userInteractionEnabled = YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>从外部传入需要浏览的图片数组, 设置frame即可.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LCBannerView *banerV = [[LCBannerView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 180) imageArray:@[@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;]];</div><div class="line">[self.view addSubview:banerV];</div></pre></td></tr></table></figure>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface LCBannerView : UIView</div><div class="line">- (instancetype)initWithFrame:(CGRect)frame imageArray:(NSArray *)imageArray;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line">#import &quot;LCBannerView.h&quot;</div><div class="line"></div><div class="line">#define Width self.frame.size.width</div><div class="line">#define Height self.frame.size.height</div><div class="line"></div><div class="line">@interface LCBannerView ()</div><div class="line"></div><div class="line">@property (nonatomic, weak) UIImageView *imageV;</div><div class="line"></div><div class="line">@property (nonatomic, strong) NSArray *imagArr;</div><div class="line"></div><div class="line">@property (nonatomic, weak) UIPageControl *pageControl;</div><div class="line"></div><div class="line">@property (nonatomic, assign) NSInteger currentPage;</div><div class="line"></div><div class="line">@property (nonatomic, strong) NSTimer *timer;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation LCBannerView</div><div class="line">#pragma mark -lazy</div><div class="line">- (UIImageView *)imageV</div><div class="line">&#123;</div><div class="line">    if (!_imageV) &#123;</div><div class="line">        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, Width, Height)];</div><div class="line">        imageView.backgroundColor = [UIColor lightGrayColor];</div><div class="line">        imageView.userInteractionEnabled = YES;</div><div class="line">        _imageV = imageView;</div><div class="line">        [self addSubview:_imageV];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return _imageV;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (NSTimer *)timer</div><div class="line">&#123;</div><div class="line">    if (!_timer) &#123;</div><div class="line">        _timer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(swipFromRight) userInfo:nil repeats:YES];</div><div class="line">        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return _timer;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (UIPageControl *)pageControl</div><div class="line">&#123;</div><div class="line">    if (!_pageControl) &#123;</div><div class="line">        UIPageControl *pageControl = [[UIPageControl alloc] init];</div><div class="line">        pageControl.numberOfPages = self.imagArr.count;</div><div class="line">        CGSize size = [pageControl sizeForNumberOfPages:self.imagArr.count];</div><div class="line">        pageControl.frame = CGRectMake(0, 0, size.width, size.height);</div><div class="line">        pageControl.center = CGPointMake(self.center.x, Height-10);</div><div class="line">        pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];</div><div class="line">        pageControl.pageIndicatorTintColor = [UIColor grayColor];</div><div class="line">        _pageControl = pageControl;</div><div class="line">        [self addSubview:_pageControl];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return _pageControl;</div><div class="line">&#125;</div><div class="line">#pragma mark -lifeCycle</div><div class="line">- (instancetype)initWithFrame:(CGRect)frame imageArray:(NSArray *)imageArray</div><div class="line">&#123;</div><div class="line">    if (self = [super initWithFrame:frame]) &#123;</div><div class="line">        self.currentPage = 0;</div><div class="line">        self.imagArr = imageArray;</div><div class="line">        self.imageV.image = [UIImage imageNamed:self.imagArr[self.currentPage]];</div><div class="line">        </div><div class="line">        UISwipeGestureRecognizer *rightRe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipFromRight)];</div><div class="line">        [rightRe setDirection:UISwipeGestureRecognizerDirectionLeft];</div><div class="line">        </div><div class="line">        UISwipeGestureRecognizer *leftRe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipFromLeft)];</div><div class="line">        [leftRe setDirection:UISwipeGestureRecognizerDirectionRight];</div><div class="line">        </div><div class="line">        [self.imageV addGestureRecognizer:rightRe];</div><div class="line">        [self.imageV addGestureRecognizer:leftRe];</div><div class="line">        </div><div class="line">        [self timer];</div><div class="line">        [self pageControl];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)swipFromRight</div><div class="line">&#123;</div><div class="line">    self.currentPage++;</div><div class="line">    if (self.currentPage &gt;= self.imagArr.count) self.currentPage = 0;</div><div class="line">    self.pageControl.currentPage = self.currentPage;</div><div class="line">    </div><div class="line">    self.imageV.image = [UIImage imageNamed:self.imagArr[self.currentPage]];</div><div class="line">    </div><div class="line">    CATransition *transition = [[CATransition alloc] init];</div><div class="line">    transition.type = @&quot;cube&quot;;</div><div class="line">    transition.subtype = kCATransitionFromRight;</div><div class="line">    transition.duration = 1.5;</div><div class="line">    transition.delegate = self;</div><div class="line">    [self.imageV.layer addAnimation:transition forKey:nil];</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)swipFromLeft</div><div class="line">&#123;</div><div class="line">    self.currentPage--;</div><div class="line">    if (self.currentPage &lt; 0) self.currentPage = self.imagArr.count -1;</div><div class="line">    self.pageControl.currentPage = self.currentPage;</div><div class="line">    </div><div class="line">    self.imageV.image = [UIImage imageNamed:self.imagArr[self.currentPage]];</div><div class="line">    </div><div class="line">    CATransition *transition2 = [[CATransition alloc] init];</div><div class="line">    transition2.type = @&quot;cube&quot;;</div><div class="line">    transition2.subtype = kCATransitionFromLeft;</div><div class="line">    transition2.duration = 1.5;</div><div class="line">    transition2.delegate = self;</div><div class="line">    [self.imageV.layer addAnimation:transition2 forKey:nil];</div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark -CAAnimationDelegate</div><div class="line">- (void)animationDidStart:(CAAnimation *)anim</div><div class="line">&#123;</div><div class="line">    if (self.timer) &#123;</div><div class="line">        [self.timer invalidate];</div><div class="line">        self.timer = nil;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    self.imageV.userInteractionEnabled = NO;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag</div><div class="line">&#123;</div><div class="line">    if (self.timer) &#123;</div><div class="line">        [self.timer invalidate];</div><div class="line">        self.timer = nil;</div><div class="line">        </div><div class="line">        [self timer];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    self.imageV.userInteractionEnabled = YES;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可以提供更多的属性和方式,例如:利用KVC可以设置currentPageIndicatorTintColor为图片等. 可以提供网络图片,和监听imageView的点击.可以将”cube”替换成”fade”效果等等,有需要的看官可以自行封装.<br>代码不多, demo就不发了.</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CAAnimation/" rel="tag">#CAAnimation</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/10/封装tabBar/" rel="next" title="封装 tabBar">
+                <i class="fa fa-chevron-left"></i> 封装 tabBar
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/23/谁动了我的奶酪/" rel="prev" title="谁动了我的奶酪">
+                谁动了我的奶酪 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="simon" />
+          <p class="site-author-name" itemprop="name">simon</p>
+          <p class="site-description motion-element" itemprop="description">始于颜值，陷于才华，忠于人品</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/icoderRo" title="github" target="_blank">github</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上代码"><span class="nav-number">3.</span> <span class="nav-text">上代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">4.</span> <span class="nav-text">源码</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
