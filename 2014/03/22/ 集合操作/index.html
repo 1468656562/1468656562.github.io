@@ -1,0 +1,754 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="NSArray创建NSArray常规创建
+123NSArray *arr = [[NSArray alloc] init];NSArray *arr = [NSArray arrayWithObject:@&amp;quot;lc&amp;quot;];NSArray *arr = [NSArray arrayWithObjects:@&amp;quot;lc&amp;quot;,
+
+数组中的nil是结束符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合操作">
+<meta property="og:url" content="https://github.com/icoderRo/2014/03/22/ 集合操作/index.html">
+<meta property="og:site_name" content="西蒙の小📚坊">
+<meta property="og:description" content="NSArray创建NSArray常规创建
+123NSArray *arr = [[NSArray alloc] init];NSArray *arr = [NSArray arrayWithObject:@&amp;quot;lc&amp;quot;];NSArray *arr = [NSArray arrayWithObjects:@&amp;quot;lc&amp;quot;,
+
+数组中的nil是结束符">
+<meta property="og:updated_time" content="2016-10-26T05:12:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="集合操作">
+<meta name="twitter:description" content="NSArray创建NSArray常规创建
+123NSArray *arr = [[NSArray alloc] init];NSArray *arr = [NSArray arrayWithObject:@&amp;quot;lc&amp;quot;];NSArray *arr = [NSArray arrayWithObjects:@&amp;quot;lc&amp;quot;,
+
+数组中的nil是结束符">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2014/03/22/ 集合操作/"/>
+
+  <title> 集合操作 | 西蒙の小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">西蒙の小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">劳逸结合</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                集合操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-03-22T00:00:00+08:00" content="2014-03-22">
+              2014-03-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h3 id="NSArray"><a href="#NSArray" class="headerlink" title="NSArray"></a>NSArray</h3><h4 id="创建NSArray"><a href="#创建NSArray" class="headerlink" title="创建NSArray"></a>创建NSArray</h4><p><strong>常规创建</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSArray *arr = [[NSArray alloc] init];</div><div class="line">NSArray *arr = [NSArray arrayWithObject:@&quot;lc&quot;];</div><div class="line">NSArray *arr = [NSArray arrayWithObjects:@&quot;lc&quot;,</div></pre></td></tr></table></figure>
+<blockquote>
+<p>数组中的nil是结束符         </p>
+</blockquote>
+<p><strong>数组简写</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSArray *arr = [NSArray arrayWithObjects:@&quot;lcc&quot;, @&quot;lc&quot;, @&quot;cccc&quot;, nil];</div><div class="line">NSArray *arr = @[@&quot;lcc&quot;, @&quot;lc&quot;, @&quot;c&quot;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>语法糖</p>
+</blockquote>
+<h4 id="NSArray的遍历"><a href="#NSArray的遍历" class="headerlink" title="NSArray的遍历"></a>NSArray的遍历</h4><p><strong>for-i传统遍历</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (int i = 0; i &lt; arr.count; ++i) &#123;</div><div class="line">       NSLog(@&quot;arr[%i] = %@&quot;, i, arr[i]);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p><strong>for-in</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (NSString *obj in arr) &#123;</div><div class="line">        NSLog(@&quot;obj = %@&quot;, obj);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不可在遍历的时候, 修改里面的数据</p>
+</blockquote>
+<p><strong>迭代器遍历</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[arr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) &#123;</div><div class="line">        if (idx == 1) &#123;</div><div class="line">            *stop = YES;</div><div class="line">        &#125;</div><div class="line">        NSLog(@&quot;obj = %@, idx = %lu&quot;, obj, idx);</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<p><strong>数组所有元素调用统一的方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[arr makeObjectsPerformSelector:@selector(say)];</div><div class="line"></div><div class="line">[arr makeObjectsPerformSelector:@selector(sayWithName:) withObject:@&quot;aa&quot;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>数组中统一调用方法</p>
+</blockquote>
+<h4 id="NSArray的排序"><a href="#NSArray的排序" class="headerlink" title="NSArray的排序"></a>NSArray的排序</h4><p><strong>Foundation框架中的对象</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSArray *arr = @[@10, @20, @5, @7, @15];</div><div class="line">NSArray *newArr = [arr sortedArrayUsingSelector:@selector(compare:)];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用compare方法对数组中的元素进行排序,那么数组中的元素不能是自定义对象</p>
+</blockquote>
+<p><strong>自定义对象</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">Person *p1 = [Person new];</div><div class="line">p1.age = 10;</div><div class="line"></div><div class="line">Person *p2 = [Person new];</div><div class="line">p2.age = 20;</div><div class="line"></div><div class="line">Person *p3 = [Person new];</div><div class="line">p3.age = 5;</div><div class="line"></div><div class="line">Person *p4 = [Person new];</div><div class="line">p4.age = 7;</div><div class="line"></div><div class="line">NSArray *arr = @[p1, p2, p3, p4];</div><div class="line"></div><div class="line">NSArray *newArr = [arr sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult(Person *obj1, Person *obj2) &#123;</div><div class="line"> </div><div class="line">        return obj1.age &gt; obj2.age;</div><div class="line">        </div><div class="line">        if (obj1.age &gt; obj2.age) &#123;</div><div class="line">            return NSOrderedDescending;</div><div class="line">        &#125;else if(obj1.age &lt; obj2.age)&#123;</div><div class="line">            return NSOrderedAscending;</div><div class="line">        &#125;else&#123;</div><div class="line">            return NSOrderedSame;</div><div class="line">        &#125;</div><div class="line">         */</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>默认会按照升序排序<br>不能使用compare:方法对自定义对象进行排序</p>
+</blockquote>
+<h4 id="NSArray-gt-NSString转换"><a href="#NSArray-gt-NSString转换" class="headerlink" title="NSArray-&gt;NSString转换"></a>NSArray-&gt;NSString转换</h4><p><strong>将数组中的所有元素拼接</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 用-将所有的元素连接起来生成一个字符串</div><div class="line">NSArray *arr = @[@&quot;aa&quot;, @&quot;bb&quot;, @&quot;cc&quot;];</div><div class="line"></div><div class="line">NSMutableString *strM = [NSMutableString string];</div><div class="line">for (NSString *str in arr) &#123;</div><div class="line">        [strM appendString:str];</div><div class="line">        [strM appendString:@&quot;-&quot;];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">[strM deleteCharactersInRange:NSMakeRange(strM.length - 1, 1)];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>等价于 NSString *str = [arr componentsJoinedByString:@”-“]; </p>
+</blockquote>
+<p><strong>字符串切割</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSString *str1 = @&quot;lc-lcc-ccc&quot;;</div><div class="line">NSArray *arr1 = [str1 componentsSeparatedByString:@&quot;-&quot;];</div></pre></td></tr></table></figure>
+<h4 id="NSArray文件读写"><a href="#NSArray文件读写" class="headerlink" title="NSArray文件读写"></a>NSArray文件读写</h4><p><strong>将数组写入到文件中</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSArray *arr = @[@&quot;aa&quot;, @&quot;bb&quot;, @&quot;cc&quot;];</div><div class="line">BOOL flag = [arr writeToFile:@&quot;/Users/lc/Desktop/abc.plist&quot; atomically:YES];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>将一个数组写入到文件中之后, 本质是写入了一个XML文件,一般情况下将XML文件的扩展名保存为plist</p>
+</blockquote>
+<p><strong>从文件中读取一个数组</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSArray *newArray = [NSArray arrayWithContentsOfFile:@&quot;/Users/lc/Desktop/abc.plist&quot;];</div></pre></td></tr></table></figure>
+<h3 id="NSMutableArray"><a href="#NSMutableArray" class="headerlink" title="NSMutableArray"></a>NSMutableArray</h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *arrM = [NSMutableArray array];</div></pre></td></tr></table></figure>
+<h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[arrM addObject:@&quot;lcc&quot;];</div><div class="line">[arrM addObjectsFromArray:@[@&quot;lcc&quot;, @&quot;lll&quot;]];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>[arrM addObject:@[@”lcc”, @”ccc”]];将整个数组作为一个元素添加</p>
+</blockquote>
+<h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[arrM insertObject:@&quot;ccc&quot; atIndex:1];</div><div class="line"></div><div class="line">NSRange range = NSMakeRange(2, 2);</div><div class="line">NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];</div><div class="line">[arrM insertObjects:@[@&quot;A&quot;, @&quot;B&quot;] atIndexes:set];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>插入一组数据, 指定数组需要插入的位置, 和插入多少个</p>
+</blockquote>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[arrM removeObjectAtIndex:0];</div><div class="line">[arrM removeLastObject];</div><div class="line">[arrM removeObject:@&quot;A&quot;];</div></pre></td></tr></table></figure>
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[arrM replaceObjectAtIndex:1 withObject:@&quot;K&quot;];</div><div class="line"></div><div class="line">arrM[0] = @&quot;K&quot;;</div></pre></td></tr></table></figure>
+<h4 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[arrM objectAtIndex:0]</div></pre></td></tr></table></figure>
+<h3 id="NSDictionary"><a href="#NSDictionary" class="headerlink" title="NSDictionary"></a>NSDictionary</h3><h4 id="创建-1"><a href="#创建-1" class="headerlink" title="创建"></a>创建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">NSDictionary *dict = [NSDictionary dictionaryWithObject:@&quot;lcc&quot; forKey:@&quot;name&quot;];</div><div class="line"></div><div class="line">NSDictionary *dict = [NSDictionary dictionaryWithObjects:@[@&quot;lcc&quot;, @&quot;30&quot;, @&quot;1.75&quot;] forKeys:@[@&quot;name&quot;, @&quot;age&quot;, @&quot;height&quot;]];</div><div class="line"></div><div class="line">NSDictionary *dict = @&#123;@&quot;name&quot;: @&quot;lcc&quot;&#125;;</div><div class="line">NSDictionary *dict = @&#123;@&quot;name&quot;:@&quot;lcc&quot;, @&quot;age&quot;:@&quot;30&quot;, @&quot;height&quot;:@&quot;1.75&quot;&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>开发中常利用语法糖的方式</p>
+</blockquote>
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">NSDictionary *dict = @&#123;@&quot;name&quot;:@&quot;lcc&quot;, @&quot;age&quot;:@&quot;30&quot;, @&quot;height&quot;:@&quot;1.75&quot;&#125;;</div><div class="line"> </div><div class="line">for (int i = 0; i &lt; dict.count; ++i) &#123;</div><div class="line">        NSArray *keys = [dict allKeys];</div><div class="line">        NSString *key = keys[i];</div><div class="line">        NSString *value = dict[key];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">for (NSString *key in dict) &#123;</div><div class="line">        NSString *value = dict[key];</div><div class="line">        NSLog(@&quot;key = %@, value = %@&quot;, key, value);</div><div class="line">    &#125;   </div><div class="line"></div><div class="line">[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) &#123;</div><div class="line">        NSLog(@&quot;key = %@, value = %@&quot;, key, obj);</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<h4 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 写</div><div class="line">NSDictionary *dict = @&#123;@&quot;name&quot;:@&quot;lcc&quot;, @&quot;age&quot;:@&quot;30&quot;, @&quot;height&quot;:@&quot;1.75&quot;&#125;;</div><div class="line">[dict writeToFile:@&quot;/Users/lc/Desktop/11.plist&quot; atomically:YES];</div><div class="line"></div><div class="line">// 读</div><div class="line">NSDictionary *newDict = [NSDictionary dictionaryWithContentsOfFile:@&quot;/Users/lc/Desktop/11.plist&quot;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>字典和数组不同, 字典中保存的数据是无序的</p>
+</blockquote>
+<h3 id="NSMutableDictionary"><a href="#NSMutableDictionary" class="headerlink" title="NSMutableDictionary"></a>NSMutableDictionary</h3><h4 id="创建-2"><a href="#创建-2" class="headerlink" title="创建"></a>创建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSMutableDictionary *dictM = [NSMutableDictionary  dictionary];</div></pre></td></tr></table></figure>
+<h4 id="添加-1"><a href="#添加-1" class="headerlink" title="添加"></a>添加</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[dictM setObject:@&quot;lcc&quot; forKey:@&quot;name&quot;];</div><div class="line"></div><div class="line">[dictM setValuesForKeysWithDictionary:@&#123;@&quot;age&quot;:@&quot;30&quot;, @&quot;height&quot;:@&quot;1.75&quot;&#125;];</div></pre></td></tr></table></figure>
+<h4 id="获取-1"><a href="#获取-1" class="headerlink" title="获取"></a>获取</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dictM[@&quot;name&quot;]</div></pre></td></tr></table></figure>
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[dictM removeObjectForKey:@&quot;name&quot;];</div><div class="line"></div><div class="line">[dictM removeObjectsForKeys:@[@&quot;age&quot;, @&quot;height&quot;]];</div></pre></td></tr></table></figure>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[dictM setObject:@&quot;88&quot; forKey:@&quot;age&quot;];</div><div class="line">dictM[@&quot;age&quot;] = @&quot;88&quot;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>利用setObject方法给同名的key赋值, 那么新值会覆盖旧值</p>
+</blockquote>
+<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>不可变数组和可变数组,转换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *arr = @[].mutableCopy;</div><div class="line">NSArray *arr1 = arr.copy;</div></pre></td></tr></table></figure></p>
+<p>字典也是同理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSMutableDictionary *mutDic = @&#123;&#125;.mutableCopy;</div><div class="line">NSDictionary *dict = mutDic.copy;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/03/06/字符串用法/" rel="next" title="字符串用法">
+                <i class="fa fa-chevron-left"></i> 字符串用法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/05/13/property参数/" rel="prev" title="property属性">
+                property属性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="simon" />
+          <p class="site-author-name" itemprop="name">simon</p>
+          <p class="site-description motion-element" itemprop="description">始于颜值，陷于才华，忠于人品</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/icoderRo" title="github" target="_blank">github</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSArray"><span class="nav-number">1.</span> <span class="nav-text">NSArray</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建NSArray"><span class="nav-number">1.1.</span> <span class="nav-text">创建NSArray</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSArray的遍历"><span class="nav-number">1.2.</span> <span class="nav-text">NSArray的遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSArray的排序"><span class="nav-number">1.3.</span> <span class="nav-text">NSArray的排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSArray-gt-NSString转换"><span class="nav-number">1.4.</span> <span class="nav-text">NSArray->NSString转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSArray文件读写"><span class="nav-number">1.5.</span> <span class="nav-text">NSArray文件读写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMutableArray"><span class="nav-number">2.</span> <span class="nav-text">NSMutableArray</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建"><span class="nav-number">2.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加"><span class="nav-number">2.2.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入"><span class="nav-number">2.3.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">2.4.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替换"><span class="nav-number">2.5.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取"><span class="nav-number">2.6.</span> <span class="nav-text">获取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSDictionary"><span class="nav-number">3.</span> <span class="nav-text">NSDictionary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建-1"><span class="nav-number">3.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历"><span class="nav-number">3.2.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件读写"><span class="nav-number">3.3.</span> <span class="nav-text">文件读写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMutableDictionary"><span class="nav-number">4.</span> <span class="nav-text">NSMutableDictionary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建-2"><span class="nav-number">4.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-1"><span class="nav-number">4.2.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取-1"><span class="nav-number">4.3.</span> <span class="nav-text">获取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除-1"><span class="nav-number">4.4.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改"><span class="nav-number">4.5.</span> <span class="nav-text">修改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题外话"><span class="nav-number">5.</span> <span class="nav-text">题外话</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
