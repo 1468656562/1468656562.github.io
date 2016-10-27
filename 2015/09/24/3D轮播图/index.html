@@ -104,7 +104,7 @@
 另外一种就是基于scrollView来实现, 比如我们现在有5张图片.">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006y8lVagw1f95v7bv7dzj308g04rweq.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f95vtsso7fj30fr09aq3w.jpg">
-<meta property="og:updated_time" content="2016-10-26T11:45:49.000Z">
+<meta property="og:updated_time" content="2016-10-27T08:21:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3D轮播图">
 <meta name="twitter:description" content="简介在开发一些项目的首页,或者需要信息展示类界面的时候,往往需要用到轮播图效果. 常见的轮播图都是以2D的形式, 平面展示, 对于3D旋转的的轮播图, 又应该如何实现.
@@ -350,7 +350,7 @@
 <li>另外一种就是基于scrollView来实现, 比如我们现在有5张图片.最简单的就是我们直接创建5+2个，也就是7个imageView.而我们的存放顺序为，图片5，图片1、图片2、图片3、图片4、图片5、图片1。默认显示第2张（图片1,一直向右滑动到第6张（图片5),再向右滑动显示第7张（图片1）显示完成后,将UIScrollView的contentOffset设置到第2个imageView上（图片1,这时候便可继续向右滑动实现循环的效果;同理，向左滑动时,滑动到第1张（图片5）后,将UIScrollView的contentOffset设置到第6个imageView上（图片5),这样便可以继续向左滑动实现循环效果.</li>
 </ul>
 </li>
-<li><p>3D录播图</p>
+<li><p>3D轮播图</p>
 <ul>
 <li><p>首先, 3D翻转效果, 我们会想到可能会与动画相关, 这种轮播图的切换有点类似转场动画(CATransition), 我们去查一下CATransition相关资料, 发现其type有一个<strong>cube</strong>属性有3D翻滚的效果.接下来, 直接上代码看看.</p>
 <p>  <img src="http://ww1.sinaimg.cn/large/006y8lVagw1f95vtsso7fj30fr09aq3w.jpg" alt=""></p>
