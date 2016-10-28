@@ -85,24 +85,24 @@
 
 
 <meta name="description" content="简介一些设计良好的转场动画, 不仅仅能起到炫酷美观的作用还能极大的引导用户.在iOS8中, 苹果给我们带来了一个新的类UIPresentationController, 里面的代码不多, 提供了4个方法参与转场, 从而实现对转场过程的细致控制:
-1234567891011//在转场即将开始的时候被调用的- (void)presentationTransitionWillBegin;//在转场结束">
+1234567891011//在prsent转场即将开始的时候被调用的- (void)presentationTransitionWillBegin;/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="转场动画 - UIPresentationController">
 <meta property="og:url" content="https://github.com/icoderRo/2015/03/20/转场动画1/index.html">
 <meta property="og:site_name" content="simonの小📚坊">
 <meta property="og:description" content="简介一些设计良好的转场动画, 不仅仅能起到炫酷美观的作用还能极大的引导用户.在iOS8中, 苹果给我们带来了一个新的类UIPresentationController, 里面的代码不多, 提供了4个方法参与转场, 从而实现对转场过程的细致控制:
-1234567891011//在转场即将开始的时候被调用的- (void)presentationTransitionWillBegin;//在转场结束">
+1234567891011//在prsent转场即将开始的时候被调用的- (void)presentationTransitionWillBegin;/">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f983jctumaj30jy06on0f.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006y8lVagw1f985gqm4otj30ja07nwg9.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006y8lVagw1f985nr32v3j30fb0cln0c.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f985o8uwrqj30gm0aiq5r.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f985yz5epvj30jr0c5423.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006y8lVagw1f9871qcx0sj309f0f9dg4.jpg">
-<meta property="og:updated_time" content="2016-10-28T11:15:17.000Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006y8lVagw1f987arimbzg309c0hkq4u.gif">
+<meta property="og:updated_time" content="2016-10-28T11:21:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="转场动画 - UIPresentationController">
 <meta name="twitter:description" content="简介一些设计良好的转场动画, 不仅仅能起到炫酷美观的作用还能极大的引导用户.在iOS8中, 苹果给我们带来了一个新的类UIPresentationController, 里面的代码不多, 提供了4个方法参与转场, 从而实现对转场过程的细致控制:
-1234567891011//在转场即将开始的时候被调用的- (void)presentationTransitionWillBegin;//在转场结束">
+1234567891011//在prsent转场即将开始的时候被调用的- (void)presentationTransitionWillBegin;/">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006y8lVagw1f983jctumaj30jy06on0f.jpg">
 
 
@@ -331,7 +331,7 @@
       
         <hr>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>一些设计良好的转场动画, 不仅仅能起到炫酷美观的作用还能极大的引导用户.在iOS8中, 苹果给我们带来了一个新的类<strong>UIPresentationController</strong>, 里面的代码不多, 提供了4个方法参与转场, 从而实现对转场过程的细致控制:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//在转场即将开始的时候被调用的</div><div class="line">- (void)presentationTransitionWillBegin;</div><div class="line"></div><div class="line">//在转场结束时被调用的</div><div class="line">- (void)presentationTransitionDidEnd:(BOOL)completed;</div><div class="line"></div><div class="line">//在转场即将开始的时候被调用的</div><div class="line">- (void)dismissalTransitionWillBegin;</div><div class="line"></div><div class="line">//在转场结束时被调用的</div><div class="line">- (void)dismissalTransitionDidEnd:(BOOL)completed;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//在prsent转场即将开始的时候被调用的</div><div class="line">- (void)presentationTransitionWillBegin;</div><div class="line"></div><div class="line">//在prsent转场结束时被调用的</div><div class="line">- (void)presentationTransitionDidEnd:(BOOL)completed;</div><div class="line"></div><div class="line">//在dismiss转场即将开始的时候被调用的</div><div class="line">- (void)dismissalTransitionWillBegin;</div><div class="line"></div><div class="line">//在dismiss转场结束时被调用的</div><div class="line">- (void)dismissalTransitionDidEnd:(BOOL)completed;</div></pre></td></tr></table></figure>
 <h3 id="简述协议"><a href="#简述协议" class="headerlink" title="简述协议"></a>简述协议</h3><h4 id="UIViewControllerTransitioningDelegate"><a href="#UIViewControllerTransitioningDelegate" class="headerlink" title="UIViewControllerTransitioningDelegate"></a>UIViewControllerTransitioningDelegate</h4><p>自定义转场的第一步便是提供转场代理,告诉系统使用我们提供的代理而不是系统的默认代理来执行转场.暂时不使用手势相关的操作.算下来,就只有三个方法了.</p>
 <p><img src="http://ww1.sinaimg.cn/large/006y8lVagw1f983jctumaj30jy06on0f.jpg" alt=""></p>
 <ul>
@@ -370,12 +370,13 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="UIViewControllerContextTransitioning"><a href="#UIViewControllerContextTransitioning" class="headerlink" title="UIViewControllerContextTransitioning"></a>UIViewControllerContextTransitioning</h4><p>提供转场中需要的数据,遵守<uiviewcontrollercontexttransitioning>协议, 可以获取presentedView和presentingView, containerView等等。<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f985nr32v3j30fb0cln0c.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006y8lVagw1f985o8uwrqj30gm0aiq5r.jpg" alt=""></uiviewcontrollercontexttransitioning></p>
-<p>几个重用的属性</p>
+<h4 id="UIViewControllerContextTransitioning"><a href="#UIViewControllerContextTransitioning" class="headerlink" title="UIViewControllerContextTransitioning"></a>UIViewControllerContextTransitioning</h4><p>提供转场中需要的数据,遵守<uiviewcontrollercontexttransitioning>协议, 可以获取presentedView和presentingView, containerView等等。<br><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f985nr32v3j30fb0cln0c.jpg" alt=""></uiviewcontrollercontexttransitioning></p>
+<p><img src="http://ww1.sinaimg.cn/large/006y8lVagw1f985o8uwrqj30gm0aiq5r.jpg" alt=""></p>
+<p>几个常用的属性</p>
 <ul>
 <li><p>viewControllerForKey: 和 viewForKey:</p>
 <blockquote>
-<p>获取响应的控制器和view</p>
+<p>获取相应的控制器和view</p>
 </blockquote>
 </li>
 <li><p>finalFrameForViewController: 和 initialFrameForViewController:</p>
@@ -439,7 +440,7 @@
 <blockquote>
 <p>坑点: 在modal模式下, containerView不需要addSubview:, 如果add了, 会出现黑屏.</p>
 </blockquote>
-<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://ww2.sinaimg.cn/large/006y8lVagw1f9871qcx0sj309f0f9dg4.jpg" alt=""></p>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://ww4.sinaimg.cn/large/006y8lVagw1f987arimbzg309c0hkq4u.gif" alt=""></p>
 <p>比较简单, 需要demo的可以加QQ群: 475814382</p>
 
       
