@@ -761,134 +761,6 @@ CPU: 一般处理视图的创建、布
             
               
                 
-                <a class="post-title-link" href="/2016/05/05/runloop浅说/" itemprop="url">
-                  runloop理论
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-05T00:00:00+08:00" content="2016-05-05">
-              2016-05-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-RunLoop基本概念概念:程序的运行循环,通俗的来说就是跑圈.
-基本作用（作用重大）
-保持程序的持续运行(ios程序为什么能一直活着不会死) 
-处理app中的各种事件（比如触摸事件、定时器事件【NSTimer】、selector事件【选择器·performSelector···】） 
-节省CPU资源，提高程序性能，有事情就做事情，没事情就休息
-
-重要说明
-如果没有Runloop,那么程序一启动就会退出，什么事情都做不了。 
-如果有了Runloop，那么相当于在内部有一个死循环，能够保证程序的持续运行
-
-main函数中的Runloop
-在UIApplication函数内部就启动了一个Runl
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/05/runloop浅说/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/03/31/封装录音与播放/" itemprop="url">
                   录音与本地播放
                 </a>
@@ -1200,6 +1072,125 @@ AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人�
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/09/24/3D轮播图/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/10/封装tabBar/" itemprop="url">
+                  封装 tabBar
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-10T00:00:00+08:00" content="2015-07-10">
+              2015-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+自定义TabBarController123自定义继承于UITabBarController利用KVC 替换系统的tabBar利用appearance 全局统一设置UITabBarItem
+1[self setValue:[[LCTabBar alloc] init] forKeyPath:@&quot;tabBar&quot;];
+123456789NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary]; normalAttrs[NSForegroundColorAttributeName] = [UIColo
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/10/封装tabBar/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
