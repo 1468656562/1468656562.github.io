@@ -25,7 +25,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 1.易上手:想比于Core Data 和SQLite, Realm的">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fimyuw95jdj30g7083ta2.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcgy1fin1d9jycxj317d0qmwim.jpg">
-<meta property="og:updated_time" content="2017-08-17T14:30:00.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:33:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Realm-Swift3.0">
 <meta name="twitter:description" content="Realm-Swift3.0
@@ -107,9 +107,9 @@ Realm的优点在官方上有很多的说明, 略举两点:
             <div class="navbar-collapse collapse">
               <ul class="hnav navbar-nav">
                 
-                  <li> <a class="main-nav-link" href="/">Startseite</a> </li>
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
                 
-                  <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -123,7 +123,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Schreib etwas..." />
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -135,11 +135,11 @@ Realm的优点在官方上有很多的说明, 略举两点:
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Beiträge',
-            PAGES: 'Seiten',
-            CATEGORIES: 'Kategorien',
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
-            UNTITLED: '(Unbenannt)',
+            UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -202,7 +202,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Realm 于2014 年7月发布，是一个跨平台的移动数据库引擎，专门为移动应用的数据持久化而生。其目的是要取代 Core Data 和 SQLite,支持Java、Objective-C、JavaScript、Swift、Xamarin平台</p>
 <p>Realm的优点在官方上有很多的说明, 略举两点:</p>
 <p><strong>1.易上手</strong>:想比于Core Data 和SQLite, Realm的学习成本相对来说会比较低, 毫不夸张的说, 把官方的文档和Demo看完一遍, 就可以快速的上手开发功能。</p>
-<p><strong>2.可视化</strong>: Realm提供了一个轻量级的数据库查看工具, 在App Store中下载<code>Realm Browser</code>, 相比于SQLite, 你可能需要去下载付费或者破解版的Navicat、SQL Manager等软件会方便很多, 借助于<code>Realm Browser</code>调试Realm数据库很便捷。<br><a id="more"></a></p>
+<p><strong>2.可视化</strong>: Realm提供了一个轻量级的数据库查看工具, 在App Store中下载<code>Realm Browser</code>, 相比于SQLite, 你可能需要去下载付费或者破解版的Navicat、SQL Manager等软件会方便很多, 借助于<code>Realm Browser</code>调试Realm数据库很便捷。</p>
 <ul>
 <li>使用模拟器进行调试<ul>
 <li>通过执行<code>realm.configuration.fileURL</code>打印出Realm数据库的地址, Finder中跳转进对应的路径, 用<code>Realm Browser</code>打开对应的.realm文件就可以看到数据啦。</li>
@@ -213,6 +213,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 </ul>
 </li>
 </ul>
+<!-- see more -->
 <h4 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h4><p>Realm的Xcode插件令 Realm 模型的创建更加方便.gitHub下载一个Demo<a href="https://github.com/realm/realm-cocoa">传送门</a>, 找到里面的Plugin目录下的RealmPlugin.xcodeproj并进行编译，重启 Xcode之后插件即可生效。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fin1d9jycxj317d0qmwim.jpg" alt=""></p>
 <h4 id="纯SWift版的安装"><a href="#纯SWift版的安装" class="headerlink" title="纯SWift版的安装"></a>纯SWift版的安装</h4><ul>
 <li>使用 Realm 构建应用的基本要求：iOS 8 及其以上版本, macOS 10.9 及其以上版本，此外 Realm 支持 tvOS 和 watchOS 的所有版本。</li>
@@ -233,7 +234,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework</div></pre></td></tr></table></figure>
 <ul>
 <li>方法3:CocoaPods<ul>
 <li>运行 <code>pod repo update</code>，以确保 CocoaPods 能够获取到 Realm 的最新版本</li>
@@ -242,7 +243,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 </ul>
 </li>
 </ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	installer.pods_project.targets.each <span class="keyword">do</span> |target|</div><div class="line">    target.build_configurations.each <span class="keyword">do</span> |config|</div><div class="line">      config.build_settings['<span class="type">SWIFT_VERSION'</span>] = '<span class="number">3.0</span>'</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	installer.pods_project.targets.each do |target|</div><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[<span class="string">'SWIFT_VERSION'</span>] = <span class="string">'3.0'</span></div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
 <ul>
 <li>在终端运行 pod install,采用 CocoaPods 生成的 .xcworkspace 来运行工程！</li>
 <li>注意:我这边选用CocoaPods的方式安装, 安装的时间还是需要比较多的, <strong>如果发现pod search RealmSwift版本比较低, 先升级一下pod索引库</strong></li>
@@ -617,7 +618,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
   
   
     <a href="/2016/10/03/Xcode8新特性/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Xcode8新特性</div>
     </a>
   
@@ -630,7 +631,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 
   <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
-    <strong class="toc-title">Inhalt</strong>
+    <strong class="toc-title">Contents</strong>
     
         <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Realm-Swift3-0"><span class="nav-number">1.</span> <span class="nav-text">Realm-Swift3.0</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.0.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Xcode插件"><span class="nav-number">1.0.2.</span> <span class="nav-text">Xcode插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纯SWift版的安装"><span class="nav-number">1.0.3.</span> <span class="nav-text">纯SWift版的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#术语"><span class="nav-number">1.0.4.</span> <span class="nav-text">术语</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#支持的类型"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">支持的类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据模型-Object"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">数据模型(Object)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系-Relationships"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">关系(Relationships)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务-Transactions"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">事务(Transactions)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结果集-Results"><span class="nav-number">1.0.4.5.</span> <span class="nav-text">结果集(Results)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CRUD"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">CRUD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对象"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#新增"><span class="nav-number">1.0.5.4.</span> <span class="nav-text">新增</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询"><span class="nav-number">1.0.5.5.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改"><span class="nav-number">1.0.5.6.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除"><span class="nav-number">1.0.5.7.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性"><span class="nav-number">1.0.5.8.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系"><span class="nav-number">1.0.5.9.</span> <span class="nav-text">关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多线程"><span class="nav-number">1.0.5.10.</span> <span class="nav-text">多线程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Json"><span class="nav-number">1.0.6.</span> <span class="nav-text">Json</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通知"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">通知</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库迁移"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">数据库迁移</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库加密"><span class="nav-number">1.0.6.3.</span> <span class="nav-text">数据库加密</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本限制"><span class="nav-number">1.0.6.4.</span> <span class="nav-text">版本限制</span></a></li></ol></li></ol></li></ol></li></ol>
     
