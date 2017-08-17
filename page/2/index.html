@@ -228,9 +228,9 @@
   <div class="intro-navigate">
       <p class="navigater-list">
         
-          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+          <a id="beautifont" class="main-nav-link" href="/">Home</a>
         
-          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
+          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
         
           <a id="beautifont" class="main-nav-link" href="/about">About</a>
         
@@ -286,7 +286,7 @@
 IP相关的协议IP的目的是让最终目标主机收到数据包, 但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能, 以及数据包在发送过程中异常情况处理的功能。
 DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机名称和组织机构名称的一种具有分层的名称。比如在域名 bnu.edu.cn中，neu是主机名，edu 和 cn 是不同层次下的机构名), 而不是使......  -->
         <p class="article-more-link">
-          <a href="/2015/12/24/IP相关的协议/#more">weiter lesen</a>
+          <a href="/2015/12/24/IP相关的协议/#more">Read More</a>
         </p>
       
     </div>
@@ -349,7 +349,7 @@ IP协议IP(IPv4、IPv6)相当于参考模型中的第三层–网络层。
 
 数据链路层的主要作用是在互连同一种数据链路的节点之间进行包的传递。而一旦跨越多种数据链路, 就需要借助网络层。网络层可以跨越不同的数据链......  -->
         <p class="article-more-link">
-          <a href="/2015/12/18/IP协议/#more">weiter lesen</a>
+          <a href="/2015/12/18/IP协议/#more">Read More</a>
         </p>
       
     </div>
@@ -400,16 +400,13 @@ IP协议IP(IPv4、IPv6)相当于参考模型中的第三层–网络层。
 <p>OSI参考模型中数据链路层的相关技术包括MAC寻址(物理寻址)、介质共享、环路检测、虚拟局域网(VLAN)等。数据链路的传输方式有 以太网、无线局域网(WLAN), 点对点协议(PPP)。</p>
 <h4 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h4><p>MAC地址用于识别数据链路中互连的节点, 以太网或FDDI(光纤分布式数据接口)、无线LAN、蓝牙等设备根据相关规范使用MAC地址。</p>
 <p>MAC地址长48比特, 在使用网卡的情况下, MAC地址一般都是会烧入ROM中。因此, 任何一个网卡的MAC地址都是唯一的。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi7htb4xzcj30p00kmjul.jpg" alt=""></p>
-<p>MAC地址中3~24位表示厂商识别码, 每个NIC厂商都有特定唯一的识别数字, 25~48位是厂商内部为识别每个网卡二用, 可以保证全世界不会有相同的MAC地址的网卡<br>IEEE802.3制定MAC地址规范时没有限定数据链路的类型, 即不论哪种数据链路的网络(以太网、FDDI、ATM、无线LAN、蓝牙等), 都不会有相同的MAC地址出现。</p>
-<blockquote>
-<p>例如一台主机是启动多个虚拟机, 由虚拟软件自己设定MAC地址给多个虚拟网卡, 这就很难保证所生成的MAC地址是唯一的。实际上, 即使MAC地址相同, 只要不是同属于一个数据链路就不会出现问题。<br>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi7htb4xzcj30p00kmjul.jpg" alt=""><br>
         <!-- 
 数据链路层数据链路, 指OSI参考模型中的数据链路层, 有时也指以太网、无线局域网等通信手段。
 数据链路层的协议定义了通过通信媒介互连的设备之间的传输规范。通信媒介包括双绞线电缆、同轴电缆、光纤、电波以及红外线等介质。此外, 各个设备之间有时也会通过交换机、网桥中继器等中转数据。
 OSI参考模型中数据链路层的相关技术包括MAC寻址(物理寻址)、介质共享、环路检测、虚拟局域网(VLAN)等。......  -->
         <p class="article-more-link">
-          <a href="/2015/12/13/数据链路层/#more">weiter lesen</a>
+          <a href="/2015/12/13/数据链路层/#more">Read More</a>
         </p>
       
     </div>
@@ -460,21 +457,14 @@ OSI参考模型中数据链路层的相关技术包括MAC寻址(物理寻址)、
 <h5 id="物理层-硬件"><a href="#物理层-硬件" class="headerlink" title="物理层(硬件)"></a>物理层(硬件)</h5><p>物理层: 负责0、1比特流与电压的高低、灯的闪灭之间的呼唤。对应TCP/IP分层模型中的硬件层;这种硬件相当于<code>以太网</code>或<code>电话线路</code>等物理设备。</p>
 <h5 id="数据链路层-网卡层"><a href="#数据链路层-网卡层" class="headerlink" title="数据链路层(网卡层)"></a>数据链路层(网卡层)</h5><p>网络接口层利用以太网中的数据链路层进行通信, 属于接口层。也就是说, 把它当做是让网卡(NIC)起作用的驱动程序; 驱动程序是在操作系统与硬件之间起桥梁作用的软件,也就是说, 想要使用这些硬件, 需要安装对应的驱动软件。</p>
 <blockquote>
-<p>现在很多计算机的操作系统中已经内置安装好了对应的网卡驱动程序, 可以实现即插即拔。</p>
-</blockquote>
-<h5 id="网络层-互联网层"><a href="#网络层-互联网层" class="headerlink" title="网络层(互联网层)"></a>网络层(互联网层)</h5><p>网络层使用IP协议, IP协议基于IP地址转发分包数据。就是将分组数据包发送到目的主机, 通过互联网层, 可以抽象甚至忽略网络结构的细节(忽略更底层的网络结构)。<br>连接互联网的所有主机跟路由器都必须实现IP的功能; 网桥、中继器、集线器不一定要实现TCP/TP功能。</p>
-<blockquote>
-<ul>
-<li>IP是跨越网络来传送数据包, 使整个互联网都能收到数据的协议; IP协议使用IP地址作为主机的标识。通过IP, 相互通信的主机之间不论经过怎样的底层数据链路都能够实现通信, 它不具备重发的机制(TCP控制重发), 属于非可靠性传输协议。</li>
-<li>ICMP协议规定：目的主机必须返回ICMP回送应答消息(ACK)给发送主机。如果源主机在一定时间内收到应答，则认为主机可达。(ping 用的就是ICMP协议)。</li>
-<li>ARP 从分组数据包中的IP地址中解析出MAC地址的一种协议。
+<p>现在很多计算机的操作系统中已经内置安装好了对应的网卡驱动程序, 可以实现即插即拔。<br>
         <!-- 
 TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的协议;下面介绍一下TCP/IP协议分层模型。
 1.TCP/IP与OSI参考模型
 物理层(硬件)物理层: 负责0、1比特流与电压的高低、灯的闪灭之间的呼唤。对应TCP/IP分层模型中的硬件层;这种硬件相当于以太网或电话线路等物理设备。
 数据链路层(网卡层)网络接口层利用以太网中的数据链路层进行通信, 属于接口层。也就是说, ......  -->
         <p class="article-more-link">
-          <a href="/2015/11/28/TCP:IP协议分层模型/#more">weiter lesen</a>
+          <a href="/2015/11/28/TCP:IP协议分层模型/#more">Read More</a>
         </p>
       
     </div>
@@ -521,14 +511,13 @@ TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的�
       
         <hr>
 <h3 id="简言"><a href="#简言" class="headerlink" title="简言"></a>简言</h3><p>临出发,想起老大赠送的一本书,<strong>《谁动了我的奶酪》</strong>, 于是乎悄然翻起了这本书…</p>
-<p><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92l4z7bh0j20jg0r476p.jpg" alt=""></p>
-<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>《谁动了我的奶酪》写的是个可爱的寓言故事,每页都配有主人翁滑稽可爱个性鲜明的漫画形象。书中主要讲述4个“人物”：两只小老鼠“嗅嗅”、“匆匆”和两个小矮人“哼哼”、“唧唧”。他们生活在一个迷宫里,奶酪是他们要追寻的东西。有一天,他们同时发现了一个储量丰富的奶酪仓库,便在其周围构筑起自己的幸福生活。很久之后的某天,奶酪突然不见了！这个突如其来的变化使他们的心态暴露无疑：嗅嗅,匆匆随变化而动,立刻穿上始终挂在脖子上的鞋子,开始出去再寻找,并很快就找到了更新鲜更丰富的奶酪；两个小矮人哼哼和唧唧面对变化却犹豫不决,烦恼丛生,始终无法接受奶酪已经消失的残酷现实.经过激烈的思想斗争,唧唧终于冲破了思想的束缚,穿上久置不用的跑鞋,重新进入漆黑的迷宫,并最终找到了更多更好的奶酪,而哼哼却仍在对苍天的追问中郁郁寡欢……<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92merin9uj20fw0ivacv.jpg" alt=""><br>
+<p><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92l4z7bh0j20jg0r476p.jpg" alt=""><br>
         <!-- 
 简言临出发,想起老大赠送的一本书,《谁动了我的奶酪》, 于是乎悄然翻起了这本书…
 
 简述《谁动了我的奶酪》写的是个可爱的寓言故事,每页都配有主人翁滑稽可爱个性鲜明的漫画形象。书中主要讲述4个“人物”：两只小老鼠“嗅嗅”、“匆匆”和两个小矮人“哼哼”、“唧唧”。他们生活在一个迷宫里,奶酪是他们要追寻的东西。有一天,他们同时发现了一个储量丰富的奶酪仓库,便在其周围构筑起自己的幸福生活。很久之后......  -->
         <p class="article-more-link">
-          <a href="/2015/11/23/谁动了我的奶酪/#more">weiter lesen</a>
+          <a href="/2015/11/23/谁动了我的奶酪/#more">Read More</a>
         </p>
       
     </div>
@@ -596,7 +585,7 @@ TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的�
 一种是利用collectionView实现无限滚动,因为collectionView本身存在着复用的问题,所以不用担心内存的消耗问题.
 另外一种就是基于scrollView来实现, 比如我们现在有5张......  -->
         <p class="article-more-link">
-          <a href="/2015/09/24/3D轮播图/#more">weiter lesen</a>
+          <a href="/2015/09/24/3D轮播图/#more">Read More</a>
         </p>
       
     </div>
@@ -650,7 +639,7 @@ TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的�
 1[self setValue:[[LCTabBar alloc] init] forKeyPath:@"tabBar"];
 123456789NSMutableDictionary *normalAt......  -->
         <p class="article-more-link">
-          <a href="/2015/07/10/封装tabBar/#more">weiter lesen</a>
+          <a href="/2015/07/10/封装tabBar/#more">Read More</a>
         </p>
       
     </div>
@@ -729,7 +718,7 @@ TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的�
 </ul>
 <p>方法一: NSRunloop</p>
 <pre><code>NSRunLoop * runloop1 = [NSRunLoop mainRunLoop];
-</code></pre><p>方法二: CFRunLoopRef<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CFRunLoopRef runloop2 =   CFRunLoopGetMain();</div></pre></td></tr></table></figure></p>
+</code></pre><p>方法二: CFRunLoopRef<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CFRunLoopRef</span> runloop2 =   <span class="built_in">CFRunLoopGetMain</span>();</div></pre></td></tr></table></figure></p>
 <ul>
 <li>注意：开一个子线程创建runloop,不是通过alloc init方法创建，而是直接通过调用currentRunLoop方法来创建，它本身是一个懒加载的。
         <!-- 
@@ -742,7 +731,7 @@ RunLoop基本概念概念:程序的运行循环,通俗的来说就是跑圈.
 重要说明
 如果没有Runloop,那么程序......  -->
         <p class="article-more-link">
-          <a href="/2015/05/05/runloop浅说/#more">weiter lesen</a>
+          <a href="/2015/05/05/runloop浅说/#more">Read More</a>
         </p>
       
     </div>
@@ -764,7 +753,7 @@ RunLoop基本概念概念:程序的运行循环,通俗的来说就是跑圈.
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>

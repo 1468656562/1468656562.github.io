@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dqhhcvbj20xm05kadd.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dqvs2f7j21ax0l7mzr.jpg">
-<meta property="og:updated_time" content="2017-08-17T14:57:05.000Z">
+<meta property="og:updated_time" content="2017-08-17T15:01:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode8新特性">
 <meta name="twitter:description" content="简介9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.
@@ -110,9 +110,9 @@
             <div class="navbar-collapse collapse">
               <ul class="hnav navbar-nav">
                 
-                  <li> <a class="main-nav-link" href="/">Startseite</a> </li>
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
                 
-                  <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -126,7 +126,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Schreib etwas..." />
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -138,11 +138,11 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Beiträge',
-            PAGES: 'Seiten',
-            CATEGORIES: 'Kategorien',
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
-            UNTITLED: '(Unbenannt)',
+            UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -204,7 +204,7 @@
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.</p>
 <h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><h4 id="General"><a href="#General" class="headerlink" title="General"></a>General</h4><p>Xcode8中通过<code>Automatically manage signing</code>, 让苹果为我们管理整数和配置文件.<br>想要设置安装后显示在手机上的APP的名字, 可以直接修改<strong>Display Name</strong>, 这个修改和<strong>Info.plist</strong>修改是同步的.<br><img src="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dmnilo1j20g20arq45.jpg" alt=""></p>
 <p>手动管理证书和描述文件, 去掉<code>Automatically manage signing</code>的勾即可.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dn5338yj20gg0dmq4b.jpg" alt=""></p>
-<h4 id="ATS问题"><a href="#ATS问题" class="headerlink" title="ATS问题"></a>ATS问题</h4><p>在iOS9中,我们可以通过设置<code>NSAllowsArbitraryLoads</code>为<code>YES</code>, 来使用HTTP网络; iOS10从2017年1月1日开始, 苹果不允许我们通过这个方法跳过ATS, 强制使用HTTPS.我们可以用过<code>NSExceptionDomains</code>对特定的域名开放HTTP.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dni65g2j20x007rta9.jpg" alt=""></p>
+<h4 id="ATS问题"><a href="#ATS问题" class="headerlink" title="ATS问题"></a>ATS问题</h4><p>在iOS9中,我们可以通过设置<code>NSAllowsArbitraryLoads</code>为<code>YES</code>, 来使用HTTP网络; iOS10从2017年1月1日开始, 苹果不允许我们通过这个方法跳过ATS, 强制使用HTTPS.我们可以用过<code>NSExceptionDomains</code>对特定的域名开放HTTP.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dni65g2j20x007rta9.jpg" alt=""><br><a id="more"></a></p>
 <h4 id="隐私权限的设置"><a href="#隐私权限的设置" class="headerlink" title="隐私权限的设置"></a>隐私权限的设置</h4><p>iOS10 对隐私权限更加严格, 如果不设置, 会直接崩溃.<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6gw1f92dnv67gxj20zb03tjul.jpg" alt=""><br>根据错误提示: 我们可以在<code>info.plist</code>文件中 添加对应的键值就可以了.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92do7ykoaj20w70dw0vr.jpg" alt=""></p>
 <ul>
 <li>麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？</li>
@@ -215,11 +215,11 @@
 <li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
 <li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
 <li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据<a id="more"></a>
-<h4 id="Interface-Builder"><a href="#Interface-Builder" class="headerlink" title="Interface Builder"></a>Interface Builder</h4>Xcode8之前的 <code>Size Class</code><br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg" alt=""><br>Xcode8之后的就不叫<code>Size Class</code>, 就是一个预览当前当前<code>XIB</code>或<code>SB</code>在不同屏幕尺寸下的图形界面.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg" alt=""></li>
+<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
 </ul>
 </li>
 </ul>
+<h4 id="Interface-Builder"><a href="#Interface-Builder" class="headerlink" title="Interface Builder"></a>Interface Builder</h4><p>Xcode8之前的 <code>Size Class</code><br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg" alt=""><br>Xcode8之后的就不叫<code>Size Class</code>, 就是一个预览当前当前<code>XIB</code>或<code>SB</code>在不同屏幕尺寸下的图形界面.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg" alt=""></p>
 <p>Xcode8打开之前的旧项目的<code>XIB</code>或<code>SB</code>文件时, 会弹出一个选择初始化设置视图的窗口, 一般选择<code>Choose Device</code>.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg" alt=""></p>
 <p>如果Xcode8打开过当前的<code>XIB</code>文件, 并选择<code>Choose Device</code>后, 低于Xcode8版本的编译器将无法打开这个<code>XIB</code>文件, 并会报一下错误:</p>
 <blockquote>
@@ -288,7 +288,7 @@
 <nav id="article-nav">
   
     <a href="/2017/01/20/RealmSwift/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           Realm-Swift3.0
@@ -298,7 +298,7 @@
   
   
     <a href="/2016/08/27/编译ijkplayerDemo/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">编译ijkplayerDemo</div>
     </a>
   
@@ -311,7 +311,7 @@
 
   <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
-    <strong class="toc-title">Inhalt</strong>
+    <strong class="toc-title">Contents</strong>
     
         <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新特性"><span class="nav-number">2.</span> <span class="nav-text">新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#General"><span class="nav-number">2.1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ATS问题"><span class="nav-number">2.2.</span> <span class="nav-text">ATS问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐私权限的设置"><span class="nav-number">2.3.</span> <span class="nav-text">隐私权限的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interface-Builder"><span class="nav-number">2.4.</span> <span class="nav-text">Interface Builder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁用系统log"><span class="nav-number">2.5.</span> <span class="nav-text">禁用系统log</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件问题"><span class="nav-number">2.6.</span> <span class="nav-text">插件问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API"><span class="nav-number">2.7.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#UIColor新增方法"><span class="nav-number">2.7.1.</span> <span class="nav-text">UIColor新增方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字体"><span class="nav-number">2.7.2.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#refreshControl"><span class="nav-number">2.7.3.</span> <span class="nav-text">refreshControl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#systemVersion"><span class="nav-number">2.7.4.</span> <span class="nav-text">systemVersion</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UICollectionView"><span class="nav-number">2.7.5.</span> <span class="nav-text">UICollectionView</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Notification"><span class="nav-number">2.7.6.</span> <span class="nav-text">Notification</span></a></li></ol></li></ol></li></ol>
     
