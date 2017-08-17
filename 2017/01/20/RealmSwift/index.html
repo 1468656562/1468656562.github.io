@@ -107,9 +107,9 @@ Realm的优点在官方上有很多的说明, 略举两点:
             <div class="navbar-collapse collapse">
               <ul class="hnav navbar-nav">
                 
-                  <li> <a class="main-nav-link" href="/">Startseite</a> </li>
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
                 
-                  <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -123,7 +123,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Schreib etwas..." />
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -135,11 +135,11 @@ Realm的优点在官方上有很多的说明, 略举两点:
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Beiträge',
-            PAGES: 'Seiten',
-            CATEGORIES: 'Kategorien',
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
-            UNTITLED: '(Unbenannt)',
+            UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -617,7 +617,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
   
   
     <a href="/2016/10/03/Xcode8新特性/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Xcode8新特性</div>
     </a>
   
@@ -630,7 +630,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 
   <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
-    <strong class="toc-title">Inhalt</strong>
+    <strong class="toc-title">Contents</strong>
     
         <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Realm-Swift3-0"><span class="nav-number">1.</span> <span class="nav-text">Realm-Swift3.0</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.0.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Xcode插件"><span class="nav-number">1.0.2.</span> <span class="nav-text">Xcode插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纯SWift版的安装"><span class="nav-number">1.0.3.</span> <span class="nav-text">纯SWift版的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#术语"><span class="nav-number">1.0.4.</span> <span class="nav-text">术语</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#支持的类型"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">支持的类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据模型-Object"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">数据模型(Object)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系-Relationships"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">关系(Relationships)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务-Transactions"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">事务(Transactions)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结果集-Results"><span class="nav-number">1.0.4.5.</span> <span class="nav-text">结果集(Results)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CRUD"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">CRUD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对象"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#新增"><span class="nav-number">1.0.5.4.</span> <span class="nav-text">新增</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询"><span class="nav-number">1.0.5.5.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改"><span class="nav-number">1.0.5.6.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除"><span class="nav-number">1.0.5.7.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性"><span class="nav-number">1.0.5.8.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系"><span class="nav-number">1.0.5.9.</span> <span class="nav-text">关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多线程"><span class="nav-number">1.0.5.10.</span> <span class="nav-text">多线程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Json"><span class="nav-number">1.0.6.</span> <span class="nav-text">Json</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通知"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">通知</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库迁移"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">数据库迁移</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库加密"><span class="nav-number">1.0.6.3.</span> <span class="nav-text">数据库加密</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本限制"><span class="nav-number">1.0.6.4.</span> <span class="nav-text">版本限制</span></a></li></ol></li></ol></li></ol></li></ol>
     
@@ -738,7 +738,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 
 
 	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260&web_id=1260" language="JavaScript"></script>
   </div>
 
 
