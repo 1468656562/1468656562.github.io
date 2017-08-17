@@ -1,0 +1,657 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="网络," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="IP相关的协议IP的目的是让最终目标主机收到数据包, 但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能, 以及数据包在发送过程中异常情况处理的功能。
+DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机名称和组织机构名称的一种具有分层的名称。比如在域名 bnu.edu.cn中，neu是主机名，edu 和 cn 是不同层次下的机构名), 而不是使用IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP相关的协议(四)">
+<meta property="og:url" content="https://github.com/icoderRo/2015/12/24/IP相关的协议/index.html">
+<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:description" content="IP相关的协议IP的目的是让最终目标主机收到数据包, 但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能, 以及数据包在发送过程中异常情况处理的功能。
+DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机名称和组织机构名称的一种具有分层的名称。比如在域名 bnu.edu.cn中，neu是主机名，edu 和 cn 是不同层次下的机构名), 而不是使用IP">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fib4j1xk4mj30q40kyjvl.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fib53e0qn9j30o40cc768.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fiba4swzfgj30oq0k2413.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fiba6wv959j30la0fwdik.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fiba9s5aptj30r20k642f.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fibah33x2oj30pc0ce0uj.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fibambvmd6j30pm08wq4p.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fibaq1zzgbj30ro0oodl4.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fibarysrjlj30re0n4dl9.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fibb46tim9j30t00e4gpv.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fibb7buomaj30su0jqn2i.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fibbnx83jhj30oo0lin1n.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fibc0b57fkj30qc0hodjy.jpg">
+<meta property="og:updated_time" content="2017-08-17T12:35:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IP相关的协议(四)">
+<meta name="twitter:description" content="IP相关的协议IP的目的是让最终目标主机收到数据包, 但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能, 以及数据包在发送过程中异常情况处理的功能。
+DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机名称和组织机构名称的一种具有分层的名称。比如在域名 bnu.edu.cn中，neu是主机名，edu 和 cn 是不同层次下的机构名), 而不是使用IP">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fib4j1xk4mj30q40kyjvl.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"remove"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2015/12/24/IP相关的协议/"/>
+
+  <title> IP相关的协议(四) | simonの小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="images/logo.svg"
+             alt="simonの小📚坊"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">simonの小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">始于颜值，陷于才华，忠于人品</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                IP相关的协议(四)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-24T00:00:00+08:00" content="2015-12-24">
+              2015-12-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/24/IP相关的协议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/24/IP相关的协议/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h3 id="IP相关的协议"><a href="#IP相关的协议" class="headerlink" title="IP相关的协议"></a>IP相关的协议</h3><p>IP的目的是让最终目标主机收到数据包, 但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能, 以及数据包在发送过程中异常情况处理的功能。</p>
+<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p>我们平常在访问某个网站时, 域名(域名是指为了识别主机名称和组织机构名称的一种具有分层的名称。比如在域名 bnu.edu.cn中，neu是主机名，edu 和 cn 是不同层次下的机构名), 而不是使用IP地址。能够这样做是因为有了DNS。DNS可以将自身具有意义的域名自动转换为具体的IP地址。</p>
+<blockquote>
+<p>在Windows/Unix中查找域名对应的IP地址可以输入nslookup 域名</p>
+</blockquote>
+<h5 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h5><p>以访问www.ietf.org为例,此时的DNS查询流程如图所示:<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fib4j1xk4mj30q40kyjvl.jpg" alt=""></p>
+<p>解析器为了查询IP地址, 向域名服务器进行查询处理。接收这个查询请求的域名服务器首先会在自己的数据库进行查找。如果有该域名所对应的IP地址就返回, 如果没有, 则域名服务器再向上一层跟域名服务器进行查询处理。解析器和域名服务器将最新了解到的信息暂时保存在缓存里。这样, 可以减少每次查询时的性能消耗。</p>
+<h4 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h4><p>在网络层, 只要确定了IP地址, 就可以向这个目标地址发送IP数据报。在数据链路层, 进行通信时需要了解每个IP地址多对应的MAC地址。ARP是一种解决地址问题得协议,根据目标IP地址为线索,用来定位下一个接收数据分包的网络设备对应的MAC地址。</p>
+<h5 id="ARP工作机制"><a href="#ARP工作机制" class="headerlink" title="ARP工作机制"></a>ARP工作机制</h5><p>ARP借助ARP请求与ARP响应两种类型的包确定MAC地址。<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fib53e0qn9j30o40cc768.jpg" alt=""></p>
+<p>主机A为了获取主机B的MAC地址, 起初要通过<strong>广播</strong>发送一个ARP请求包。这个包中包含了想要了解其MAC地址的主机IP地址。也就是书, ARP请求包中已经包含了主机B的IP地址。由于广播的包可以被同一个链路上所有的主机或路由器接收, 因此ARP请求包也就会被同一个链路上所有的主机和路由器进行解析。如果ARP请求包中的目标IP地址与自己的IP地址一致, 那么这个节点就将自己的MAC地址塞入ARP响应包, 返回给主机A。主机A将获取到的MAC地址缓存一段时间, 以减少ARP包的发送与流量的浪费。</p>
+<blockquote>
+<p>RARP是将ARP反过来, 从MAC地址定位IP地址的一种协议。<br>代理ARP, 通常ARP包会被路由器隔离, 但是采用代理ARP的路由器可以将ARP请求转发给邻近的网段。由此, 两个以上网段的节点之间可以像在同一个网段中一样进行通信。</p>
+</blockquote>
+<h4 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h4><p>ICMP的主要功能: 确认IP包是否成功送达目标地址, 通知发送过程当中IP包被废弃的具体原因, 改善网络设置等。因此可以监听网络是否正常、设置是否有误以及设备有何异常等信息。</p>
+<p>ICMP的消息大致可以分为两类: 一类是通知出错原因的错误消息, 另一类是用于诊断的查询消息。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fiba4swzfgj30oq0k2413.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fiba6wv959j30la0fwdik.jpg" alt=""></p>
+<h5 id="ICMP的主要消息"><a href="#ICMP的主要消息" class="headerlink" title="ICMP的主要消息"></a>ICMP的主要消息</h5><ul>
+<li><p>ICMP目标不可达消息(类型3)<br>IP路由器无法将IP数据报发送给目标地址时, 会给发送端主机返回一个目标不可达的ICMP消息, 并在这个消息中显示不可达的具体原因。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fiba9s5aptj30r20k642f.jpg" alt=""></p>
+</li>
+<li><p>ICMP重定向消息(类型5)<br>如果路由器发现发送端主机使用了次优的路径发送数据, 那么它会返回一个ICMP重定向的消息给这个主机。在这个消息中包含了最合适的路由信息和源数据。多数情况下由于这种重定向消息成为引发问题的原因, 所以一般不进行这种设置。</p>
+</li>
+<li><p>ICMP超时消息(类型11)<br>IP包中有一个字段叫做TTL, 它的值会随着每经过一次路由器就会减1, 减到0该IP包就会被丢弃。此时, IP路由器将会发送一个ICMP超时的消息给发送端主机, 并通知该包已被丢弃。<br>设置IP包生存周期的主要目的, 是为了在路由控制发生循环状况时,避免IP包无休止的在网络上被转发; 此外可以利用TTL控制包的到达范围。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fibah33x2oj30pc0ce0uj.jpg" alt=""> </p>
+</li>
+<li><p>ICMP回送消息(类型0、8)<br>用于所发送的数据包是否已经成功到达对端的一种消息。可以向对端主机发送回送请求的消息, 也可以接收对端主机发回来的回送应答消息。ping就是利用这个消息实现的。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fibambvmd6j30pm08wq4p.jpg" alt=""></p>
+</li>
+</ul>
+<h4 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h4><p>DHCP实现了自动设置IP地址、统一管理IP地址的分配,也就是说,DHCP实现了即插即用。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fibaq1zzgbj30ro0oodl4.jpg" alt=""> </p>
+<h5 id="DHCP工作机制"><a href="#DHCP工作机制" class="headerlink" title="DHCP工作机制"></a>DHCP工作机制</h5><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fibarysrjlj30re0n4dl9.jpg" alt=""></p>
+<h4 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h4><p>NAT是用于在本地网络中使用私有地址, 在连接到互联网时转而使用全局IP地址的技术。除了可以转换IP地址外, 还可以转换TCP、UDP端口号的NAPT技术, 由此可以实现用一个全局IP地址与多个主机的通信。</p>
+<h5 id="NAT工作机制"><a href="#NAT工作机制" class="headerlink" title="NAT工作机制"></a>NAT工作机制</h5><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fibb46tim9j30t00e4gpv.jpg" alt=""><br>在NAT(NAPT)的路由器内部, 有一张自动生成的用来转换地址的表。当私有网络内的多台机器同时与外部进行通信, 仅仅转换IP地址, 全局IP地址可能会出现不够用的情况, 这时采用和端口号一起转换的方式(NAPT)可以解决这个问题。</p>
+<h5 id="NAPT工作机制"><a href="#NAPT工作机制" class="headerlink" title="NAPT工作机制"></a>NAPT工作机制</h5><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fibb7buomaj30su0jqn2i.jpg" alt=""><br>转换表在NAT路由器上自动生成, 以TCP为例, 在建立TCP连接的首次握手时的SYN包一经发出, 就会生成这个表。而后收到关闭连接时发出的FIN包的确认应答后就从表中被删除。</p>
+<h5 id="NAT-PT"><a href="#NAT-PT" class="headerlink" title="NAT-PT"></a>NAT-PT</h5><p>NAT-PT是将IPv6的首部转换为IPv4的首部的一种技术。让那些只有IPv6地址的主机也能够与IPv4地址的其他主机进行通信。</p>
+<h5 id="NAT的潜在问题"><a href="#NAT的潜在问题" class="headerlink" title="NAT的潜在问题"></a>NAT的潜在问题</h5><ul>
+<li>无法从NAT的外部向内部服务建立连接</li>
+<li>转换表的生成与转换操作都会产生一定开销</li>
+<li>通信过程中一旦NAT遇到异常需要重新启动, 所有的TCP连接都会被重置。</li>
+</ul>
+<blockquote>
+<p>解决NAT的潜在问题<br> 1.改用IPv6<br>    2.”NAT穿越”</p>
+</blockquote>
+<h4 id="IP隧道"><a href="#IP隧道" class="headerlink" title="IP隧道"></a>IP隧道</h4><p>IP隧道中可以将IPv6的包合成为一个数据, 再追加一个IPv4的首部后, 让IPv4的网络识别。这种在网络层的首部后面继续追加网络层首部的通信方式就叫做”IP隧道”。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fibbnx83jhj30oo0lin1n.jpg" alt=""></p>
+<h4 id="显示拥塞通知-ECN"><a href="#显示拥塞通知-ECN" class="headerlink" title="显示拥塞通知(ECN)"></a>显示拥塞通知(ECN)</h4><p>ECN为实现拥塞通知的功能, 将IP首部的TOS字段置换为ENC字段, 并在TCP首部的保留位中追加拥塞窗口减少(CWR)和ECE表示。</p>
+<p>ECN的机制概括起来就是在发送包的IP首部中记录路由器是否遇到拥塞, 并在返回包的TCP首部中通知是否发生过拥塞。拥塞检查在网络层(IP)进行, 而拥塞通知则在传输层(TCP)进行。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fibc0b57fkj30qc0hodjy.jpg" alt=""></p>
+<p>参考:</p>
+<ul>
+<li><a href="">图解TCP/IP</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag">#网络</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/18/IP协议/" rel="next" title="IP协议(三)">
+                <i class="fa fa-chevron-left"></i> IP协议(三)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/01/TCP:UDP/" rel="prev" title="TCP/UDP(五)">
+                TCP/UDP(五) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/24/IP相关的协议/"
+           data-title="IP相关的协议(四)" data-url="https://github.com/icoderRo/2015/12/24/IP相关的协议/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
