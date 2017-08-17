@@ -319,10 +319,12 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><figcaption><span>do |target|</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[&apos;SWIFT_VERSION&apos;] = &apos;3.0&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
-<pre><code>* 在终端运行 pod install,采用 CocoaPods 生成的 .xcworkspace 来运行工程！
-* 注意:我这边选用CocoaPods的方式安装, 安装的时间还是需要比较多的, **如果发现pod search RealmSwift版本比较低, 先升级一下pod索引库**
-</code></pre><h4 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h4><h5 id="支持的类型"><a href="#支持的类型" class="headerlink" title="支持的类型"></a>支持的类型</h5><ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	installer.pods_project.targets.each do |target|</div><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings['SWIFT_VERSION'] = '3.0'</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<ul>
+<li>在终端运行 pod install,采用 CocoaPods 生成的 .xcworkspace 来运行工程！</li>
+<li>注意:我这边选用CocoaPods的方式安装, 安装的时间还是需要比较多的, <strong>如果发现pod search RealmSwift版本比较低, 先升级一下pod索引库</strong></li>
+</ul>
+<h4 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h4><h5 id="支持的类型"><a href="#支持的类型" class="headerlink" title="支持的类型"></a>支持的类型</h5><ul>
 <li>Realm 支持以下的属性类型：Bool、Int8、Int16、Int32、Int64、Double、Float、String、Date以及Data。</li>
 <li>也可以使用 List<object> 和 Object 来建立诸如一对多、一对一之类的关系模型，此外 Object 的子类也支持此功能。</object></li>
 </ul>
