@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>realm-swift3.0 | simonの小📚坊</title>
+  <title>realm-swift3.0 | Simonの小📚坊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="数据库" />
@@ -18,14 +18,14 @@ Realm的优点在官方上有很多的说明, 略举两点:
 <meta property="og:type" content="article">
 <meta property="og:title" content="Realm-Swift3.0">
 <meta property="og:url" content="https://github.com/icoderRo/2017/01/20/RealmSwift/index.html">
-<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:site_name" content="Simonの小📚坊">
 <meta property="og:description" content="Realm-Swift3.0
 简介Realm 于2014 年7月发布，是一个跨平台的移动数据库引擎，专门为移动应用的数据持久化而生。其目的是要取代 Core Data 和 SQLite,支持Java、Objective-C、JavaScript、Swift、Xamarin平台
 Realm的优点在官方上有很多的说明, 略举两点:
 1.易上手:想比于Core Data 和SQLite, Realm的">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fimyuw95jdj30g7083ta2.jpg">
-<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcgy1fin1d9jycxj317d0qmwim.jpg">
-<meta property="og:updated_time" content="2017-08-17T13:22:36.000Z">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgy1fin1ygev3lj30ta0h5myn.jpg">
+<meta property="og:updated_time" content="2017-08-17T13:42:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Realm-Swift3.0">
 <meta name="twitter:description" content="Realm-Swift3.0
@@ -34,7 +34,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 1.易上手:想比于Core Data 和SQLite, Realm的">
 <meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fimyuw95jdj30g7083ta2.jpg">
   
-    <link rel="alternate" href="/atom.xml" title="simonの小📚坊" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Simonの小📚坊" type="application/atom+xml">
   
 
   
@@ -213,7 +213,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 </ul>
 </li>
 </ul>
-<h4 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h4><p>Realm的Xcode插件令 Realm 模型的创建更加方便.gitHub下载一个Demo<a href="https://github.com/realm/realm-cocoa">传送门</a>, 找到里面的Plugin目录下的RealmPlugin.xcodeproj并进行编译，重启 Xcode之后插件即可生效。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fin1d9jycxj317d0qmwim.jpg" alt=""></p>
+<h4 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h4><p>Realm的Xcode插件令 Realm 模型的创建更加方便.gitHub下载一个Demo<a href="https://github.com/realm/realm-cocoa">传送门</a>, 找到里面的Plugin目录下的RealmPlugin.xcodeproj并进行编译，重启 Xcode之后插件即可生效。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fin1ygev3lj30ta0h5myn.jpg" alt=""></p>
 <h4 id="纯SWift版的安装"><a href="#纯SWift版的安装" class="headerlink" title="纯SWift版的安装"></a>纯SWift版的安装</h4><ul>
 <li>使用 Realm 构建应用的基本要求：iOS 8 及其以上版本, macOS 10.9 及其以上版本，此外 Realm 支持 tvOS 和 watchOS 的所有版本。</li>
 <li>需要使用 Xcode 8.0 或者以后的版本。Realm Swift 2.3.0 是最后一个支持 Swift 2.x 及 Xcode 7.3 的版本。</li>
@@ -231,7 +231,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 <li>运行 <code>carthage update</code></li>
 <li>从 Carthage/Build/ 目录下对应平台文件夹中，将 <code>RealmSwift.framework</code> 和 <code>Realm.framework</code> 拖曳到您 Xcode 工程”General”设置项的”Linked Frameworks and Libraries”选项卡中</li>
 <li><p>iOS/tvOS/watchOS: 在您应用目标的<strong>Build Phases</strong>设置选项卡中，点击“+”按钮并选择“New Run Script Phase”。在新建的Run Script中，填写:<code>/usr/local/bin/carthage copy-frameworks</code> 在<strong>Input Files</strong>内添加您想要使用的框架路径，例如:        </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">* 方法3:CocoaPods</div><div class="line">	* 运行 `pod repo update`，以确保 CocoaPods 能够获取到 Realm 的最新版本</div><div class="line">	* 在Podfile中，添加use_frameworks!和pod &apos;RealmSwift&apos; 到您的主要和测试目标</div><div class="line">	* 如果您使用的是 Xcode 8，那么将下面代码复制到您的 Podfile 底部，以便在必要的时候更新 Swift 的版本：</div><div class="line">```installer.pods_project.targets.each do |target|</div><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[&apos;SWIFT_VERSION&apos;] = &apos;3.0&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">* 方法3:CocoaPods</div><div class="line">	* 运行 `pod repo update`，以确保 CocoaPods 能够获取到 Realm 的最新版本</div><div class="line">	* 在Podfile中，添加use_frameworks!和pod &apos;RealmSwift&apos; 到您的主要和测试目标</div><div class="line">	* 如果您使用的是 Xcode 8，那么将下面代码复制到您的 Podfile 底部，以便在必要的时候更新 Swift 的版本：</div><div class="line">	</div><div class="line">```installer.pods_project.targets.each do |target|</div><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[&apos;SWIFT_VERSION&apos;] = &apos;3.0&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
 </li>
 <li><p>在终端运行 pod install,采用 CocoaPods 生成的 .xcworkspace 来运行工程！</p>
 </li>
@@ -638,7 +638,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
   <div class="container">
       	<div class="row">
 	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2014 - 2017 simonの小📚坊 All Rights Reserved.</p>
+	      <p id="copyRightEn">Copyright &copy; 2014 - 2017 Simonの小📚坊 All Rights Reserved.</p>
 	      
 	      
     		<p class="busuanzi_uv">
@@ -785,10 +785,10 @@ Realm的优点在官方上有很多的说明, 略举两点:
         </div>
          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
           <div class="panel-body">
-            simonの小📚坊
+            Simonの小📚坊
           </div>
           <div class="panel-body">
-            Copyright © 2017 simon All Rights Reserved.
+            Copyright © 2017 Simon All Rights Reserved.
           </div>
         </div>
       </div>
