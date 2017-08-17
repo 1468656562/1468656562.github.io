@@ -9,15 +9,15 @@
   
   
   
-  <meta name="description" content="劳逸结合">
+  <meta name="description" content="脚踏实地">
 <meta property="og:type" content="website">
 <meta property="og:title" content="simonの小📚坊">
 <meta property="og:url" content="https://github.com/icoderRo/index.html">
 <meta property="og:site_name" content="simonの小📚坊">
-<meta property="og:description" content="劳逸结合">
+<meta property="og:description" content="脚踏实地">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="simonの小📚坊">
-<meta name="twitter:description" content="劳逸结合">
+<meta name="twitter:description" content="脚踏实地">
   
     <link rel="alternate" href="/atom.xml" title="simonの小📚坊" type="application/atom+xml">
   
@@ -53,8 +53,6 @@
 
   
   
-  
-    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
 </head>
@@ -201,7 +199,7 @@
         
           <div class="homelogoback"  style="border: 1px solid #404040;" >
             <h1><a href="#content" id="logo">simonの小📚坊</a></h1>
-            <h3>劳逸结合</h3>
+            <h3>脚踏实地</h3>
             <h5>simon</h5>
             <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
           </div>
@@ -230,13 +228,9 @@
   <div class="intro-navigate">
       <p class="navigater-list">
         
-          <a id="beautifont" class="main-nav-link" href="/">Startseite</a>
+          <a id="beautifont" class="main-nav-link" href="/">Home</a>
         
-          <a id="beautifont" class="main-nav-link" href="/archives">Archive</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/categories">Kategorien</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
+          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
         
           <a id="beautifont" class="main-nav-link" href="/about">About</a>
         
@@ -281,7 +275,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>##Realm-Swift3.0<br><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fimyuw95jdj30g7083ta2.jpg" alt=""></p>
+<h2 id="Realm-Swift3-0"><a href="#Realm-Swift3-0" class="headerlink" title="Realm-Swift3.0"></a>Realm-Swift3.0</h2><p><img src="https://ww3.sinaimg.cn/large/006tKfTcgy1fimyuw95jdj30g7083ta2.jpg" alt=""></p>
 <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Realm 于2014 年7月发布，是一个跨平台的移动数据库引擎，专门为移动应用的数据持久化而生。其目的是要取代 Core Data 和 SQLite,支持Java、Objective-C、JavaScript、Swift、Xamarin平台</p>
 <p>Realm的优点在官方上有很多的说明, 略举两点:</p>
 <p><strong>1.易上手</strong>:想比于Core Data 和SQLite, Realm的学习成本相对来说会比较低, 毫不夸张的说, 把官方的文档和Demo看完一遍, 就可以快速的上手开发功能。</p>
@@ -296,7 +290,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h4><p>Realm的Xcode插件令 Realm 模型的创建更加方便.gitHub下载一个Demo<a href="https://github.com/realm/realm-cocoa">传送门</a>, 找到里面的Plugin目录下的RealmPlugin.xcodeproj并进行编译，重启 Xcode之后插件即可生效。<br><code>需要配图</code>:</p>
+<h4 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h4><p>Realm的Xcode插件令 Realm 模型的创建更加方便.gitHub下载一个Demo<a href="https://github.com/realm/realm-cocoa">传送门</a>, 找到里面的Plugin目录下的RealmPlugin.xcodeproj并进行编译，重启 Xcode之后插件即可生效。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fin1d9jycxj317d0qmwim.jpg" alt=""></p>
 <h4 id="纯SWift版的安装"><a href="#纯SWift版的安装" class="headerlink" title="纯SWift版的安装"></a>纯SWift版的安装</h4><ul>
 <li>使用 Realm 构建应用的基本要求：iOS 8 及其以上版本, macOS 10.9 及其以上版本，此外 Realm 支持 tvOS 和 watchOS 的所有版本。</li>
 <li>需要使用 Xcode 8.0 或者以后的版本。Realm Swift 2.3.0 是最后一个支持 Swift 2.x 及 Xcode 7.3 的版本。</li>
@@ -307,22 +301,14 @@
 <li>如果您打算在您的 iOS、tcOS 或者 watchOS 工程中使用 Realm，请在您的 app 目标的“Build Phases”中创建一个新的”Run Script Phase”，并在文本框中写入<code>bash &quot;${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh&quot;</code>因为要绕过这个APP商店提交的bug，这一步在打包二进制发布版本时是必须。</li>
 </ul>
 </li>
-<li>方法2:Carthage<ul>
+<li><p>方法2:Carthage</p>
+<ul>
 <li><a href="https://github.com/Carthage/Carthage#installing-carthage">安装 Carthage 0.17.0 或者更高版本</a></li>
 <li>在Carthage 中添加github <code>realm/realm-cocoa</code></li>
 <li>运行 <code>carthage update</code></li>
 <li>从 Carthage/Build/ 目录下对应平台文件夹中，将 <code>RealmSwift.framework</code> 和 <code>Realm.framework</code> 拖曳到您 Xcode 工程”General”设置项的”Linked Frameworks and Libraries”选项卡中</li>
-<li>iOS/tvOS/watchOS: 在您应用目标的<strong>Build Phases</strong>设置选项卡中，点击“+”按钮并选择“New Run Script Phase”。在新建的Run Script中，填写:<code>/usr/local/bin/carthage copy-frameworks</code> 在<strong>Input Files</strong>内添加您想要使用的框架路径，例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```               </div><div class="line">$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework</div></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>方法3:CocoaPods</p>
-<ul>
-<li>运行 <code>pod repo update</code>，以确保 CocoaPods 能够获取到 Realm 的最新版本</li>
-<li>在Podfile中，添加use_frameworks!和pod ‘RealmSwift’ 到您的主要和测试目标</li>
-<li><p>如果您使用的是 Xcode 8，那么将下面代码复制到您的 Podfile 底部，以便在必要的时候更新 Swift 的版本：</p>
-<figure class="highlight plain"><figcaption><span>do |target|</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[&apos;SWIFT_VERSION&apos;] = &apos;3.0&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<li><p>iOS/tvOS/watchOS: 在您应用目标的<strong>Build Phases</strong>设置选项卡中，点击“+”按钮并选择“New Run Script Phase”。在新建的Run Script中，填写:<code>/usr/local/bin/carthage copy-frameworks</code> 在<strong>Input Files</strong>内添加您想要使用的框架路径，例如:        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">* 方法3:CocoaPods</div><div class="line">	* 运行 `pod repo update`，以确保 CocoaPods 能够获取到 Realm 的最新版本</div><div class="line">	* 在Podfile中，添加use_frameworks!和pod &apos;RealmSwift&apos; 到您的主要和测试目标</div><div class="line">	* 如果您使用的是 Xcode 8，那么将下面代码复制到您的 Podfile 底部，以便在必要的时候更新 Swift 的版本：</div><div class="line">```installer.pods_project.targets.each do |target|</div><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[&apos;SWIFT_VERSION&apos;] = &apos;3.0&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
 </li>
 <li><p>在终端运行 pod install,采用 CocoaPods 生成的 .xcworkspace 来运行工程！</p>
 </li>
@@ -354,17 +340,17 @@
 <li>查询结果并不是数据的拷贝：修改查询结果会直接修改硬盘上的数据。</li>
 </ul>
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><h5 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h5><ul>
-<li>默认配置的 Realm 数据库<br>通过调用 Realm() 来初始化以及访问我们的 realm 变量。这个方法将会返回一个 Realm 对象，并指向您应用的 Documents (iOS) 或者 Application Support (OS X)文件夹下的一个名为“default.realm”的文件<figure class="highlight plain"><figcaption><span>realm = try? Realm()```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 配置Realm</div><div class="line">通过Realm.Configuration您可以配置诸如 Realm 文件在何处存储之类的信息。</div><div class="line">配置同时也可以在每次您需要使用 Realm 实例的时候传递给Realm(configuration: config)，或者可以通过 Realm.Configuration.defaultConfiguration = config 来为默认的 Realm 数据库进行配置</div></pre></td></tr></table></figure></li>
+<li><p>默认配置的 Realm 数据库<br>通过调用 Realm() 来初始化以及访问我们的 realm 变量。这个方法将会返回一个 Realm 对象，并指向您应用的 Documents (iOS) 或者 Application Support (OS X)文件夹下的一个名为“default.realm”的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let realm = try? Realm()</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置Realm<br>通过Realm.Configuration您可以配置诸如 Realm 文件在何处存储之类的信息。<br>配置同时也可以在每次您需要使用 Realm 实例的时候传递给Realm(configuration: config)，或者可以通过 Realm.Configuration.defaultConfiguration = config 来为默认的 Realm 数据库进行配置     </p>
+</li>
 </ul>
-<p>func configRealmWithUser(_ username:String) {</p>
-<pre><code>var config = Realm.Configuration()
-
-config.fileURL = config.fileURL?.deletingLastPathComponent()
-        .appendingPathComponent(&quot;\(username).realm&quot;)
-
-Realm.Configuration.defaultConfiguration = config
-}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">* 使用方式</div><div class="line"></div><div class="line">``` </div><div class="line">configRealmWithUser(&quot;simon&quot;)</div><div class="line">let realm = try! Realm()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func configRealmWithUser(_ username:String) &#123;</div><div class="line">        </div><div class="line">	var config = Realm.Configuration()</div><div class="line">        </div><div class="line">	config.fileURL = config.fileURL?.deletingLastPathComponent()</div><div class="line">            .appendingPathComponent(&quot;\(username).realm&quot;)</div><div class="line"></div><div class="line">	Realm.Configuration.defaultConfiguration = config</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>使用方式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">configRealmWithUser(&quot;simon&quot;)</div><div class="line">let realm = try! Realm()</div></pre></td></tr></table></figure>
 <ul>
 <li>内存数据库<br>通常情况下，Realm 数据库是存储在硬盘中的，但是您能够通过设置 inMemoryIdentifier 而不是设置Realm.Configuration 中的 fileURL 属性，以创建一个完全在内存中运行的数据库。</li>
 </ul>
@@ -658,7 +644,6 @@ Realm.Configuration.defaultConfiguration = config
 <p>（3）NSData 以及 String 属性不能保存超过 16 MB 大小的数据。如果要存储大量的数据，可通过将其分解为16MB 大小的块，或者直接存储在文件系统中，然后将文件路径存储在 Realm 中。如果您的应用试图存储一个大于 16MB 的单一属性，系统将在运行时抛出异常。</p>
 <p>（4）对字符串进行排序以及不区分大小写查询只支持“基础拉丁字符集”、“拉丁字符补充集”、“拉丁文扩展字符集 A” 以及”拉丁文扩展字符集 B“（UTF-8 的范围在 0~591 之间）。</p>
 </blockquote>
-<p>#### </p>
 
       
     </div>
@@ -1444,7 +1429,7 @@ return session.cellHeight;
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1494,10 +1479,6 @@ return session.cellHeight;
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   

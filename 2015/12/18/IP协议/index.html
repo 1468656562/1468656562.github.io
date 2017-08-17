@@ -89,8 +89,6 @@
   
   
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
-  
 
 </head>
 
@@ -127,13 +125,9 @@
             <div class="navbar-collapse collapse">
               <ul class="hnav navbar-nav">
                 
-                  <li> <a class="main-nav-link" href="/">Startseite</a> </li>
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
                 
-                  <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/categories">Kategorien</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -147,7 +141,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Schreib etwas..." />
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -159,11 +153,11 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Beiträge',
-            PAGES: 'Seiten',
-            CATEGORIES: 'Kategorien',
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
             TAGS: 'Tags',
-            UNTITLED: '(Unbenannt)',
+            UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -367,19 +361,6 @@
     </div>
     <footer class="article-footer">
       
-        <div id="donation_div"></div>
-
-<script src="/js/vdonate.js"></script>
-<script>
-var a = new Donate({
-  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
-  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
-});
-</script>
-      
       
         
 	<div id="comment">
@@ -416,7 +397,7 @@ var a = new Donate({
 <nav id="article-nav">
   
     <a href="/2015/12/24/IP相关的协议/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           IP相关的协议(四)
@@ -426,7 +407,7 @@ var a = new Donate({
   
   
     <a href="/2015/12/13/数据链路层/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">数据链路层(二)</div>
     </a>
   
@@ -439,7 +420,7 @@ var a = new Donate({
 
   <aside id="toc-sidebar">
     <div id="toc" class="toc-article">
-    <strong class="toc-title">Inhalt</strong>
+    <strong class="toc-title">Contents</strong>
     
         <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP协议"><span class="nav-number">1.</span> <span class="nav-text">IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP地址的定义"><span class="nav-number">1.0.1.</span> <span class="nav-text">IP地址的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP地址的组成"><span class="nav-number">1.0.2.</span> <span class="nav-text">IP地址的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP地址分类"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">IP地址分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#子网掩码"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">子网掩码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局地址与私有地址"><span class="nav-number">1.0.3.</span> <span class="nav-text">全局地址与私有地址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv4首部"><span class="nav-number">1.1.</span> <span class="nav-text">IPv4首部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由控制"><span class="nav-number">1.2.</span> <span class="nav-text">路由控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP地址与路由控制"><span class="nav-number">1.2.1.</span> <span class="nav-text">IP地址与路由控制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#默认路由"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">默认路由</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主机路由"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">主机路由</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#环回地址"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">环回地址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由控制表的聚合"><span class="nav-number">1.2.2.</span> <span class="nav-text">路由控制表的聚合</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP分割-构成处理"><span class="nav-number">1.3.</span> <span class="nav-text">IP分割/构成处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据链路与MTU"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据链路与MTU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP报文的分片与重组"><span class="nav-number">1.3.2.</span> <span class="nav-text">IP报文的分片与重组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路径MTU发现"><span class="nav-number">1.3.3.</span> <span class="nav-text">路径MTU发现</span></a></li></ol></li></ol></li></ol>
     
@@ -490,10 +471,6 @@ var a = new Donate({
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   
