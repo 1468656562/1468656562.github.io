@@ -24,8 +24,8 @@ Realm的优点在官方上有很多的说明, 略举两点:
 Realm的优点在官方上有很多的说明, 略举两点:
 1.易上手:想比于Core Data 和SQLite, Realm的">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcgy1fimyuw95jdj30g7083ta2.jpg">
-<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgy1fin1ygev3lj30ta0h5myn.jpg">
-<meta property="og:updated_time" content="2017-08-17T13:42:29.000Z">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcgy1fin1d9jycxj317d0qmwim.jpg">
+<meta property="og:updated_time" content="2017-08-17T13:51:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Realm-Swift3.0">
 <meta name="twitter:description" content="Realm-Swift3.0
@@ -213,7 +213,7 @@ Realm的优点在官方上有很多的说明, 略举两点:
 </ul>
 </li>
 </ul>
-<h4 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h4><p>Realm的Xcode插件令 Realm 模型的创建更加方便.gitHub下载一个Demo<a href="https://github.com/realm/realm-cocoa">传送门</a>, 找到里面的Plugin目录下的RealmPlugin.xcodeproj并进行编译，重启 Xcode之后插件即可生效。<br><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fin1ygev3lj30ta0h5myn.jpg" alt=""></p>
+<h4 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h4><p>Realm的Xcode插件令 Realm 模型的创建更加方便.gitHub下载一个Demo<a href="https://github.com/realm/realm-cocoa">传送门</a>, 找到里面的Plugin目录下的RealmPlugin.xcodeproj并进行编译，重启 Xcode之后插件即可生效。<br><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fin1d9jycxj317d0qmwim.jpg" alt=""></p>
 <h4 id="纯SWift版的安装"><a href="#纯SWift版的安装" class="headerlink" title="纯SWift版的安装"></a>纯SWift版的安装</h4><ul>
 <li>使用 Realm 构建应用的基本要求：iOS 8 及其以上版本, macOS 10.9 及其以上版本，此外 Realm 支持 tvOS 和 watchOS 的所有版本。</li>
 <li>需要使用 Xcode 8.0 或者以后的版本。Realm Swift 2.3.0 是最后一个支持 Swift 2.x 及 Xcode 7.3 的版本。</li>
@@ -224,22 +224,28 @@ Realm的优点在官方上有很多的说明, 略举两点:
 <li>如果您打算在您的 iOS、tcOS 或者 watchOS 工程中使用 Realm，请在您的 app 目标的“Build Phases”中创建一个新的”Run Script Phase”，并在文本框中写入<code>bash &quot;${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh&quot;</code>因为要绕过这个APP商店提交的bug，这一步在打包二进制发布版本时是必须。</li>
 </ul>
 </li>
-<li><p>方法2:Carthage</p>
-<ul>
+<li>方法2:Carthage<ul>
 <li><a href="https://github.com/Carthage/Carthage#installing-carthage">安装 Carthage 0.17.0 或者更高版本</a></li>
 <li>在Carthage 中添加github <code>realm/realm-cocoa</code></li>
 <li>运行 <code>carthage update</code></li>
-<li>从 Carthage/Build/ 目录下对应平台文件夹中，将 <code>RealmSwift.framework</code> 和 <code>Realm.framework</code> 拖曳到您 Xcode 工程”General”设置项的”Linked Frameworks and Libraries”选项卡中</li>
-<li><p>iOS/tvOS/watchOS: 在您应用目标的<strong>Build Phases</strong>设置选项卡中，点击“+”按钮并选择“New Run Script Phase”。在新建的Run Script中，填写:<code>/usr/local/bin/carthage copy-frameworks</code> 在<strong>Input Files</strong>内添加您想要使用的框架路径，例如:        </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">* 方法3:CocoaPods</div><div class="line">	* 运行 `pod repo update`，以确保 CocoaPods 能够获取到 Realm 的最新版本</div><div class="line">	* 在Podfile中，添加use_frameworks!和pod &apos;RealmSwift&apos; 到您的主要和测试目标</div><div class="line">	* 如果您使用的是 Xcode 8，那么将下面代码复制到您的 Podfile 底部，以便在必要的时候更新 Swift 的版本：</div><div class="line">	</div><div class="line">```installer.pods_project.targets.each do |target|</div><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[&apos;SWIFT_VERSION&apos;] = &apos;3.0&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
-</li>
-<li><p>在终端运行 pod install,采用 CocoaPods 生成的 .xcworkspace 来运行工程！</p>
-</li>
-<li>注意:我这边选用CocoaPods的方式安装, 安装的时间还是需要比较多的, <strong>如果发现pod search RealmSwift版本比较低, 先升级一下pod索引库</strong></li>
+<li>从 Carthage/Build/ 目录下对应平台文件夹中，将 <code>RealmSwift.framework</code> 和 <code>Realm.framework</code> 拖曳到您 Xcode 工程General设置项的Linked Frameworks and Libraries选项卡中</li>
+<li>iOS/tvOS/watchOS: 在您应用目标的<strong>Build Phases</strong>设置选项卡中，点击“+”按钮并选择“New Run Script Phase”。在新建的Run Script中，填写:<code>/usr/local/bin/carthage copy-frameworks</code> 在<strong>Input Files</strong>内添加您想要使用的框架路径，例如:</li>
 </ul>
 </li>
 </ul>
-<h4 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h4><h5 id="支持的类型"><a href="#支持的类型" class="headerlink" title="支持的类型"></a>支持的类型</h5><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework</div></pre></td></tr></table></figure>
+<ul>
+<li>方法3:CocoaPods<ul>
+<li>运行 <code>pod repo update</code>，以确保 CocoaPods 能够获取到 Realm 的最新版本</li>
+<li>在Podfile中，添加use_frameworks!和pod ‘RealmSwift’ 到您的主要和测试目标</li>
+<li>如果您使用的是 Xcode 8，那么将下面代码复制到您的 Podfile 底部，以便在必要的时候更新 Swift 的版本：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><figcaption><span>do |target|</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    target.build_configurations.each do |config|</div><div class="line">      config.build_settings[&apos;SWIFT_VERSION&apos;] = &apos;3.0&apos;</div><div class="line">    end</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<pre><code>* 在终端运行 pod install,采用 CocoaPods 生成的 .xcworkspace 来运行工程！
+* 注意:我这边选用CocoaPods的方式安装, 安装的时间还是需要比较多的, **如果发现pod search RealmSwift版本比较低, 先升级一下pod索引库**
+</code></pre><h4 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h4><h5 id="支持的类型"><a href="#支持的类型" class="headerlink" title="支持的类型"></a>支持的类型</h5><ul>
 <li>Realm 支持以下的属性类型：Bool、Int8、Int16、Int32、Int64、Double、Float、String、Date以及Data。</li>
 <li>也可以使用 List<object> 和 Object 来建立诸如一对多、一对一之类的关系模型，此外 Object 的子类也支持此功能。</object></li>
 </ul>
