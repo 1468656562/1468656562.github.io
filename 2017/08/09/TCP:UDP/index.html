@@ -1,0 +1,683 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="layout: ‘[post]’title: TCP/UDPdate: 2015-12-18tags:
+
+网络categories: iOSTCP/UDPTCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。
+
+网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="simonの小📚坊">
+<meta property="og:url" content="https://github.com/icoderRo/2017/08/09/TCP:UDP/index.html">
+<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:description" content="layout: ‘[post]’title: TCP/UDPdate: 2015-12-18tags:
+
+网络categories: iOSTCP/UDPTCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。
+
+网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的数">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fic9us8bqbj30pq0l4tf1.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ficeugx7idj30oi0a6jue.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficezxbfsxj30r40j479a.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficf0umzwjj30o60hkwia.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ficf8k5zw1j30r80fuaej.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ficbd4xq2fj30ey0hgabh.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ficbifcnspj30he0ii769.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ficbkhlhunj30h00kqtbh.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ficbtksijvj30r80sk43h.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ficcefq92qj30eq0lydhu.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ficck17ilzj30p40pmgq5.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ficcpl3nlgj30j40iitar.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ficcsbstu2j30hw0fwjud.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ficcy2nup5j30pu0jq43p.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ficdgl41sej30py0i6adg.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficdkffgukj30r60lc0xq.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficebte4egj30py0mwq77.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficeg631tlj30o60oeq74.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficgjn9z94j30s40mu76w.jpg">
+<meta property="og:updated_time" content="2017-08-17T11:52:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="simonの小📚坊">
+<meta name="twitter:description" content="layout: ‘[post]’title: TCP/UDPdate: 2015-12-18tags:
+
+网络categories: iOSTCP/UDPTCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。
+
+网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的数">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fic9us8bqbj30pq0l4tf1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"remove"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2017/08/09/TCP:UDP/"/>
+
+  <title>  | simonの小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="images/logo.svg"
+             alt="simonの小📚坊"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">simonの小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">始于颜值，陷于才华，忠于人品</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-09T10:15:42+08:00" content="2017-08-09">
+              2017-08-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/08/09/TCP:UDP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/09/TCP:UDP/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>layout: ‘[post]’<br>title: TCP/UDP<br>date: 2015-12-18<br>tags:</p>
+<ul>
+<li>网络<br>categories: iOS<h3 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h3>TCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。</li>
+</ul>
+<p>网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的<strong>数据部分</strong>是TCP的内容, 还是UDP的内容。同理,传输层使用端口号识别在传输层的上一层(应用层)中要进行处理的程序。</p>
+<h4 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h4><p>数据链路和IP地址, 分别对应MAC地址和IP地址。前者用来识别同一链路中不同的计算机, 后者用来识别TCP/IP网络中互连的主机和路由器。在传输层中也有类似的地址概念, 那就是端口号。端口号用来识别同一台计算机中进行通信的不同应用程序, 也叫做程序地址。</p>
+<h5 id="通信识别"><a href="#通信识别" class="headerlink" title="通信识别"></a>通信识别</h5><p>仅仅凭目标端口识别某一个通信是远远不够的。如下图: 1和2的通信是在两台计算机上进行的。他们的目标端口号都是80, 需要根据源端口号进行区分。3和1的目标端口号和源端口号完全相同, 但是他们各自的源IP地址不同。另外协议号不同, 也会被认为是两个不同的通信。</p>
+<p>综上, TCP/IP或UDP/IP通信中通常采用5个信息来识别一个通信。分别是: <strong>源IP地址</strong>、<strong>目标IP地址</strong>、<strong>协议号</strong>、<strong>源端口号</strong>、<strong>目标端口号</strong>。只有5个信息一致, 才认为是同一个通信。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fic9us8bqbj30pq0l4tf1.jpg" alt=""></p>
+<h5 id="端口号的确定"><a href="#端口号的确定" class="headerlink" title="端口号的确定"></a>端口号的确定</h5><ul>
+<li>标准既定的端口号<br>这种方法也叫<strong>静态方法</strong>, 指每个应用程序都有其指定的端口号。知名端口号一般由0~1023的数字分配而成, 应用程序需要避免使用知名端口号, 可以使用1024~49151之间的数字作为自定义端口号。</li>
+<li>时序分配法<br>这种方法也叫<strong>动态方法</strong>, 此时服务端有必要确定监听端口号, 但是接受服务的客户端没必要确定端口号。<br>客户端应用程序完全不用自己设置端口号, <strong>全权交给操作系统进行分配</strong>。操作系统可以为每个应用程序分配互不冲突的端口号。例如, 每需要一个新的端口号, 就在之前分配号码的基础上加1。动态分配的端口号的取值范围在49152~65535之间。</li>
+</ul>
+<h4 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h4><p>UDP不提供复杂的控制机制, 利用IP提供面向无连接的通信服务。因此UDP不检查对端是否可以通信, 直接将UDP包发送出去。<br>即使是出现网络拥堵的情况下, UDP也无法进行流量控制等避免网络拥塞的行为。此外, 传输途中出现丢包, UDP也不负责重发等。UDP常用于一下几个方面:</p>
+<ul>
+<li>包总量较少的通信(DNS、SNMP等)</li>
+<li>视频、音频等多媒体通信</li>
+<li>限定于LAN等特定网络中的应用通信</li>
+<li>广播/多播通信</li>
+</ul>
+<h5 id="UDP首部"><a href="#UDP首部" class="headerlink" title="UDP首部"></a>UDP首部</h5><p>UDP首部由源端口号, 目标端口号, 包长和校验和组成。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ficeugx7idj30oi0a6jue.jpg" alt=""></p>
+<ul>
+<li>源端口号: 表示发送端口号</li>
+<li>目标端口号: 接收端端口号</li>
+<li>包长度: 保存UDPs首部和数据长度之和</li>
+<li>校验和: 校验和用来判断数据在传输过程中是否损坏 </li>
+</ul>
+<blockquote>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ficezxbfsxj30r40j479a.jpg" alt=""></p>
+</blockquote>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>TCP对数据的传输、发送、通信都进行了控制的协议。可以进行丢包时的重发控制, 可以对次序乱掉的分包进行顺序控制, 只有在确认通信对端存在时才会发送数据, 从而可以控制通信流量的浪费。<strong>TCP通过检验和、序列号、确认应答、重发控制、连接管理以及窗口控制等机制实现可靠性传输</strong>。</p>
+<h5 id="TCP首部"><a href="#TCP首部" class="headerlink" title="TCP首部"></a>TCP首部</h5><p>TCP没有包长度和数据长度, 可由IP层获知TCP的包长度, 由包长可知数据的长度。<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ficf0umzwjj30o60hkwia.jpg" alt=""></p>
+<ul>
+<li>端口号: 发送端端口号</li>
+<li>目标端口号: 接收端端口号</li>
+<li>序列号: 发送数据的位置</li>
+<li>确认应答号: 下一次应该收到的数据的序列号</li>
+<li>数据偏移: 表示TCP传输的数据部分从包的哪个位置开始计算</li>
+<li>保留: 为以后扩展使用</li>
+<li>控制位: 控制各种状态</li>
+<li>窗口大小: 能够接收的数据大小</li>
+<li>校验和: 与UDP相似 </li>
+</ul>
+<blockquote>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ficf8k5zw1j30r80fuaej.jpg" alt=""></p>
+</blockquote>
+<ul>
+<li>紧急指针: 与紧急数据相关</li>
+<li>选项: 用于提高TCP传输性能, 将数据调整为32位的整数倍</li>
+</ul>
+<h5 id="序列号与确认应答"><a href="#序列号与确认应答" class="headerlink" title="序列号与确认应答"></a>序列号与确认应答</h5><p>在TCP中, 当发送端的数据到达接收端时, 接收端主机会返回一个已收到消息的通知, 这个消息叫做确认应答(ACK), 否定确认应答(NACK)。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ficbd4xq2fj30ey0hgabh.jpg" alt=""><br>TCP通过肯定的确认应答(ACK)实现可靠的数据传输。当发送端将数据发出之后会等待对端的确认应答。如果有确认应答, 说明数据已经成功到达对端。反之, 则数据丢失的可能性很大。<br>在一定时间内没有等到确认应答, 发送端就可以认为数据已经丢失, 并进行重发。由此, 即使产生了丢包, 仍然能够保证数据能够到达对端, 实现可靠传输。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ficbifcnspj30he0ii769.jpg" alt=""></p>
+<p>未收到确认应答并不意味着数据一定丢失。也可能是数据对方已经收到, 只是确认返回的确认应答在途中丢失。这种情况也会导致发送端因为没有收到确认应答, 从而进行重发数据。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ficbkhlhunj30h00kqtbh.jpg" alt=""></p>
+<p>此外, 也有可能因为一些其他原因导致确认应答延迟到达, 在源主机重发数据以后才到达的情况也经常见。此时, 源发送主机只要按照既定机制重发数据即可。但是对于目标主机来说, 它会反复收到相同的数据。而为了对上层应用提供可靠的传输, 必须得放弃重复的数据包。因此需要引入一种机制, 能够识别是否已经接收数据, 判断是否需要接收数据等。<br>序列号可以实现确认应答处理、重发控制以及重复控制等功能; 序列号是按顺序给发送数据的每一个字节都标上号码的编号。 <strong>接收端查询接收数据TCP首部中的序列号和数据长度, 将自己下一步应该接收的序号作为确认应答返送回去</strong>。通过序列号和确认应答号, TCP可以实现可靠的传输。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ficbtksijvj30r80sk43h.jpg" alt=""></p>
+<h5 id="连接管理"><a href="#连接管理" class="headerlink" title="连接管理"></a>连接管理</h5><p>TCP提供面向有连接的通信传输。面向有连接是指在数据通信开始之前先做好通信两端之间的准备工作。TCP会在数据通信之前, 通过TCP首部发送一个<strong>SYN包</strong>作为建立连接的请求等待确认应答。如果对端发来确认应答, 则认为可以进行数据通信。如果对端的确认应答未能到达, 就不会进行通信。在通信结束的时候回进行断开连接的处理(FIN包), 也就是发送一个FIN包, 确认断开连接。<br>建立一个TCP连接需要发送3个包, 也叫做”三次握手”, 断开TCP连接需要发送4个包, 也叫”四次挥手”。所以一个连接的建立与断开,至少需要来回发送7个包才能完成。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ficcefq92qj30eq0lydhu.jpg" alt=""></p>
+<h5 id="TCP以段位单位发送数据"><a href="#TCP以段位单位发送数据" class="headerlink" title="TCP以段位单位发送数据"></a>TCP以段位单位发送数据</h5><p>在建立TCP连接的同时, 也可以确定发送数据包的单位(最大消息长度:段 :MSS,)。MSS是在三次握手的时候, 在两端主机之间被计算得出。两端的主机在发出建立连接请求时, 会在TCP首部中写入MSS选项, 告诉对方自己的接口能够适应的MSS的大小。之后, 在此之间选择一个最小的MSS的值。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ficck17ilzj30p40pmgq5.jpg" alt=""></p>
+<p>#####窗口控制<br>TCP以1个段为单位, 每发一个段进行一次确认应答的处理, 这种传输方式有一个缺点, 包的往返时间越长通信性能越低。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ficcpl3nlgj30j40iitar.jpg" alt=""></p>
+<p>为了解决这个问题 TCP引入了窗口的概念, 使在往返时间较长的情况下, 也能控制网络性能的下降。确认应答不再是以每个分段, 而是以更大的单位进行确认, 转发时间将会被大幅度的缩短。<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ficcsbstu2j30hw0fwjud.jpg" alt=""><br>窗口大小:指无需等待确认应答而可以继续发送数据段的最大值。这个机制的实现使用了大量的缓冲区。</p>
+<p>发送端主机在等到确认应答返回之前, 必须在缓冲区中保留这部分数据。当数据发出后若如期收到确认应答就可以不用再进行重发, 此时数据就可以从缓存区清除。收到确认应答的情况下, 将窗口滑动到确认应答中的序列号的位置。这样可以顺序地将多个段同时发送提高通信性能。这种机制也被称为滑动窗口控制。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ficcy2nup5j30pu0jq43p.jpg" alt=""></p>
+<h5 id="窗口控制与重发"><a href="#窗口控制与重发" class="headerlink" title="窗口控制与重发"></a>窗口控制与重发</h5><p>在使用窗口控制中, 处理段丢失的情况。</p>
+<ul>
+<li><p>确认应答未能返回的情况<br>在这种情况下, 数据已经到达对端, 是不需要进行重发的。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ficdgl41sej30py0i6adg.jpg" alt=""></p>
+</li>
+<li><p>某个段丢失的情况<br>接收主机如果收到一个本应该接收的序号以外的数据时, 会针对当前为止收到数据返回确认应答。发送端主机如果连续3次收到同一个确认应答, 就会将其所对应的数据进行重发。这种机制比之前提到的超时管理更加高效, 也称作高速重发控制。<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ficdkffgukj30r60lc0xq.jpg" alt=""></p>
+</li>
+</ul>
+<h5 id="流控制"><a href="#流控制" class="headerlink" title="流控制"></a>流控制</h5><p>流控制:让发送端根据接收端的实际接收能力控制发送的数据量。接收端主机向发送端主机通知自己可以接收数据的大小, 于是发送端会发送不超过这个限度的数据。该大小限度就被称作窗口的大小 。<br>接收主机将自己可以接收的缓冲区大小放入这个字段中通知给发送端。这个字段的值越大, 说明网络的吞吐量越高。接收端的缓冲区一旦面临数据溢出时, 窗口大小的值也会随之被设置为一个更小的值通知给发送端, 从而控制数据发送量。简而言之, 发送端主机会根据接收端主机的提示, 对发送的数据量进行控制。<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ficebte4egj30py0mwq77.jpg" alt=""></p>
+<blockquote>
+<p>窗口探测的数据段, 次数据段仅包含一个字节以获取最新的窗口大小信息。</p>
+</blockquote>
+<h5 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h5><p>在网络出现拥堵时, 如果突然发送一个较大量的数据, 极有可能会导致整个网络的瘫痪。TCP为了防止该问题得出现, 在通信一开始就会通过一个叫做慢启动的算法得出的数值, 对发送数据量进行控制。<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ficeg631tlj30o60oeq74.jpg" alt=""></p>
+<p>首先为了在发送端调节所要发送的数据的量, 定义了一个叫做”拥塞的窗口”, 在慢启动的时候, 将这个拥塞窗口的大小设置为1个数据段(1MSS)发送数据, 之后每收到一次ACK,就将拥塞窗口的值+1, 在发送数据包时, 将拥塞窗口的大小与接收端主机的窗口大小做比较, 按照两者中较小的值, 发送比这个值还要小的数据量。<br>随着包的每次往返, 拥塞窗口会以1、2、4等指数函数的增长, 拥堵状况激增甚至导致网络拥塞的发生。为了防止这些, 引入了慢启动阀值的概念。只要拥塞窗口的值超过这个阀值, 会按照某种规则控制拥塞窗口的数量。</p>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><h5 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h5><p>二次握手:在网络请求中, 客户端向服务器发送了一个SYN包,请求建立连接。由于延迟, 服务端没有及时收到包; 于是客户端重新发送一个SYN包。假设服务端接收了第二个SYN包, 建立了通信, 一段时间后通信结束, 连接被关闭。这时候最初被发送的SYN包刚被服务端接收, 服务端发回ACK后,就会建立连接, 由于是前一次的连接请求, 并没有被使用, 这样就导致服务端建立了一个空的连接。<br>三次握手: 服务端发回ACK后, 客户端会丢弃这个数据包, 不会和服务端进行第三次的握手, 因此可以避免服务端空的连接。</p>
+<h5 id="建立ACK确认包丢失"><a href="#建立ACK确认包丢失" class="headerlink" title="建立ACK确认包丢失"></a>建立ACK确认包丢失</h5><p>TCP协议处理丢包的一般方法，服务端会重新向客户端发送数据包，直至收到 ACK 确认为止。实际上这种做法有可能遭到SYN泛洪攻击。所谓的泛洪攻击，是指发送方伪造多个 IP 地址，模拟三次握手的过程。当服务器返回 ACK 后，攻击方故意不确认，从而使得服务器不断重发 ACK。由于服务器长时间处于半连接状态，最后消耗过多的 CPU 和内存资源导致死机。<br>正确做法:服务端发送RST报文, 进入关闭状态, 这个RST数据包的TCP首部中, 控制位中的RST位被设置为1, 表示连接信息全部被初始化, 原有的TCP通信不能继续; 客户端如果还想重新建立TCP连接, 就必须重新开始第一次握手。</p>
+<h5 id="关闭连接的最后一个ACK丢失"><a href="#关闭连接的最后一个ACK丢失" class="headerlink" title="关闭连接的最后一个ACK丢失"></a>关闭连接的最后一个ACK丢失</h5><p>实际上，在第三步中，客户端收到 FIN 包时，它会设置一个计时器，等待相当长的一段时间。如果客户端返回的 ACK 丢失，那么服务端还会重发 FIN 并重置计时器。假设在计时器失效前服务器重发的 FIN 包没有到达客户端，客户端就会进入 CLOSE 状态，从而导致服务端永远无法收到 ACK 确认，也就无法关闭连接。</p>
+<blockquote>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ficgjn9z94j30s40mu76w.jpg" alt=""></p>
+</blockquote>
+<h5 id="TCP与UDP的区别"><a href="#TCP与UDP的区别" class="headerlink" title="TCP与UDP的区别"></a>TCP与UDP的区别</h5><p>TCP是面向连接的、可靠的流协议, 在使用TCP协议传输数据之前需要确认发送方和接收方的连接是建立的, 建立连接需要三次握手, 关闭连接需要四次挥手。流就是指不间断的数据结构。TCP为提供可靠性传输, 实行”顺序控制”或”重发控制”机制;还具备”流量控制”, “拥塞控制”, 提高网络利用率等众多功能。</p>
+<p>UDP是不具有可靠性的数据报协议。UDP可以确保发送消息的大小, 不能保证消息的是否会到达目标主机。因此, 需要在应用自行控制重发等机制。</p>
+<p>TCP用于在传输层有需要实现可靠传输的情况。由于它是面向有连接并且具备顺序控制、重发控制等机制的, 所以它可以为应用提供可靠的传输, 由此决定了TCP需要制定很多复杂的规范, 所以传输效率不如UDP协议, 不适合实时的音视频传输。在另一方面, UDP主要用于那些对高速传输和实时性有较高要求的通信或广播通信。</p>
+<p>参考:</p>
+<ul>
+<li><a href="http://www.jianshu.com/nb/3276500" target="_blank" rel="external">http://www.jianshu.com/nb/3276500</a></li>
+<li><a href="">图解TCP/IP</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/08/TCP:IP协议分层模型/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/09/网络安全/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/09/TCP:UDP/"
+           data-title="" data-url="https://github.com/icoderRo/2017/08/09/TCP:UDP/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="layout: ‘[post]’title: TCP/IP协议分层模型date: 2015-12-18tags:
+
+网络categories: iOS
+
+TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的协议;下面介绍一下TCP/IP协议分层模型。
+1.TCP/IP与OSI参考模型
+物理层(硬件)物理层: 负责0、1比特流与电压的高低、灯的闪灭之间的呼唤。对应TCP/IP分层模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="simonの小📚坊">
+<meta property="og:url" content="https://github.com/icoderRo/2017/08/08/TCP:IP协议分层模型/index.html">
+<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:description" content="layout: ‘[post]’title: TCP/IP协议分层模型date: 2015-12-18tags:
+
+网络categories: iOS
+
+TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的协议;下面介绍一下TCP/IP协议分层模型。
+1.TCP/IP与OSI参考模型
+物理层(硬件)物理层: 负责0、1比特流与电压的高低、灯的闪灭之间的呼唤。对应TCP/IP分层模型">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi6m4o06c8j30ku0kujub.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fi6mvb6huzj30u40ji0x2.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi6n1y5igjj30ke08uq44.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi6n4daoa2j30qc0butaq.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi6n905ifxj30ro07qgnb.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi6nigswu6j30q60bugnw.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fi6npqutmqj30ra0a276d.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi6nqrg0vaj30l40923zp.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fi6nx1wg8mj30pc094403.jpg">
+<meta property="og:updated_time" content="2017-08-17T11:52:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="simonの小📚坊">
+<meta name="twitter:description" content="layout: ‘[post]’title: TCP/IP协议分层模型date: 2015-12-18tags:
+
+网络categories: iOS
+
+TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的协议;下面介绍一下TCP/IP协议分层模型。
+1.TCP/IP与OSI参考模型
+物理层(硬件)物理层: 负责0、1比特流与电压的高低、灯的闪灭之间的呼唤。对应TCP/IP分层模型">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi6m4o06c8j30ku0kujub.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"remove"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2017/08/08/TCP:IP协议分层模型/"/>
+
+  <title>  | simonの小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="images/logo.svg"
+             alt="simonの小📚坊"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">simonの小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">始于颜值，陷于才华，忠于人品</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-08T17:50:49+08:00" content="2017-08-08">
+              2017-08-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/08/08/TCP:IP协议分层模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/08/TCP:IP协议分层模型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>layout: ‘[post]’<br>title: TCP/IP协议分层模型<br>date: 2015-12-18<br>tags:</p>
+<ul>
+<li>网络<br>categories: iOS</li>
+</ul>
+<h2 id="TCP-IP协议分层模型"><a href="#TCP-IP协议分层模型" class="headerlink" title="TCP/IP协议分层模型"></a>TCP/IP协议分层模型</h2><p>TCP/IP是目前计算机网络中使用最为广泛的协议;下面介绍一下TCP/IP协议分层模型。</p>
+<h4 id="1-TCP-IP与OSI参考模型"><a href="#1-TCP-IP与OSI参考模型" class="headerlink" title="1.TCP/IP与OSI参考模型"></a>1.TCP/IP与OSI参考模型</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi6m4o06c8j30ku0kujub.jpg" alt=""></p>
+<h5 id="物理层-硬件"><a href="#物理层-硬件" class="headerlink" title="物理层(硬件)"></a>物理层(硬件)</h5><p>物理层: 负责0、1比特流与电压的高低、灯的闪灭之间的呼唤。对应TCP/IP分层模型中的硬件层;这种硬件相当于<code>以太网</code>或<code>电话线路</code>等物理设备。</p>
+<h5 id="数据链路层-网卡层"><a href="#数据链路层-网卡层" class="headerlink" title="数据链路层(网卡层)"></a>数据链路层(网卡层)</h5><p>网络接口层利用以太网中的数据链路层进行通信, 属于接口层。也就是说, 把它当做是让网卡(NIC)起作用的驱动程序; 驱动程序是在操作系统与硬件之间起桥梁作用的软件,也就是说, 想要使用这些硬件, 需要安装对应的驱动软件。</p>
+<blockquote>
+<p>现在很多计算机的操作系统中已经内置安装好了对应的网卡驱动程序, 可以实现即插即拔。</p>
+</blockquote>
+<h5 id="网络层-互联网层"><a href="#网络层-互联网层" class="headerlink" title="网络层(互联网层)"></a>网络层(互联网层)</h5><p>网络层使用IP协议, IP协议基于IP地址转发分包数据。就是将分组数据包发送到目的主机, 通过互联网层, 可以抽象甚至忽略网络结构的细节(忽略更底层的网络结构)。<br>连接互联网的所有主机跟路由器都必须实现IP的功能; 网桥、中继器、集线器不一定要实现TCP/TP功能。</p>
+<blockquote>
+<ul>
+<li>IP是跨越网络来传送数据包, 使整个互联网都能收到数据的协议; IP协议使用IP地址作为主机的标识。通过IP, 相互通信的主机之间不论经过怎样的底层数据链路都能够实现通信, 它不具备重发的机制(TCP控制重发), 属于非可靠性传输协议。</li>
+<li>ICMP协议规定：目的主机必须返回ICMP回送应答消息(ACK)给发送主机。如果源主机在一定时间内收到应答，则认为主机可达。(ping 用的就是ICMP协议)。</li>
+<li>ARP 从分组数据包中的IP地址中解析出MAC地址的一种协议。</li>
+</ul>
+</blockquote>
+<h5 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h5><p>传输层最主要的功能就是能够让<code>应用程序</code>之间实现通信。计算机内部通常运行着多个程序, 基于端口号区分哪些程序与哪些程序在进行通信,传输侧有两个代表性的协议TCP/UPD。</p>
+<blockquote>
+<ul>
+<li>TCP 是一种面向有连接的可靠的传输层的协议。它可以保证两端主机的通信可达。TCP能够正确处理在传输过程中的丢包、传输顺序乱掉的异常的情况, 还能够有效的利用带宽, 缓解网络的拥堵。</li>
+<li>UDP 是一种面向无连接的不可靠的传输层协议。UDP不会关注对端是否接收到了数据, 常用于多播、广播通信以及视频通信等多媒体领域(UDP + RTP/RTCP/RTMP)</li>
+</ul>
+</blockquote>
+<h5 id="应用层-会话层以上的分层"><a href="#应用层-会话层以上的分层" class="headerlink" title="应用层(会话层以上的分层)"></a>应用层(会话层以上的分层)</h5><p>TCP/IP分层中, 将OSI参考模型中的会话层、表示层和应用层的功能都集中到了应用程序中实现。文件传输(FTP), 远程登录(TENNET/SSH), 网络管理(SNMP)</p>
+<h4 id="2-网络构成要素"><a href="#2-网络构成要素" class="headerlink" title="2.网络构成要素"></a>2.网络构成要素</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fi6mvb6huzj30u40ji0x2.jpg" alt=""></p>
+<h5 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h5><p>任一计算机联网时, 都必须要使用网卡(NIC)/LAN卡/网络适配器。很多计算机都内置了LAN端口, 说明计算机在出厂设置中就具备了以太网的端口。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi6n1y5igjj30ke08uq44.jpg" alt=""></p>
+<h5 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h5><p>中继器(Repeater)是在物理层面上延长网络的设备。由电缆传过来的电信号/光信号经由中继器的波形调整和放大再传给另一个电缆。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi6n4daoa2j30qc0butaq.jpg" alt=""></p>
+<p>通过中继器而进行的网络延长, 其距离也并非可以无限扩大; 例如一个10Mbps的以太网最多可以用4个中继器分段连接, 而一个100Mbps的以太网则对多只能连接两个中继器。</p>
+<blockquote>
+<p>有些中继器可以提供多个端口服务, 这种中继器被称为中继集线器/集线器/Hub。因此, 集线器也可以看作是多个中继器, 每个端口都可以成为一个中继器。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi6n905ifxj30ro07qgnb.jpg" alt=""></p>
+</blockquote>
+<h5 id="网桥-2层交换机"><a href="#网桥-2层交换机" class="headerlink" title="网桥/2层交换机"></a>网桥/2层交换机</h5><p>网桥能够识别数据链路中的数据帧, 并将这些数据帧临时存储于内存, 再重新生成信号作为一个全新的帧转发给相连的另一个网段, 由于能够存储这些数据帧, 网桥能够连接传输速率完全不同的数据链路, 并且不限制连接网段的个数。<br>数据链路的数据帧中有一个数据位叫做FCS, 用以校验数据是否正确送到目的地。网桥通过检查这个域中的值, 将那些损坏的数据丢弃, 从而避免发送给其他网段。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi6nigswu6j30q60bugnw.jpg" alt=""></p>
+<blockquote>
+<p>以太网中使用的交换集线器, 基本也属于网桥的一种, 交换集线器中连接电缆的每个端口都能提供类似网桥的功能。</p>
+</blockquote>
+<h5 id="路由器-3层交换机"><a href="#路由器-3层交换机" class="headerlink" title="路由器/3层交换机"></a>路由器/3层交换机</h5><p>路由器是在网络层面上连接两个网络、并对分组数据报文进行转发的设备。网桥是根据MAC地址进行处理, 而路由器/3层交换机则是根据IP地址进行处理的。因此, TCP/IP中网络层的地址就成为了IP地址。</p>
+<p>路由器可以连接不同的数据链路。例如连接两个以太网, 或者连接一个以太网与一个FDDI。家/办公室使用的宽带路由器也是路由器的一种。路由器还有分担网络负责的作用, 甚至具有网络安全的功能。<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fi6npqutmqj30ra0a276d.jpg" alt=""></p>
+<h5 id="4-7层交换机"><a href="#4-7层交换机" class="headerlink" title="4~7层交换机"></a>4~7层交换机</h5><p>4~7层交换机负责处理从传输层到应用层的数据。以TCP等协议的传输层及其上面的应用层为基础, 分析收发数据, 并对其进行特定的处理。4~7层交换机的可以进行带宽控制, 优先处理对实时性要求较高的通信请求, 放缓处理像邮件或数据转发等稍有延迟也并无大碍的通信请求。负载均衡器、广域网加速器、防火墙等都是是4~7层交换机的一中。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi6nqrg0vaj30l40923zp.jpg" alt=""></p>
+<h5 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h5><p>网关负责处理传输层到应用层的数据进行转换和转发的设备。与4~7层交换机一样都是处理传输层及以上的数据, 但是网关不仅转发数据还负责对数据进行<strong>转换</strong>,通常会使用一个表示层或应用层网关, 在两个不能直接进行通信的协议之间进行翻译, 实现两端的通信。<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fi6nx1wg8mj30pc094403.jpg" alt=""></p>
+<blockquote>
+<p>代理服务器可以控制网络流量和安全, 属于网关的一种</p>
+</blockquote>
+<p>参考:</p>
+<ul>
+<li><a href="">图解TCP/IP</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/08/IP协议/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/09/TCP:UDP/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/08/TCP:IP协议分层模型/"
+           data-title="" data-url="https://github.com/icoderRo/2017/08/08/TCP:IP协议分层模型/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
