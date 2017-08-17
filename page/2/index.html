@@ -264,8 +264,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/27/编译ijkplayerDemo/" itemprop="url">
-                  编译ijkplayerDemo
+                <a class="post-title-link" href="/2015/12/18/IP相关的协议/" itemprop="url">
+                  IP相关的协议
                 </a>
               
             
@@ -278,8 +278,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-27T00:00:00+08:00" content="2016-08-27">
-              2016-08-27
+            <time itemprop="dateCreated" datetime="2015-12-18T00:00:00+08:00" content="2015-12-18">
+              2015-12-18
             </time>
           </span>
 
@@ -308,8 +308,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/27/编译ijkplayerDemo/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/27/编译ijkplayerDemo/" itemprop="commentsCount"></span>
+                <a href="/2015/12/18/IP相关的协议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/IP相关的协议/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -335,21 +335,16 @@
         
           
           
-下载
-编译 ijkplayer下载回来后会发现 ffmpeg - lib 里面的.a文件缺失 显示为红色
-接着编译 ffmpeg打开终端, cd 到ijkplayer文件夹中 cd ijkplayer 如下图:
-下载ffmpeg ./init-ios.sh
+IP相关的协议IP的目的是让最终目标主机收到数据包, 但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能, 以及数据包在发送过程中异常情况处理的功能。
+DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机名称和组织机构名称的一种具有分层的名称。比如在域名 bnu.edu.cn中，neu是主机名，edu 和 cn 是不同层次下的机构名), 而不是使用IP地址。能够这样做是因为有了DNS。DNS可以将自身具有意义的域名自动转换为具体的IP地址。
 
-cd到iOS目录
-编译 ffmpeg./compile-ffmpeg.sh clean./compile-ffmpeg.sh all等待编译完成即可
-运行IJKMediaDemo
+在Windows/Unix中查找域名对应的IP地址可以输入nslookup 域名
 
-制作framework打开IJKMediaPlayer目录 运行IJKMediaPlayer.xcodeproj
-选择release模式,编译真机和模拟器的
+DNS查询以访问www
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/27/编译ijkplayerDemo/#more" rel="contents">
+            <a class="btn" href="/2015/12/18/IP相关的协议/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -400,8 +395,8 @@ cd到iOS目录
             
               
                 
-                <a class="post-title-link" href="/2016/08/06/记IM聊天界面卡顿分析/" itemprop="url">
-                  记IM聊天界面卡顿分析
+                <a class="post-title-link" href="/2015/12/18/网络安全/" itemprop="url">
+                  TCP/IP网络安全
                 </a>
               
             
@@ -414,8 +409,8 @@ cd到iOS目录
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-06T20:26:31+08:00" content="2016-08-06">
-              2016-08-06
+            <time itemprop="dateCreated" datetime="2015-12-18T00:00:00+08:00" content="2015-12-18">
+              2015-12-18
             </time>
           </span>
 
@@ -444,8 +439,8 @@ cd到iOS目录
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/06/记IM聊天界面卡顿分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/记IM聊天界面卡顿分析/" itemprop="commentsCount"></span>
+                <a href="/2015/12/18/网络安全/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/网络安全/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -471,23 +466,17 @@ cd到iOS目录
         
           
           
-开始测试快速滚动视图
+###TCP/IP网络安全TCP/IP相关的安全要素如下图所示。
+防火墙组织机构内部的网络与互联网相连时, 为了避免内部网络受到非法访问的威胁, 会设置防火墙。
 
-开启GPU Driver检测
- 
-图中可以看出当前的帧率非常的低, 保持在 40~50 FPS, 明显可以感觉到卡顿.
-卡顿产生的原因
-图像显示原理:简单来说, CPU计算好显示的内容提交到GPU, GPU渲染完成后将渲染的结果放入帧缓冲区, 视频控制器会逐行读取帧缓冲区的数据, 进过一些转换(数模转换)传递给显示器显示.
+使用NAT的情况下, 由于限定了可以从外部访问的地址, 因此也能起到防火墙的作用。
 
-iOS设备目前使用的是双缓存+垂直同步, 安卓系统是三缓存+垂直同步, 感兴趣的看官, 可自行搜索.
-
-结论:从流程图可以看出, CPU和GPU不论哪个阻碍了图像显示流程, 均会造成掉帧, 产生屏幕卡顿的现象.
-
-CPU: 一般处理视图的创建、布
+防火墙有多种种类和形态, 专门过滤特定数据包的包过滤防火墙, 数据到达应用以后由应用处理并拒绝非法访问的应用网关。防火墙可以限制从互联网访问的主机个数; 将安全的主机和可以暴露的主机加以区分, 针对后者集中实施安全防护。
+下图中, 对路由器设置了只向其发送特定地址和端口号的包, 也就是设置了一个包过滤防火墙。当从外部过来TCP通信请求时, 只允许
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/06/记IM聊天界面卡顿分析/#more" rel="contents">
+            <a class="btn" href="/2015/12/18/网络安全/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -538,8 +527,8 @@ CPU: 一般处理视图的创建、布
             
               
                 
-                <a class="post-title-link" href="/2016/06/12/netty-socket编解码/" itemprop="url">
-                  基于netty LengthFieldBasedFrameDecoder编解码
+                <a class="post-title-link" href="/2015/12/18/TCP:UDP/" itemprop="url">
+                  TCP/UDP
                 </a>
               
             
@@ -552,8 +541,8 @@ CPU: 一般处理视图的创建、布
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-12T00:00:00+08:00" content="2016-06-12">
-              2016-06-12
+            <time itemprop="dateCreated" datetime="2015-12-18T00:00:00+08:00" content="2015-12-18">
+              2015-12-18
             </time>
           </span>
 
@@ -582,8 +571,8 @@ CPU: 一般处理视图的创建、布
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/12/netty-socket编解码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/12/netty-socket编解码/" itemprop="commentsCount"></span>
+                <a href="/2015/12/18/TCP:UDP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/TCP:UDP/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -609,15 +598,13 @@ CPU: 一般处理视图的创建、布
         
           
           
-前言1234服务器传输协议协议:  基于netty LengthFieldBasedFrameDecoder(100000000,0,4,0,4) 总长度 = 4byte + 包体内容接收二进制的json字符串
-正文思路:1231.在发送数据包前, 拼接4个字节带有包体内容长度的数据.2.在接受数时, 需要考虑 粘包和半包的情况.根据包头长度,判断包  的完整性.将完整的包解析出去,不完整的等待下一次的数据拼接.
-设计1231.采用面向协议的方式编码与解码2.自定义编码器和解码器, 遵守协议, 实现协议中的方法3.基于GCDAsyncSocket, 封装需要用到的方法
-文件结构
-分块讲解协议
+TCP/UDPTCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。
+网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的数据部分是TCP的内容, 还是UDP的内容。同理,传输层使用端口号识别在传输层的上一层(应用层)中要进行处理的程序。
+端口号数据链路和IP地址, 分别对应MAC地址和IP地址。前者用来识别同一链路中不同的计算机, 后者用来识别TCP/IP网络中互连的主机和路由器。在传输层中也有类似的地址概念, 那就是端口号。端口号用来识别同一台计算机中进行
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/12/netty-socket编解码/#more" rel="contents">
+            <a class="btn" href="/2015/12/18/TCP:UDP/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -668,8 +655,8 @@ CPU: 一般处理视图的创建、布
             
               
                 
-                <a class="post-title-link" href="/2016/03/31/封装录音与播放/" itemprop="url">
-                  录音与本地播放
+                <a class="post-title-link" href="/2015/12/18/TCP:IP协议分层模型/" itemprop="url">
+                  TCP/IP协议分层模型
                 </a>
               
             
@@ -682,8 +669,8 @@ CPU: 一般处理视图的创建、布
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-31T00:00:00+08:00" content="2016-03-31">
-              2016-03-31
+            <time itemprop="dateCreated" datetime="2015-12-18T00:00:00+08:00" content="2015-12-18">
+              2015-12-18
             </time>
           </span>
 
@@ -712,8 +699,8 @@ CPU: 一般处理视图的创建、布
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/31/封装录音与播放/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/31/封装录音与播放/" itemprop="commentsCount"></span>
+                <a href="/2015/12/18/TCP:IP协议分层模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/TCP:IP协议分层模型/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -739,13 +726,16 @@ CPU: 一般处理视图的创建、布
         
           
           
-简言近期由于要实现一个本地录音与播放的小功能, 想着把录音与播放集成在一个类中, 提供统一的接口, 方便其他同事调用.
-AVAudioRecorder 与 AVAudioPlayer都属于音频专用类(Audio-only classes),这些类是该框架中最古老, 也是最常用的几个类.
-AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人的角色.规定了应用程序(app)与系统音频行为交互的规范, 一个应用程序只有一个AVAudioSession的实例.应用程序通过设置AVAudioSession的属性告诉系统想到达的效果, 系统会综合其他应用程序的AVA
+TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的协议;下面介绍一下TCP/IP协议分层模型。
+1.TCP/IP与OSI参考模型
+物理层(硬件)物理层: 负责0、1比特流与电压的高低、灯的闪灭之间的呼唤。对应TCP/IP分层模型中的硬件层;这种硬件相当于以太网或电话线路等物理设备。
+数据链路层(网卡层)网络接口层利用以太网中的数据链路层进行通信, 属于接口层。也就是说, 把它当做是让网卡(NIC)起作用的驱动程序; 驱动程序是在操作系统与硬件之间起桥梁作用的软件,也就是说, 想要使用这些硬件, 需要安装对应的驱动软件。
+
+现在很多计算机的操作系统中已经内置安装好了对应的网卡
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/31/封装录音与播放/#more" rel="contents">
+            <a class="btn" href="/2015/12/18/TCP:IP协议分层模型/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -1,0 +1,657 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="网络," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="###TCP/IP网络安全TCP/IP相关的安全要素如下图所示。
+防火墙组织机构内部的网络与互联网相连时, 为了避免内部网络受到非法访问的威胁, 会设置防火墙。
+
+使用NAT的情况下, 由于限定了可以从外部访问的地址, 因此也能起到防火墙的作用。
+
+防火墙有多种种类和形态, 专门过滤特定数据包的包过滤防火墙, 数据到达应用以后由应用处理并拒绝非法访问的应用网关。防火墙可以限制从互联网访问的主机个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP/IP网络安全">
+<meta property="og:url" content="https://github.com/icoderRo/2015/12/18/网络安全/index.html">
+<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:description" content="###TCP/IP网络安全TCP/IP相关的安全要素如下图所示。
+防火墙组织机构内部的网络与互联网相连时, 为了避免内部网络受到非法访问的威胁, 会设置防火墙。
+
+使用NAT的情况下, 由于限定了可以从外部访问的地址, 因此也能起到防火墙的作用。
+
+防火墙有多种种类和形态, 专门过滤特定数据包的包过滤防火墙, 数据到达应用以后由应用处理并拒绝非法访问的应用网关。防火墙可以限制从互联网访问的主机个">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fidg13uz9ij30qm0ks77x.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fidghahbcdj30qq0c6n0x.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fidgosnrmfj30qk09mjty.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fidgut9bw0j30mo09mab5.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fidi40bqysj30lk06cwf8.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fidi8rdatnj30r20840ud.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fidk73ex94j30q40iu784.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fidjjx7lfjj30p20smmz8.jpg">
+<meta property="og:updated_time" content="2017-08-17T12:02:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TCP/IP网络安全">
+<meta name="twitter:description" content="###TCP/IP网络安全TCP/IP相关的安全要素如下图所示。
+防火墙组织机构内部的网络与互联网相连时, 为了避免内部网络受到非法访问的威胁, 会设置防火墙。
+
+使用NAT的情况下, 由于限定了可以从外部访问的地址, 因此也能起到防火墙的作用。
+
+防火墙有多种种类和形态, 专门过滤特定数据包的包过滤防火墙, 数据到达应用以后由应用处理并拒绝非法访问的应用网关。防火墙可以限制从互联网访问的主机个">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fidg13uz9ij30qm0ks77x.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"remove"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2015/12/18/网络安全/"/>
+
+  <title> TCP/IP网络安全 | simonの小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="images/logo.svg"
+             alt="simonの小📚坊"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">simonの小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">始于颜值，陷于才华，忠于人品</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                TCP/IP网络安全
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-18T00:00:00+08:00" content="2015-12-18">
+              2015-12-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/18/网络安全/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/网络安全/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>###TCP/IP网络安全<br>TCP/IP相关的安全要素如下图所示。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fidg13uz9ij30qm0ks77x.jpg" alt=""></p>
+<h4 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h4><p>组织机构内部的网络与互联网相连时, 为了避免内部网络受到非法访问的威胁, 会设置防火墙。</p>
+<blockquote>
+<p>使用NAT的情况下, 由于限定了可以从外部访问的地址, 因此也能起到防火墙的作用。</p>
+</blockquote>
+<p>防火墙有多种种类和形态, 专门过滤特定数据包的<strong>包过滤防火墙</strong>, 数据到达应用以后由应用处理并拒绝非法访问的应用网关。防火墙可以限制从互联网访问的主机个数; 将安全的主机和可以暴露的主机加以区分, 针对后者集中实施安全防护。</p>
+<p>下图中, 对路由器设置了只向其发送特定地址和端口号的包, 也就是设置了一个包过滤防火墙。<br>当从外部过来TCP通信请求时, 只允许对Web服务器的TCP 80端口和邮件服务器的TCP 25端口访问。其他所有类型的包都会被丢弃。<br>此外, 建立TCP连接的请求只允许从内网发起, 不能从外网直接连接内网。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fidghahbcdj30qq0c6n0x.jpg" alt=""></p>
+<h4 id="IDS-入侵检测系统"><a href="#IDS-入侵检测系统" class="headerlink" title="IDS(入侵检测系统)"></a>IDS(入侵检测系统)</h4><p>IDS检测已经侵入内部网络进行非法访问的情况, 并及时通知给网络管理员的系统。<br>IDS根据不同的用途可以提供各种不同的功能。从设置形式上看, 一般在防火墙或DMS等边界设备上进行设置。有了这样的监控、检测边界的功能, 就可以设置在网络内部、全网或个别特殊的服务器上进行监控。<br>从功能上看, IDS有定期采集日志、长期监控、通知异常等功能。可以监控网络上流动的所有数据包, 与防火墙相辅相成。</p>
+<blockquote>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fidgosnrmfj30qk09mjty.jpg" alt=""></p>
+</blockquote>
+<h4 id="加密技术"><a href="#加密技术" class="headerlink" title="加密技术"></a>加密技术</h4><p>加密指的是利用密钥对明文的数据通过一定的算法变换成密文的过程, 逆反过程叫解密。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fidgut9bw0j30mo09mab5.jpg" alt=""></p>
+<p>加密和解密使用相同的密钥叫做对称加密方式, 加密和解密的过程中使用不同的密钥叫做非对称加密。</p>
+<h5 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h5><p>对称加密方式包括AES、DES等加密标准, 对称加密的优点在于加解密的效率比较高, 缺点在于如何保证密钥是安全的。<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fidi40bqysj30lk06cwf8.jpg" alt=""></p>
+<h5 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h5><p>非对称加密中, 利用公钥(公开的密钥)加密的数据只能通过私钥解密, 使用私钥加密的数据就需要公钥进行解密。公钥加密方法中常见的加密算法是RSA算法。<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fidi8rdatnj30r20840ud.jpg" alt=""></p>
+<h4 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h4><p>HTTPS其实就是安全的HTTP, 也就是HTTP的安全升级版本, HTTP属于应用层的协议, HTTP协议之下是传输协议TCP, HTTPS就是在HTTP与TCP中间加多了一层加密层TLS/SSL。</p>
+<h5 id="TLS-SSL"><a href="#TLS-SSL" class="headerlink" title="TLS/SSL"></a>TLS/SSL</h5><p>SSL/TLS协议的基本思路是客户端先向服务器端索要公钥，然后用公钥加密信息，服务器收到密文后，用自己的私钥解密。通俗的讲, SSL是用来加密的, TLS是SSL的升级版本。<a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" target="_blank" rel="external">TLS/SSL协议运行机制</a></p>
+<p>HTTP中应用层直接将数据传输给TCP, 在HTTPS中应用层将数据传输给TLS/SSL加密后, 在传输给TCP进行传输。</p>
+<h5 id="HTTPS加密通信简略流程"><a href="#HTTPS加密通信简略流程" class="headerlink" title="HTTPS加密通信简略流程"></a>HTTPS加密通信简略流程</h5><p>HTTPS中采用对称加密方式, 在发送其公共密钥时采用的是公钥加密方式。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fidk73ex94j30q40iu784.jpg" alt=""></p>
+<ul>
+<li>1.浏览器访问网站, 网站将自己的证书给到浏览器</li>
+<li>2.浏览器从证书中获取网站的公钥A</li>
+<li>3.浏览器生成一个对称密钥B, 并用公钥A加密后, 传送给网站</li>
+<li>4.网站通过私钥解密, 拿到对称密钥B</li>
+<li>5.之后通信的数据, 都使用密钥B进行加密</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fidjjx7lfjj30p20smmz8.jpg" alt=""></p>
+<h5 id="辨别伪造的证书"><a href="#辨别伪造的证书" class="headerlink" title="辨别伪造的证书"></a>辨别伪造的证书</h5><ul>
+<li><p>完全伪造的证书 – 对证书进行检查<br>1.证书颁发的机构是伪造的, 浏览器不认识, 直接认为是危险证书<br>2.证书颁发机构确实存在, 根据CA名, 找到内置的CA根证书、CA的公钥, 利用公钥对伪造的证书摘要进行解密, 如果解密失败, 则认为是危险证书。</p>
+</li>
+<li><p>篡改过的证书 – 假设代理通过某种途径, 拿到XX的证书, 然后将证书的公钥偷偷修改成自己的。<br>1.检查证书, 根据CA名, 找到对应的CA根证书, 以及CA的公钥<br>2.用CA的公钥, 对证书的数字签名进行解密, 得到对应的证书摘要AA<br>3.根据证书签名使用的hash算法, 计算出当前证书的摘要BB<br>4.对比两个摘要, 发现不一致, 则为危险的证书            </p>
+<p><a href="http://www.cnblogs.com/hyddd/archive/2009/01/07/1371292.html" target="_blank" rel="external">浅析数字证书</a></p>
+</li>
+</ul>
+<p>参考:</p>
+<ul>
+<li><a href="">图解TCP/IP</a></li>
+<li><a href="http://www.jianshu.com/nb/3276500" target="_blank" rel="external">http://www.jianshu.com/nb/3276500</a></li>
+<li><a href="https://segmentfault.com/a/1190000004523659#articleHeader3" target="_blank" rel="external">HTTP科普扫盲贴</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag">#网络</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/18/TCP:UDP/" rel="next" title="TCP/UDP">
+                <i class="fa fa-chevron-left"></i> TCP/UDP
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/18/IP相关的协议/" rel="prev" title="IP相关的协议">
+                IP相关的协议 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/18/网络安全/"
+           data-title="TCP/IP网络安全" data-url="https://github.com/icoderRo/2015/12/18/网络安全/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

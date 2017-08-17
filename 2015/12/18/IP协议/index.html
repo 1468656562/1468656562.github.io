@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="网络," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="IP协议IP(IPv4、IPv6)相当于参考模型中的第三层–网络层。
+网络层的主要作用是: 实现终端节点之间的通信; 也叫做点对点通信。
+
+主机: 配置有IP地址, 不进行路由控制路由器: 既配有IP地址, 又具有路由控制能力节点: 主机和路由器的统称
+
+数据链路层的主要作用是在互连同一种数据链路的节点之间进行包的传递。而一旦跨越多种数据链路, 就需要借助网络层。网络层可以跨越不同的数据链路,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP协议">
+<meta property="og:url" content="https://github.com/icoderRo/2015/12/18/IP协议/index.html">
+<meta property="og:site_name" content="simonの小📚坊">
+<meta property="og:description" content="IP协议IP(IPv4、IPv6)相当于参考模型中的第三层–网络层。
+网络层的主要作用是: 实现终端节点之间的通信; 也叫做点对点通信。
+
+主机: 配置有IP地址, 不进行路由控制路由器: 既配有IP地址, 又具有路由控制能力节点: 主机和路由器的统称
+
+数据链路层的主要作用是在互连同一种数据链路的节点之间进行包的传递。而一旦跨越多种数据链路, 就需要借助网络层。网络层可以跨越不同的数据链路,">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi7pp3hm37j30qw0c2acf.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fi7q2a376oj30oe0aoach.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi7qdef8jzj30nk052dge.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fi7qidno8yj30nm06uwfu.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi7qvk2oefj30qq0oa78r.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi7tqk4tbdj30my03wt9a.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi7tx1p7ftj30q20ggaee.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fiazkfelm4j30ny0hmtcy.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi7ug8vnmbj30dc0b9myt.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi7uvgk5e6j30qk0rawlx.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi7v6x73o7j30ra0lk0wc.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fiax7yl2avj30qo0j4wig.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fiayqntum4j30rm0mgn1l.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fiaz65mq0xj30q00nqn1u.jpg">
+<meta property="og:updated_time" content="2017-08-17T12:02:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IP协议">
+<meta name="twitter:description" content="IP协议IP(IPv4、IPv6)相当于参考模型中的第三层–网络层。
+网络层的主要作用是: 实现终端节点之间的通信; 也叫做点对点通信。
+
+主机: 配置有IP地址, 不进行路由控制路由器: 既配有IP地址, 又具有路由控制能力节点: 主机和路由器的统称
+
+数据链路层的主要作用是在互连同一种数据链路的节点之间进行包的传递。而一旦跨越多种数据链路, 就需要借助网络层。网络层可以跨越不同的数据链路,">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi7pp3hm37j30qw0c2acf.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"display":"remove"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://github.com/icoderRo/2015/12/18/IP协议/"/>
+
+  <title> IP协议 | simonの小📚坊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  <div class="container one-collumn  page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="images/logo.svg"
+             alt="simonの小📚坊"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">simonの小📚坊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">始于颜值，陷于才华，忠于人品</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                IP协议
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-18T00:00:00+08:00" content="2015-12-18">
+              2015-12-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/18/IP协议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/IP协议/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h2><p>IP(IPv4、IPv6)相当于参考模型中的第三层–网络层。</p>
+<p>网络层的主要作用是: 实现终端节点之间的通信; 也叫做点对点通信。</p>
+<blockquote>
+<p>主机: 配置有IP地址, 不进行路由控制<br>路由器: 既配有IP地址, 又具有路由控制能力<br>节点: 主机和路由器的统称</p>
+</blockquote>
+<p>数据链路层的主要作用是在互连<strong>同一种数据链路</strong>的节点之间进行包的传递。而一旦跨越多种数据链路, 就需要借助网络层。网络层可以跨越不同的数据链路, 在不同的数据链路上也能实现两端节点之间的数据包传输。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi7pp3hm37j30qw0c2acf.jpg" alt=""></p>
+<p>###IP地址<br>数据链路层的MAC地址是用来标识同一个链路中不同计算机的一种识别码。作为网络层的IP, 也有这种地址信息, 叫做IP地址。IP地址用于在<strong>连接到网络中的所有主机中识别出进行通信的目标地址</strong>, 在TCP/IP通信中所有的主机/路由器都必须设定自己的IP地址, 用IP地址识别主机和路由器。<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fi7q2a376oj30oe0aoach.jpg" alt=""></p>
+<p>不论主机与哪种数据链路连接, 其IP地址的形式都保持不变, 在网桥/交换机集线器等物理层或数据链路层的数据包转发设备中, 不需要设置IP地址, 因为这些设备只负责将IP包转化为0、1的比特流转发或者数据链路帧的数据部分进行转发, 因而不需要对应IP协议。</p>
+<h4 id="IP地址的定义"><a href="#IP地址的定义" class="headerlink" title="IP地址的定义"></a>IP地址的定义</h4><p>IPv4地址由32位正整数来表示, IP地址在计算机内部以二进制的方式被处理, 为了方便管理, 将32位的IP地址以<strong>每8位一组, 分成4组,每组以.隔开</strong>, 再将每组数转换为十进制数。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi7qdef8jzj30nk052dge.jpg" alt=""></p>
+<p>将表示成IP地址的数字整体计算, 会得出大约43亿台计算机允许连接到网络。实际上, IP地址不是根据主机台数来配置的, 而是每一台主机上的每一块网卡都得设置IP地址, 通常一块网卡只设置一个IP地址, 一块网卡也可以配置多个IP地址。一台路由器通常都会配置两个以上的网卡, 因此可以设置两个以上的IP地址。<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fi7qidno8yj30nm06uwfu.jpg" alt=""></p>
+<h4 id="IP地址的组成"><a href="#IP地址的组成" class="headerlink" title="IP地址的组成"></a>IP地址的组成</h4><p>IP地址由<strong>网络标识(网络地址)</strong>和<strong>主机标识(主机地址)</strong>两部分组成。</p>
+<p>网络标识在数据链路的每个段配置不同的值。网络标识必须保证互相连接的每个段的地址不重复。而相同段内相连的主机必须有相同的网络地址。IP地址的主机标识则不允许在同一个网段内重复出现。因此, 可以通过设置网络地址和主机地址, 在相互连接的整个网络中保证每台主机的IP地址都不会相互重叠, 即IP地址具有了唯一性。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi7qvk2oefj30qq0oa78r.jpg" alt=""></p>
+<p>如何区分网络标识和主机标识, 有两种类型, 一种是<strong>分类</strong>, 另一种是也是现在主流的方式<strong>子网掩码(网络前缀)</strong></p>
+<h5 id="IP地址分类"><a href="#IP地址分类" class="headerlink" title="IP地址分类"></a>IP地址分类</h5><p>IP地址分为四个级别, 根据IP地址中的第1位~第4位的比特位对其网络标识和主机标识进行区分, 共分为A、B、C、D四类。                                   </p>
+<ul>
+<li><strong>A类地址</strong>是首位以”0”开头的地址。从第1位~第8位是网络标识, 后24位是主机标识。</li>
+<li><strong>B类地址</strong>是前两位以”10”开头的地址。从第1位~第16位是网络标识, 后16位是主机标识。</li>
+<li><strong>C类地址</strong>是前三位以”110”开头的地址。从第1位~第24位是网络标识, 后8位是主机标识。</li>
+<li><strong>D类地址</strong>是前四位以”1110”开头的地址。从第1位~第32位是网络标识, 没有主机标识, 常用于多播。</li>
+</ul>
+<blockquote>
+<p>全部为0的主机地址: 代表网络/IP地址不可获知。<br>全部为1的主机地址: 通常用于广播地址。<br>在分配主机地址, 应该去掉这两种情况, 因此C类地址的每个网段最多只能有256-2个主机地址。</p>
+</blockquote>
+<h5 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h5><p>分类造成浪费? 例如, 在架构B类型的IP网络时, 可以使用的主机标识大约有6万多个, 也就意味着, 一个链路内允许6万多台计算机连接; 实际网络架构中, 不会再同一个链路上连接6万多台计算机, 所以A/B类地址会造成浪费。</p>
+<p>通过子网掩码细分出比A、B、C、D分类更细粒度的网络。就是将原来分类中的主机地址部分用作子网地址, 网络地址分为多个物理网络的一种机制。</p>
+<p>引入子网以后, 一个IP地址就有了两种识别码, 一种是原来的IP地址本身, 另一个是表示网络部分的子网掩码。 子网掩码用二进制表示的话, 也是一个32位的数字。它对应的IP地址<strong>网络标识</strong>部分的位全部为”1”, 对应IP地址<strong>主机标识</strong>的部分则全部为”0”。由此一个IP地址可以不再受限于自己的类别, 而是可以用这样的子网掩码自由地定位自己的网络标识长度。子网掩码必须是IP地址的首页开始连续为”1”。</p>
+<p>子网掩码有两种表示方式, 一种是将IP地址与子网掩码地址分别用两行来表示; 另外一种是在IP地址的后面追加网络地址的位数, 用”/“隔开。</p>
+<table>
+<thead>
+<tr>
+<th>地址表示</th>
+<th style="text-align:center">十进制            </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP地址</td>
+<td style="text-align:center">172.20.100.52    </td>
+</tr>
+<tr>
+<td>子网掩码</td>
+<td style="text-align:center">255.255.255.192</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>地址表示</th>
+<th style="text-align:center">十进制</th>
+<th style="text-align:center">位数 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP地址</td>
+<td style="text-align:center">172.20.100.52</td>
+<td style="text-align:center">/26</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>172.20.0.0/26 与172.20/26是同一个意思, 可以省略后面的”0”<br>CIDR: 采用任意长度分割IP地址的网络标识和主机标识, 也叫无类型域间选路。在CIDR被应用到互联网的初期, 网络内部采用固定长度的子网掩码机制, 采用统一的标注, 就难以架构一个高效的网络结构, 为此人们提出组织内要使用可变长度的、高效的IP地址分配方式。<br>VLSM: 可变长度子网掩码, 可以将网络地址分为主机数500个时子网掩码长度位/23, 主机数位50个时子网掩码长度位/26, 有了CIDR和VLSM技术, 相对缓解了全局IP地址不够用的问题, 但无法改变IPv4的地址绝对数是有限的问题。</p>
+</blockquote>
+<h4 id="全局地址与私有地址"><a href="#全局地址与私有地址" class="headerlink" title="全局地址与私有地址"></a>全局地址与私有地址</h4><p>随着互联网的迅速普及, IP地址不足的问题日趋显著, 如果一直按照现行的方法采用唯一地址的话(每一台主机/路由器必须配有一个唯一的IP地址), 会有IP地址耗尽的危险。于是出现了一种新的技术。它不要求为每一台主机/路由器分配一个固定的IP地址, 而是在必要的时候为相应数量的设备分配唯一的IP地址。<br>对于那些没有连接网络的独立网络中的主机, 只要保证在这个网络内地址唯一, 可以不用考虑互联网即可配置相应的IP地址。不过让每个独立的网络各自随意配置IP地址也会出现问题(冲突)。于是乎出现了私有的网络IP地址:<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi7tqk4tbdj30my03wt9a.jpg" alt=""></p>
+<p>包含在这个范围内的IP地址都属于私有IP, 在此之外的IP地址称为全局IP。</p>
+<p>私有IP最早没有计划连接互联网, 只用于互联网之外的独立网络。随着NAT/NAPT(能够互换私有IP和全局IP)技术的诞生, 配有私有地址的主机与配有全局地址的互联网主机实现了通信。</p>
+<p>企业内部基本在每个终端上设置私有IP, 在路由器(宽带路由器)/服务器上设置全局IP, 配有私有IP地址的主机通过联网时, 通过NAT进行通信。私有IP地址结合NAT技术已成为现在解决IP地址分配问题的主流方案。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi7tx1p7ftj30q20ggaee.jpg" alt=""></p>
+<h3 id="IPv4首部"><a href="#IPv4首部" class="headerlink" title="IPv4首部"></a>IPv4首部</h3><p>通过IP进行通信时, 需要在数据的前面加入IP首部的信息。IP首部中包含着用于IP协议进行发包控制时所有的必要信息。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fiazkfelm4j30ny0hmtcy.jpg" alt=""></p>
+<ul>
+<li>版本(Version)<br>由4比特构成, 表示标识IP首部的版本号, IPv4的版本号即为4, 因此在这个字段上的值也是”4”。</li>
+<li>首部长度(IHL: Internet Header Length)<br>由4比特构成, 表明IP首部的大小, 单位为4字节(32比特), 对于没有可选项的IP包, 首部长度则设置为”5”。</li>
+<li>区分服务(TOS: Type Of Service)<br>由8比特构成, 用来表明服务质量, 由于实现TOS控制极其复杂, TOS基本没有被投入使用。</li>
+<li>总长度(Total Length)<br>表示IP首部与数据部分合起来的总字节数。该字段长16比特。因此IP包的最大长度为65535字节。</li>
+<li>标识(ID: Identification)<br>由16比特构成, 用于分片重组。同一个分片的标识值相同, 不同分片的标识值不同。每发送一个IP包, 它的值也逐渐递增。如果ID相同, 但是目标地址、源地址或协议不同的话, 也会被认为是不同的分片。</li>
+<li>标志(Flags)<br>由3比特构成, 表示包被分片的相关信息。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>比特</th>
+<th style="text-align:center">含义            </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:center">未使用。目前必须为0   </td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:center">指示是否进行分片, 0:可以分片, 1:不能分片</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">包被分片的情况下, 表示是否为最后一个包, 0:最后一个分片的包, 1:分片中段的包</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>片偏移(FO: Fragment Offset)<br>由13比特构成, 用来标识被分片的每一个分段相对于原始数据的位置。第一个分片对应的值为0。</li>
+<li>生存时间(TTL: Time To Live)<br>由8比特构成, 指可以中转多少个路由器的意思, 每经过一个路由器, TTL会减少1, 知道变成0则丢弃该包。<br>为了避免IP包在网络内无限传递。</li>
+<li>协议(Protocol)<br>由8比特构成, 表示IP首部的<strong>下一个首部</strong>属于哪个协议。</li>
+<li>首部和校验(Header Checksum)<br>由16比特构成, 也叫IP首部校验和,主要用来确保IP数据报不被破坏。该字段只校验数据报的首页, 不校验数据部分。校验和的计算过程, 首先要将该校验和的所有位置设置为0, 然后以16比特为单位划分IP首部, 并用1补数计算所有16位字的和。最后将所得到这个和的1补数赋给首部校验和字段。</li>
+<li>源地址(Source Address)<br>由32比特构成, 表示发送端IP地址。</li>
+<li>目标地址(Destination Address)<br>由32比特构成, 表示接收端IP地址。</li>
+<li>可选项(Options)<br>长度可变, 通常只在进行实验或诊断时使用。该字段包含如下几点信息: 安全级别, 源路径, 路径记录, 时间戳。</li>
+<li>填充(Padding)<br>也叫填补物, 在有可选项的情况下, 首部长度可能不是32比特的整数倍。为此, 通过向字段填充为0, 调整首部长度为32比特的整数倍。</li>
+<li><p>数据(Data)<br>存入数据。将IP上层协议的首部也作为数据进行处理。</p>
+<h3 id="路由控制"><a href="#路由控制" class="headerlink" title="路由控制"></a>路由控制</h3><p>发送数据包时使用的地址就是网络层的地址, 也就是IP地址。然而仅仅有IP地址还不足以实现将数据包发送到对端目标地址, 在发送过程中还需要类似”指明路由器或主机”的信息, 以便发往目标地址。保存这种信息的就是<strong>路由控制表</strong>。实现IP通信的主机和路由器都必须持有一张这样的表。<br>路由控制表的形成方式有两种:                         </p>
+</li>
+<li><p>静态路由控制:管理员手动设置。</p>
+</li>
+<li>动态路由控制: 路由器与其他路由器相互交换信息时自动刷新。</li>
+</ul>
+<h4 id="IP地址与路由控制"><a href="#IP地址与路由控制" class="headerlink" title="IP地址与路由控制"></a>IP地址与路由控制</h4><p>IP地址的<strong>网络地址</strong>部分用于进行路由控制。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi7ug8vnmbj30dc0b9myt.jpg" alt=""><br>路由控制表中记录着网络地址与下一步应该发送至路由器的地址, 在发送IP包时, 首先要确定IP首部中的目标地址, 再从路由控制表中找到与该地址具有相同网络地址的记录, 根据该记录将IP包转发给相应的下一个路由器。如果路由控制表中存在多条相同的网路地址记录, 就选择一个相同位数最多的地址。</p>
+<h5 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h5><p>如果一张路由表中包含所有的网络及其子网的信息, 将会造成浪费。这时, 默认路由是不错的选择, 默认路由指路由表中任何一个地址都能与之匹配。<br>默认路由一般标记为0.0.0.0/0或default, 这里的0.0.0.0/0并不是指IP地址是0.0.0.0, 而是后的”/0”, 所以并没有标识IP地址。它只是为了避免人们误认为0.0.0.0是IP地址。有时默认路由也被标记为default, 在计算机内部和路由协议的发送过程中还是以0.0.0.0/0进行处理。</p>
+<h5 id="主机路由"><a href="#主机路由" class="headerlink" title="主机路由"></a>主机路由</h5><p>“IP地址/32”也被称为主机路由。例如: 192.168.153.15/32就是一种主机路由。它的意思是整个IP地址的所有位都将会参与路由; 进行主机路由, 意味着要基于主机上网卡配置的<strong>IP地址本身(网络地址+ 主机地址)</strong>, 而不是基于该地址的<strong>网络地址</strong>部分进行路由。</p>
+<h5 id="环回地址"><a href="#环回地址" class="headerlink" title="环回地址"></a>环回地址</h5><p>环回地址是在同一台计算机上的<strong>程序之间</strong>进行网络通信时所使用的一个默认地址。计算机使用一个特殊的IP地址127.0.0.1作为环回地址。与该地址局具有相同意义的是一个叫做localhost的主机名。使用这个IP或主机名时, 数据包不会流向网络。</p>
+<h4 id="路由控制表的聚合"><a href="#路由控制表的聚合" class="headerlink" title="路由控制表的聚合"></a>路由控制表的聚合</h4><p>利用网络地址的比特分布可以有效地进行分层配置。对内可以有多个子网掩码, 对外呈现的也是同一个网络的地址。通过路由信息的聚合可以有效的减少路由表的条目。</p>
+<p>能够缩小路由表的大小是它的最大优势。路由表越大, 管理它所需要的内存和CPU也就越多, 并且查找路由表的时间也会越长, 导致转发IP数据包的性能下降, 构建大规模、高性能网络需要尽可能消减路由表的大小。</p>
+<p>路由聚合可以将已知的路由信息传送给周围其他的路由器, 以达到控制路由信息的目的。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fi7uvgk5e6j30qk0rawlx.jpg" alt=""></p>
+<h3 id="IP分割-构成处理"><a href="#IP分割-构成处理" class="headerlink" title="IP分割/构成处理"></a>IP分割/构成处理</h3><h4 id="数据链路与MTU"><a href="#数据链路与MTU" class="headerlink" title="数据链路与MTU"></a>数据链路与MTU</h4><p>每种数据链路的最大传输单元(MTU)都不尽相同, IP属于数据链路的上一层, 必须不受限与不同的数据链路的MTU大小。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi7v6x73o7j30ra0lk0wc.jpg" alt=""></p>
+<h4 id="IP报文的分片与重组"><a href="#IP报文的分片与重组" class="headerlink" title="IP报文的分片与重组"></a>IP报文的分片与重组</h4><p>任何一台主机都有必要对IP分片进行相应的处理。分片往往在网络上遇见比较大的报文无法一下子发送出去的时候才会进行处理。<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fiax7yl2avj30qo0j4wig.jpg" alt=""></p>
+<p>由于以太网的默认MTU是1500字节, 因此4342字节的IP数据报无法再一个帧当中发送完成。因此, 路由器将IP数据报划分成了3个分片进行发送。经过分片之后的IP数据报在被重组的时候, 只能有目标主机进行, 路由器只做分片, 但不会进行重组。</p>
+<h4 id="路径MTU发现"><a href="#路径MTU发现" class="headerlink" title="路径MTU发现"></a>路径MTU发现</h4><p>分片机制有它的不足。首先, 路由器的处理负荷加重。随着时代的变迁, 计算机网络的物理传输速度不断上升。这些高速的链路, 对路由器和计算机网络提出了更高的要求。另一方面, 随着人们对网络安全的要求提高, 路由器需要做的其他处理也越来越多, 因此, 只要允许, 是不希望由路由器进行IP数据包的分片处理。</p>
+<p>路径MTU: 指的是从发送端主机到接收端主机之间不需要分片时的最大MTU大小。也就是, 路径中存在的所有数据链路中最小的传输单元。</p>
+<p>路径MTU发现: 从发送端主机按照MTU的大小, 提前将数据报分片后进行发送。进行路径MTU发现, 就可以避免在路由器上进行分片处理。也可以在TCP中发送更大的包。很多操作系统都已经实现了路径MTU发现的功能。</p>
+<p>路径MTU发现的工作原理: 首先在发送端主机发送IP数据报时将其首部的分片禁止标志位设置为1。根据这个标志位, 途中的路由器即使遇到需要分片才能处理的大包, 也不会去分片, 而是将包丢弃。随后, 通过ICMP的不可达消息将数据链路上的MTU的值给发送端主机。获得ICMP通知的MTU值后, 发送端主机将它设置为当前MTU。发送端主机根据当前新设置的MTU对数据报进行分片处理。如此反复, 直到数据报被发送到目标主机后, 没有在收到任何ICMP的回馈, 这样就认为最后一次ICMP通知的MTU值是一个合适的MTU值。MTU值最少可以缓存10分钟, 在这10分钟内使用刚刚得到的MTU, 超过10分钟以后则重新根据链路上的MTU做一次路径MTU发现。</p>
+<ul>
+<li><p>UDP<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fiayqntum4j30rm0mgn1l.jpg" alt=""></p>
+</li>
+<li><p>TCP<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fiaz65mq0xj30q00nqn1u.jpg" alt=""> </p>
+</li>
+</ul>
+<p>参考:</p>
+<ul>
+<li><a href="">图解TCP/IP</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag">#网络</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/18/数据链路层/" rel="next" title="数据链路层">
+                <i class="fa fa-chevron-left"></i> 数据链路层
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/31/封装录音与播放/" rel="prev" title="录音与本地播放">
+                录音与本地播放 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/18/IP协议/"
+           data-title="IP协议" data-url="https://github.com/icoderRo/2015/12/18/IP协议/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">simon</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog-ro"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
