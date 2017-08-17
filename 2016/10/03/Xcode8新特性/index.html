@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dqhhcvbj20xm05kadd.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/65e4f1e6gw1f92dqvs2f7j21ax0l7mzr.jpg">
-<meta property="og:updated_time" content="2016-12-03T05:21:02.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:57:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode8新特性">
 <meta name="twitter:description" content="简介9月14日开发者们已经可以下载并使用正式版Xcode8, 借着国庆休息期间,本人也下载并使用了Xcode8, 发现里面的坑点不少.下面就总结在使用过程中遇见的一些问题.
@@ -113,8 +113,6 @@
                   <li> <a class="main-nav-link" href="/">Startseite</a> </li>
                 
                   <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -217,11 +215,11 @@
 <li>语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？</li>
 <li>日历权限：Privacy - Calendars Usage Description 是否允许此App使用日历？</li>
 <li>定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
-<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据</li>
+<li>定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据<a id="more"></a>
+<h4 id="Interface-Builder"><a href="#Interface-Builder" class="headerlink" title="Interface Builder"></a>Interface Builder</h4>Xcode8之前的 <code>Size Class</code><br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg" alt=""><br>Xcode8之后的就不叫<code>Size Class</code>, 就是一个预览当前当前<code>XIB</code>或<code>SB</code>在不同屏幕尺寸下的图形界面.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg" alt=""></li>
 </ul>
 </li>
 </ul>
-<h4 id="Interface-Builder"><a href="#Interface-Builder" class="headerlink" title="Interface Builder"></a>Interface Builder</h4><p>Xcode8之前的 <code>Size Class</code><br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dosolakj20am08gwel.jpg" alt=""><br>Xcode8之后的就不叫<code>Size Class</code>, 就是一个预览当前当前<code>XIB</code>或<code>SB</code>在不同屏幕尺寸下的图形界面.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dp951zdj20fm05bjrx.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/65e4f1e6gw1f92dphol8mj20k002ddg8.jpg" alt=""></p>
 <p>Xcode8打开之前的旧项目的<code>XIB</code>或<code>SB</code>文件时, 会弹出一个选择初始化设置视图的窗口, 一般选择<code>Choose Device</code>.<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6gw1f92dpz5c7qj20c505odgo.jpg" alt=""></p>
 <p>如果Xcode8打开过当前的<code>XIB</code>文件, 并选择<code>Choose Device</code>后, 低于Xcode8版本的编译器将无法打开这个<code>XIB</code>文件, 并会报一下错误:</p>
 <blockquote>
@@ -236,15 +234,16 @@
 <h4 id="插件问题"><a href="#插件问题" class="headerlink" title="插件问题"></a>插件问题</h4><p>苹果为了避免类似 <a href="https://en.wikipedia.org/wiki/XcodeGhost" target="_blank" rel="external">Xcode Ghost:</a> 事件的再次发生,Xcode8 禁用了插件机制,而开放了另一种形式： <a href="https://developer.apple.com/videos/play/wwdc2016/414/" target="_blank" rel="external">Source Editor extensions</a> 但是这种形式局限性太大.<br>这里有一边文章介绍, 让你的Xcode8继续使用插件:<a href="http://vongloo.me/2016/09/10/Make-Your-Xcode8-Great-Again/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">Xcode8继续使用插件</a></p>
 <p>如果出现<code>command＋／</code>注释代码失效, 可以执行<br><code>sudo /usr/libexec/xpccachectl</code>后重启电脑.</p>
 <p><strong>VVDocumenter-Xcode</strong>已经在Xcode8中集成了注释插件, 使用方法不是以前的<code>///</code>, 而是<code>option＋command＋／</code>.</p>
-<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h5 id="UIColor新增方法"><a href="#UIColor新增方法" class="headerlink" title="UIColor新增方法"></a>UIColor新增方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (UIColor *)colorWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div><div class="line"></div><div class="line">- (UIColor *)initWithDisplayP3Red:(CGFloat)displayP3Red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha NS_AVAILABLE_IOS(10_0);</div></pre></td></tr></table></figure>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h5 id="UIColor新增方法"><a href="#UIColor新增方法" class="headerlink" title="UIColor新增方法"></a>UIColor新增方法</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIColor</span> *)colorWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div><div class="line"></div><div class="line">- (<span class="built_in">UIColor</span> *)initWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div></pre></td></tr></table></figure>
 <p>据苹果官方建议使用<code>sRGB</code>, 理由是性能好, 色彩更丰富.</p>
-<h5 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(10_0) @protocol UIContentSizeCategoryAdjusting &lt;NSObject&gt;</div><div class="line"></div><div class="line">/*</div><div class="line"> Indicates whether the corresponding element should automatically update its font when the device’s UIContentSizeCategory is changed.</div><div class="line"> For this property to take effect, the element’s font must be a font vended using +preferredFontForTextStyle: or +preferredFontForTextStyle:compatibleWithTraitCollection: with a valid UIFontTextStyle.</div><div class="line"> */</div><div class="line">@property (nonatomic) BOOL adjustsFontForContentSizeCategory;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<h5 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NS_CLASS_AVAILABLE_IOS</span>(<span class="number">10</span>_0) <span class="class"><span class="keyword">@protocol</span> <span class="title">UIContentSizeCategoryAdjusting</span> &lt;<span class="title">NSObject</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> Indicates whether the corresponding element should automatically update its font when the device’s UIContentSizeCategory is changed.</div><div class="line"> For this property to take effect, the element’s font must be a font vended using +preferredFontForTextStyle: or +preferredFontForTextStyle:compatibleWithTraitCollection: with a valid UIFontTextStyle.</div><div class="line"> */</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>) <span class="built_in">BOOL</span> adjustsFontForContentSizeCategory;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
 <p><strong>adjustsFontForContentSizeCategory</strong> 字体是否随着手机系统字体的变化而变化.</p>
-<h5 id="refreshControl"><a href="#refreshControl" class="headerlink" title="refreshControl"></a>refreshControl</h5><p>iOS10以前:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(6_0) __TVOS_PROHIBITED @interface UIRefreshControl : UIControl</div></pre></td></tr></table></figure></p>
+<h5 id="refreshControl"><a href="#refreshControl" class="headerlink" title="refreshControl"></a>refreshControl</h5><p>iOS10以前:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NS_CLASS_AVAILABLE_IOS</span>(<span class="number">6</span>_0) __TVOS_PROHIBITED <span class="class"><span class="keyword">@interface</span> <span class="title">UIRefreshControl</span> : <span class="title">UIControl</span></span></div></pre></td></tr></table></figure></p>
 <p> iOS10以后:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong, nullable) UIRefreshControl *refreshControl NS_AVAILABLE_IOS(10_0) __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">nullable</span>) <span class="built_in">UIRefreshControl</span> *refreshControl <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0) __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
 <p>iOS10 以后只要是集成与<code>UIScrollView</code>, 即可获得此属性.</p>
-<h5 id="systemVersion"><a href="#systemVersion" class="headerlink" title="systemVersion"></a>systemVersion</h5><p>判断系统版本号建议用法:<br><code>[[UIDevice currentDevice] systemVersion]</code></p>
+<h5 id="systemVersion"><a href="#systemVersion" class="headerlink" title="systemVersion"></a>systemVersion</h5><p>判断系统版本号建议用法:<br><code>Objc
+[[UIDevice currentDevice] systemVersion]</code></p>
 <h5 id="UICollectionView"><a href="#UICollectionView" class="headerlink" title="UICollectionView"></a>UICollectionView</h5><p>iOS10 对UICollectionView进一步的优化, 详情可参考<a href="http://www.jianshu.com/p/e97780a24224" target="_blank" rel="external">UICollectionView新特性
 </a></p>
 <h5 id="Notification"><a href="#Notification" class="headerlink" title="Notification"></a>Notification</h5><p>iOS10所有的通知都属于<code>UserNotifications.framework</code><br>增加了撤回单条通知,更新已展示通知,中途修改通知内容,在通知中展示图片视频,自定义通知 UI 等一系列新功能,非常强大.<br>详情可以参考:<br><a href="https://onevcat.com/2016/08/notification/" target="_blank" rel="external">活久见的重构 - iOS 10 UserNotifications 框架解析</a><br><a href="https://developer.apple.com/reference/usernotifications" target="_blank" rel="external">UserNotifications </a></p>
@@ -363,8 +362,6 @@
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   

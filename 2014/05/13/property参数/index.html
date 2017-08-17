@@ -19,7 +19,7 @@ Xcode4.5之前，@property会将其转换为成员变量set、get方法的声明
 <meta property="og:site_name" content="simon小📚坊">
 <meta property="og:description" content="@property故事Objective-C特有的一个关键字@Property，它属于编译器一个特性，编译器编译@property时，会自动生成成员变量的set和get方法.
 Xcode4.5之前，@property会将其转换为成员变量set、get方法的声明，@synthesize会实现成员变量的set、get方法，所以XCode4.5之前，@property与@synthesize是配对使用">
-<meta property="og:updated_time" content="2016-12-03T05:20:44.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:56:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="property属性">
 <meta name="twitter:description" content="@property故事Objective-C特有的一个关键字@Property，它属于编译器一个特性，编译器编译@property时，会自动生成成员变量的set和get方法.
@@ -101,8 +101,6 @@ Xcode4.5之前，@property会将其转换为成员变量set、get方法的声明
                   <li> <a class="main-nav-link" href="/">Startseite</a> </li>
                 
                   <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -199,9 +197,8 @@ Xcode4.5之前，@property会将其转换为成员变量set、get方法的声明
 <p><code>@property</code>关键字,在Xcode4.5之前的写法:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface Person :NSObject  </div><div class="line">  </div><div class="line">@property NSString *name;  </div><div class="line">  </div><div class="line">@end  </div><div class="line">  </div><div class="line">@implementation Person  </div><div class="line">  </div><div class="line">@synthesize name = _name;  </div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
 <blockquote>
-<p>@synthesize name = _name, 如果省略, 编译器会自动帮你加上getter 和 setter 方法的实现，并且默认会去访问_name这个成员变量，如果找不到_name这个成员变量，会自动生成一个叫做 _name的私有成员变量（其他类不可访问（包括子类））。</p>
+<p>@synthesize name = _name, 如果省略, 编译器会自动帮你加上getter 和 setter 方法的实现，并且默认会去访问_name这个成员变量，如果找不到_name这个成员变量，会自动生成一个叫做 _name的私有成员变量（其他类不可访问（包括子类））。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> @property NSString *name;代表生成了_name成员变量和set/get方法的声明等价于下面的代码;</div><div class="line"> </div><div class="line"> &#123; </div><div class="line">   NSString *_name; </div><div class="line"> &#125; </div><div class="line"> - (void) setName:(NSString *)name; </div><div class="line"> - (NSString *) name; </div><div class="line"></div><div class="line"> @synthesize name = _name;则等价于实现了set/get方法, 等价于下面的代码;</div><div class="line"> </div><div class="line"> -(void)setName:(NSString *)name  </div><div class="line">&#123;  </div><div class="line">        _name = name;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">-(NSString *)name  </div><div class="line">&#123;  </div><div class="line">    return _name;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> @property NSString *name;代表生成了_name成员变量和set/get方法的声明等价于下面的代码;</div><div class="line"> </div><div class="line"> &#123; </div><div class="line">   NSString *_name; </div><div class="line"> &#125; </div><div class="line"> - (void) setName:(NSString *)name; </div><div class="line"> - (NSString *) name; </div><div class="line"></div><div class="line"> @synthesize name = _name;则等价于实现了set/get方法, 等价于下面的代码;</div><div class="line"> </div><div class="line"> -(void)setName:(NSString *)name  </div><div class="line">&#123;  </div><div class="line">        _name = name;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">-(NSString *)name  </div><div class="line">&#123;  </div><div class="line">    return _name;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>-</p>
 <p><code>@property</code>关键字,在Xcode4.5之后的写法:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@interface Person : NSObject  </div><div class="line">  </div><div class="line">@property NSString *name;  </div><div class="line"></div><div class="line">@end  </div><div class="line">  </div><div class="line">@implementation Person  </div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
@@ -363,8 +360,6 @@ Xcode4.5之前，@property会将其转换为成员变量set、get方法的声明
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   

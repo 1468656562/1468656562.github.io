@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficebte4egj30py0mwq77.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficeg631tlj30o60oeq74.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1ficgjn9z94j30s40mu76w.jpg">
-<meta property="og:updated_time" content="2017-08-17T12:34:42.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:51:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP/UDP(五)">
 <meta name="twitter:description" content="TCP/UDPTCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。
@@ -124,8 +124,6 @@
                   <li> <a class="main-nav-link" href="/">Startseite</a> </li>
                 
                   <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -218,7 +216,7 @@
 <p>网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的<strong>数据部分</strong>是TCP的内容, 还是UDP的内容。同理,传输层使用端口号识别在传输层的上一层(应用层)中要进行处理的程序。</p>
 <h4 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h4><p>数据链路和IP地址, 分别对应MAC地址和IP地址。前者用来识别同一链路中不同的计算机, 后者用来识别TCP/IP网络中互连的主机和路由器。在传输层中也有类似的地址概念, 那就是端口号。端口号用来识别同一台计算机中进行通信的不同应用程序, 也叫做程序地址。</p>
 <h5 id="通信识别"><a href="#通信识别" class="headerlink" title="通信识别"></a>通信识别</h5><p>仅仅凭目标端口识别某一个通信是远远不够的。如下图: 1和2的通信是在两台计算机上进行的。他们的目标端口号都是80, 需要根据源端口号进行区分。3和1的目标端口号和源端口号完全相同, 但是他们各自的源IP地址不同。另外协议号不同, 也会被认为是两个不同的通信。</p>
-<p>综上, TCP/IP或UDP/IP通信中通常采用5个信息来识别一个通信。分别是: <strong>源IP地址</strong>、<strong>目标IP地址</strong>、<strong>协议号</strong>、<strong>源端口号</strong>、<strong>目标端口号</strong>。只有5个信息一致, 才认为是同一个通信。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fic9us8bqbj30pq0l4tf1.jpg" alt=""></p>
+<p>综上, TCP/IP或UDP/IP通信中通常采用5个信息来识别一个通信。分别是: <strong>源IP地址</strong>、<strong>目标IP地址</strong>、<strong>协议号</strong>、<strong>源端口号</strong>、<strong>目标端口号</strong>。只有5个信息一致, 才认为是同一个通信。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fic9us8bqbj30pq0l4tf1.jpg" alt=""><br><a id="more"></a></p>
 <h5 id="端口号的确定"><a href="#端口号的确定" class="headerlink" title="端口号的确定"></a>端口号的确定</h5><ul>
 <li>标准既定的端口号<br>这种方法也叫<strong>静态方法</strong>, 指每个应用程序都有其指定的端口号。知名端口号一般由0~1023的数字分配而成, 应用程序需要避免使用知名端口号, 可以使用1024~49151之间的数字作为自定义端口号。</li>
 <li>时序分配法<br>这种方法也叫<strong>动态方法</strong>, 此时服务端有必要确定监听端口号, 但是接受服务的客户端没必要确定端口号。<br>客户端应用程序完全不用自己设置端口号, <strong>全权交给操作系统进行分配</strong>。操作系统可以为每个应用程序分配互不冲突的端口号。例如, 每需要一个新的端口号, 就在之前分配号码的基础上加1。动态分配的端口号的取值范围在49152~65535之间。</li>
@@ -410,8 +408,6 @@
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   

@@ -32,7 +32,7 @@ DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机�
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fibb7buomaj30su0jqn2i.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fibbnx83jhj30oo0lin1n.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fibc0b57fkj30qc0hodjy.jpg">
-<meta property="og:updated_time" content="2017-08-17T12:35:04.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:50:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IP相关的协议(四)">
 <meta name="twitter:description" content="IP相关的协议IP的目的是让最终目标主机收到数据包, 但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能, 以及数据包在发送过程中异常情况处理的功能。
@@ -115,8 +115,6 @@ DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机�
                   <li> <a class="main-nav-link" href="/">Startseite</a> </li>
                 
                   <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -211,7 +209,7 @@ DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机�
 <p>在Windows/Unix中查找域名对应的IP地址可以输入nslookup 域名</p>
 </blockquote>
 <h5 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h5><p>以访问www.ietf.org为例,此时的DNS查询流程如图所示:<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fib4j1xk4mj30q40kyjvl.jpg" alt=""></p>
-<p>解析器为了查询IP地址, 向域名服务器进行查询处理。接收这个查询请求的域名服务器首先会在自己的数据库进行查找。如果有该域名所对应的IP地址就返回, 如果没有, 则域名服务器再向上一层跟域名服务器进行查询处理。解析器和域名服务器将最新了解到的信息暂时保存在缓存里。这样, 可以减少每次查询时的性能消耗。</p>
+<p>解析器为了查询IP地址, 向域名服务器进行查询处理。接收这个查询请求的域名服务器首先会在自己的数据库进行查找。如果有该域名所对应的IP地址就返回, 如果没有, 则域名服务器再向上一层跟域名服务器进行查询处理。解析器和域名服务器将最新了解到的信息暂时保存在缓存里。这样, 可以减少每次查询时的性能消耗。<br><a id="more"></a></p>
 <h4 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h4><p>在网络层, 只要确定了IP地址, 就可以向这个目标地址发送IP数据报。在数据链路层, 进行通信时需要了解每个IP地址多对应的MAC地址。ARP是一种解决地址问题得协议,根据目标IP地址为线索,用来定位下一个接收数据分包的网络设备对应的MAC地址。</p>
 <h5 id="ARP工作机制"><a href="#ARP工作机制" class="headerlink" title="ARP工作机制"></a>ARP工作机制</h5><p>ARP借助ARP请求与ARP响应两种类型的包确定MAC地址。<br><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fib53e0qn9j30o40cc768.jpg" alt=""></p>
 <p>主机A为了获取主机B的MAC地址, 起初要通过<strong>广播</strong>发送一个ARP请求包。这个包中包含了想要了解其MAC地址的主机IP地址。也就是书, ARP请求包中已经包含了主机B的IP地址。由于广播的包可以被同一个链路上所有的主机或路由器接收, 因此ARP请求包也就会被同一个链路上所有的主机和路由器进行解析。如果ARP请求包中的目标IP地址与自己的IP地址一致, 那么这个节点就将自己的MAC地址塞入ARP响应包, 返回给主机A。主机A将获取到的MAC地址缓存一段时间, 以减少ARP包的发送与流量的浪费。</p>
@@ -367,8 +365,6 @@ DNS我们平常在访问某个网站时, 域名(域名是指为了识别主机�
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   

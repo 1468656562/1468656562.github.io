@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fi6npqutmqj30ra0a276d.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fi6nqrg0vaj30l40923zp.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fi6nx1wg8mj30pc094403.jpg">
-<meta property="og:updated_time" content="2017-08-17T12:35:33.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:51:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP/IP协议分层模型(一)">
 <meta name="twitter:description" content="TCP/IP协议分层模型TCP/IP是目前计算机网络中使用最为广泛的协议;下面介绍一下TCP/IP协议分层模型。
@@ -117,8 +117,6 @@
                   <li> <a class="main-nav-link" href="/">Startseite</a> </li>
                 
                   <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -219,12 +217,8 @@
 <ul>
 <li>IP是跨越网络来传送数据包, 使整个互联网都能收到数据的协议; IP协议使用IP地址作为主机的标识。通过IP, 相互通信的主机之间不论经过怎样的底层数据链路都能够实现通信, 它不具备重发的机制(TCP控制重发), 属于非可靠性传输协议。</li>
 <li>ICMP协议规定：目的主机必须返回ICMP回送应答消息(ACK)给发送主机。如果源主机在一定时间内收到应答，则认为主机可达。(ping 用的就是ICMP协议)。</li>
-<li>ARP 从分组数据包中的IP地址中解析出MAC地址的一种协议。</li>
-</ul>
-</blockquote>
-<h5 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h5><p>传输层最主要的功能就是能够让<code>应用程序</code>之间实现通信。计算机内部通常运行着多个程序, 基于端口号区分哪些程序与哪些程序在进行通信,传输侧有两个代表性的协议TCP/UPD。</p>
-<blockquote>
-<ul>
+<li>ARP 从分组数据包中的IP地址中解析出MAC地址的一种协议。<a id="more"></a>
+<h5 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h5>传输层最主要的功能就是能够让<code>应用程序</code>之间实现通信。计算机内部通常运行着多个程序, 基于端口号区分哪些程序与哪些程序在进行通信,传输侧有两个代表性的协议TCP/UPD。</li>
 <li>TCP 是一种面向有连接的可靠的传输层的协议。它可以保证两端主机的通信可达。TCP能够正确处理在传输过程中的丢包、传输顺序乱掉的异常的情况, 还能够有效的利用带宽, 缓解网络的拥堵。</li>
 <li>UDP 是一种面向无连接的不可靠的传输层协议。UDP不会关注对端是否接收到了数据, 常用于多播、广播通信以及视频通信等多媒体领域(UDP + RTP/RTCP/RTMP)</li>
 </ul>
@@ -367,8 +361,6 @@
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   

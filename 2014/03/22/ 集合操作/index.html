@@ -23,7 +23,7 @@
 123NSArray *arr = [[NSArray alloc] init];NSArray *arr = [NSArray arrayWithObject:@&amp;quot;lc&amp;quot;];NSArray *arr = [NSArray arrayWithObjects:@&amp;quot;lc&amp;quot;,
 
 数组中的nil是结束符">
-<meta property="og:updated_time" content="2016-12-03T05:19:31.000Z">
+<meta property="og:updated_time" content="2017-08-17T14:51:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集合操作">
 <meta name="twitter:description" content="NSArray创建NSArray常规创建
@@ -107,8 +107,6 @@
                   <li> <a class="main-nav-link" href="/">Startseite</a> </li>
                 
                   <li> <a class="main-nav-link" href="/archives">Archive</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
                 
                   <li> <a class="main-nav-link" href="/about">About</a> </li>
                 
@@ -219,9 +217,9 @@
 <p><strong>数组所有元素调用统一的方法</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[arr makeObjectsPerformSelector:@selector(say)];</div><div class="line"></div><div class="line">[arr makeObjectsPerformSelector:@selector(sayWithName:) withObject:@&quot;aa&quot;];</div></pre></td></tr></table></figure>
 <blockquote>
-<p>数组中统一调用方法</p>
-</blockquote>
-<h4 id="NSArray的排序"><a href="#NSArray的排序" class="headerlink" title="NSArray的排序"></a>NSArray的排序</h4><p><strong>Foundation框架中的对象</strong></p>
+<p>数组中统一调用方法<br><a id="more"></a></p>
+<h4 id="NSArray的排序"><a href="#NSArray的排序" class="headerlink" title="NSArray的排序"></a>NSArray的排序</h4></blockquote>
+<p><strong>Foundation框架中的对象</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSArray *arr = @[@10, @20, @5, @7, @15];</div><div class="line">NSArray *newArr = [arr sortedArrayUsingSelector:@selector(compare:)];</div></pre></td></tr></table></figure>
 <blockquote>
 <p>使用compare方法对数组中的元素进行排序,那么数组中的元素不能是自定义对象</p>
@@ -392,8 +390,6 @@
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/about" class="mobile-nav-link">About</a>
   
