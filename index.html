@@ -247,6 +247,58 @@
         
           <section id="main" style="float:none;">
   
+    <article id="[post]-漫谈iOS App MVX架构 "  class="article article-type-[post]" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/15/漫谈iOS App MVX架构 /">漫谈iOS App架构 MV“X”</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/15/漫谈iOS App MVX架构 /" class="article-date">
+	  <time datetime="2017-03-14T16:00:00.000Z" itemprop="datePublished">2017-03-15</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>当我们在开发iOS应用程序的时候, 随着业务的不断添加, 对应代码模块之间的复杂度与耦合也随之的增加, 不断的提升着开发的复杂度与维护的高成本, 为了能提高开发和维护的效率, 甚至于是测试的效率, 设计符合当前业务模式的架构是非常有必要的。<br>MVC是经典的设计模式, 但是C的职责太大, 随着业务的发展, C俨然成为代码聚集的重灾区, 伴随着便是为了解决这一问题而诞生的MVCS、MVP、MVVM、VIP、VIPER等模式, 然而万变不离其宗, 最终的设计都离不开MVC这个根基。</p>
+<h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><h4 id="传统的MVC"><a href="#传统的MVC" class="headerlink" title="传统的MVC"></a>传统的MVC</h4><p>经典的MVC, View是并没有任何的界限, 三个模块之间是有非常强的耦合, 极大的降低了三者的复用性与可测试性, 并不适合作为iOS应用层的架构。</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fix0vq72u1j309q03d0su.jpg" alt=""></p>
+        <!-- 
+前言当我们在开发iOS应用程序的时候, 随着业务的不断添加, 对应代码模块之间的复杂度与耦合也随之的增加, 不断的提升着开发的复杂度与维护的高成本, 为了能提高开发和维护的效率, 甚至于是测试的效率, 设计符合当前业务模式的架构是非常有必要的。MVC是经典的设计模式, 但是C的职责太大, 随着业务的发展, C俨然成为代码聚集的重灾区, 伴随着便是为了解决这一问题而诞生的MVCS、MVP、M......  -->
+        <p class="article-more-link">
+          <a href="/2017/03/15/漫谈iOS App MVX架构 /#more">Read More</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="[post]-RealmSwift"  class="article article-type-[post]" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -702,62 +754,6 @@ AVAudioSessionAVAudioSession是应用程序和操作系统之间扮演中间人�
 防火墙有多种种类和形态, 专门过滤特定数据包的包过滤防火墙, 数据到达应用以后由应用处理并拒绝非法访问的应用网关。防火墙可以限制从互联网访问的......  -->
         <p class="article-more-link">
           <a href="/2016/01/12/网络安全/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="[post]-TCP:UDP"  class="article article-type-[post]" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2016/01/01/TCP:UDP/">TCP/UDP(五)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2016/01/01/TCP:UDP/" class="article-date">
-	  <time datetime="2015-12-31T16:00:00.000Z" itemprop="datePublished">2016-01-01</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h3><p>TCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。</p>
-<p>网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的<strong>数据部分</strong>是TCP的内容, 还是UDP的内容。同理,传输层使用端口号识别在传输层的上一层(应用层)中要进行处理的程序。</p>
-<h4 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h4><p>数据链路和IP地址, 分别对应MAC地址和IP地址。前者用来识别同一链路中不同的计算机, 后者用来识别TCP/IP网络中互连的主机和路由器。在传输层中也有类似的地址概念, 那就是端口号。端口号用来识别同一台计算机中进行通信的不同应用程序, 也叫做程序地址。</p>
-<h5 id="通信识别"><a href="#通信识别" class="headerlink" title="通信识别"></a>通信识别</h5><p>仅仅凭目标端口识别某一个通信是远远不够的。如下图: 1和2的通信是在两台计算机上进行的。他们的目标端口号都是80, 需要根据源端口号进行区分。3和1的目标端口号和源端口号完全相同, 但是他们各自的源IP地址不同。另外协议号不同, 也会被认为是两个不同的通信。</p>
-<p>综上, TCP/IP或UDP/IP通信中通常采用5个信息来识别一个通信。分别是: <strong>源IP地址</strong>、<strong>目标IP地址</strong>、<strong>协议号</strong>、<strong>源端口号</strong>、<strong>目标端口号</strong>。只有5个信息一致, 才认为是同一个通信。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fic9us8bqbj30pq0l4tf1.jpg" alt=""><br>
-        <!-- 
-TCP/UDPTCP与UDP是传输层的两个主要协议。TCP提供可靠的通信的传输, 而UDP面向无连接的不可靠的通信传输。
-网络层中的IP首部中有一个协议的字段, 用来标识网络层的上一层采用的是哪一种传输层的协议。根据这个字段的协议号, 就可以识别IP传输的数据部分是TCP的内容, 还是UDP的内容。同理,传输层使用端口号识别在传输层的上一层(应用层)中要进行处理的程序。
-端口号数据链路和I......  -->
-        <p class="article-more-link">
-          <a href="/2016/01/01/TCP:UDP/#more">Read More</a>
         </p>
       
     </div>

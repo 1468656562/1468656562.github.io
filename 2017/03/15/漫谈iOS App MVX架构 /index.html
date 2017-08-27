@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>漫谈ios app架构 mv“x” | simon小📚坊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="架构" />
+  
+  
+  
+  
+  <meta name="description" content="前言当我们在开发iOS应用程序的时候, 随着业务的不断添加, 对应代码模块之间的复杂度与耦合也随之的增加, 不断的提升着开发的复杂度与维护的高成本, 为了能提高开发和维护的效率, 甚至于是测试的效率, 设计符合当前业务模式的架构是非常有必要的。MVC是经典的设计模式, 但是C的职责太大, 随着业务的发展, C俨然成为代码聚集的重灾区, 伴随着便是为了解决这一问题而诞生的MVCS、MVP、MVVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="漫谈iOS App架构 MV“X”">
+<meta property="og:url" content="https://github.com/icoderRo/2017/03/15/漫谈iOS App MVX架构 /index.html">
+<meta property="og:site_name" content="simon小📚坊">
+<meta property="og:description" content="前言当我们在开发iOS应用程序的时候, 随着业务的不断添加, 对应代码模块之间的复杂度与耦合也随之的增加, 不断的提升着开发的复杂度与维护的高成本, 为了能提高开发和维护的效率, 甚至于是测试的效率, 设计符合当前业务模式的架构是非常有必要的。MVC是经典的设计模式, 但是C的职责太大, 随着业务的发展, C俨然成为代码聚集的重灾区, 伴随着便是为了解决这一问题而诞生的MVCS、MVP、MVVM">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fix0vq72u1j309q03d0su.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79gy1fix15k7gfbj308x03emx8.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fix23mrw95j3073049wej.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fix44w37opj30bb035jri.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79gy1fix45ry1x1j30be03bjri.jpg">
+<meta property="og:updated_time" content="2017-08-27T10:15:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="漫谈iOS App架构 MV“X”">
+<meta name="twitter:description" content="前言当我们在开发iOS应用程序的时候, 随着业务的不断添加, 对应代码模块之间的复杂度与耦合也随之的增加, 不断的提升着开发的复杂度与维护的高成本, 为了能提高开发和维护的效率, 甚至于是测试的效率, 设计符合当前业务模式的架构是非常有必要的。MVC是经典的设计模式, 但是C的职责太大, 随着业务的发展, C俨然成为代码聚集的重灾区, 伴随着便是为了解决这一问题而诞生的MVCS、MVP、MVVM">
+<meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tNc79gy1fix0vq72u1j309q03d0su.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="simon小📚坊" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="[post]-漫谈iOS App MVX架构 " style="width: 75%; float:left;" class="article article-type-[post]" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      漫谈iOS App架构 MV“X”
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/03/15/漫谈iOS App MVX架构 /" class="article-date">
+	  <time datetime="2017-03-14T16:00:00.000Z" itemprop="datePublished">2017-03-15</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>当我们在开发iOS应用程序的时候, 随着业务的不断添加, 对应代码模块之间的复杂度与耦合也随之的增加, 不断的提升着开发的复杂度与维护的高成本, 为了能提高开发和维护的效率, 甚至于是测试的效率, 设计符合当前业务模式的架构是非常有必要的。<br>MVC是经典的设计模式, 但是C的职责太大, 随着业务的发展, C俨然成为代码聚集的重灾区, 伴随着便是为了解决这一问题而诞生的MVCS、MVP、MVVM、VIP、VIPER等模式, 然而万变不离其宗, 最终的设计都离不开MVC这个根基。</p>
+<h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><h4 id="传统的MVC"><a href="#传统的MVC" class="headerlink" title="传统的MVC"></a>传统的MVC</h4><p>经典的MVC, View是并没有任何的界限, 三个模块之间是有非常强的耦合, 极大的降低了三者的复用性与可测试性, 并不适合作为iOS应用层的架构。</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fix0vq72u1j309q03d0su.jpg" alt=""></p>
+<a id="more"></a>
+<h4 id="推荐的MVC"><a href="#推荐的MVC" class="headerlink" title="推荐的MVC"></a>推荐的MVC</h4><p>苹果希望的MVC的模式, 由Controller充当View与Model之间的协调器, View和model之间并没有直接的联系。在这种模式下, View和model的可复用性与测试性得到极大的提高, 由于Controller作为iOS应用层的入口并且所有View与Model之间协调的代码都集中于此, 势必会造成Controller的严重拥堵, 因此MVC也被称呼Massive View Controller。         </p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fix15k7gfbj308x03emx8.jpg" alt=""></p>
+<h4 id="实际的MVC"><a href="#实际的MVC" class="headerlink" title="实际的MVC"></a>实际的MVC</h4><p>在Cocoa的MVC模式中, Controller管理着View的生命周期, Controller中拥有着View与Model, 并且负责更新View与Model, Controller中会承担一切的代理或者数据源, 同时还负责一些网络请求的发起/取消等任务。View中也拥有着Model, View的最大的任务就是向Controller传递用户的事件。Model可以分为胖Model和瘦Model, 不管哪种model, 其最终都是为了将数据直接应用到View上。       </p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fix23mrw95j3073049wej.jpg" alt=""></p>
+<h4 id="示例-View"><a href="#示例-View" class="headerlink" title="示例 - View"></a>示例 - View</h4><blockquote>
+<p>“talk is cheap. show me the code” – Linus Torvalds</p>
+</blockquote>
+<h5 id="正向流程"><a href="#正向流程" class="headerlink" title="正向流程"></a>正向流程</h5><p>在iOS中, Controller作为最小单元, 通常来说所有视图展示逻辑与交互的逻辑都需要借助于Controller(Window除外), 所以入口必然是Controller, 在Controller中初始化View与获取Model后将二者关联</p>
+<ul>
+<li>初始化View, 后续View的生命周期将有Controller管理</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvcView: <span class="type">MVCView</span> = &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">let</span> mvcView = <span class="type">MVCView</span>(frame: <span class="keyword">self</span>.view.bounds)</div><div class="line">	<span class="keyword">self</span>.view.addSubview(mvcView)</div><div class="line">	<span class="keyword">return</span> mvcView</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
+<ul>
+<li>获取Model</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvcModel: <span class="type">MVCModel</span> = &#123;</div><div class="line">	<span class="keyword">let</span> mvcModel = <span class="type">MVCModel</span>()</div><div class="line">	<span class="keyword">return</span> mvcModel</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
+<ul>
+<li>关联View与Model, 数据将展示在View上</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">changeName</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">let</span> index = arc4random() % <span class="number">9</span></div><div class="line">        </div><div class="line">	<span class="keyword">let</span> model = <span class="type">MVCModel</span>()</div><div class="line">	model.name = <span class="string">"simon"</span> + <span class="string">"<span class="subst">\(index)</span>"</span></div><div class="line">	mvcView.model = model</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="反向流程"><a href="#反向流程" class="headerlink" title="反向流程"></a>反向流程</h5><p>View接收来自用户的事件, 将事件传递给Controller, Controller通知Model更改数据。</p>
+<ul>
+<li>View接收用户事件, 并将事件传递给Controller</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// View</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MVCView</span> </span>&#123;</div><div class="line">    <span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">clickName</span><span class="params">()</span></span> &#123;</div><div class="line">        clickNameClosure?()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Controller接受到事件, 并更新Model</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"> mvcView.clickNameClosure = &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">self</span>?.changeName()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><p>胖Model: 胖Model包含了部分弱业务逻辑。胖Model可以减轻Controller对于弱业务逻辑的负担(强业务逻辑任就交给Controller)，Controller从胖Model这里拿到数据之后，不需要做额外的操作/只做非常少的操作，就能够将数据直接应用在View上。           </p>
+</li>
+<li><p>瘦Model: 瘦Model只负责业务数据的表达，无论强/弱业务都交给Controller去处理。瘦Model需要配套各种工具类或方法来对弱业务做抽象，强业务依旧交给Controller</p>
+</li>
+<li><p>从开发的速度来讲, Cocoa的MVC是最好的架构方案</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="MVP模式"><a href="#MVP模式" class="headerlink" title="MVP模式"></a>MVP模式</h3><p>在MVP的模式中引入了一个Presenter来协调View与Model之间的关联, Persenter中拥有View与Model, 并处理来自View的事件。View只提供接口, 并负责将事件传递给Presenter。model负责将自己提供给Persenter。Controller作为展示的入口, 负责组装三者的关系与路由, 也可以将Controller看做是View的一部分。</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fix44w37opj30bb035jri.jpg" alt=""></p>
+<h4 id="示例-View-1"><a href="#示例-View-1" class="headerlink" title="示例 - View"></a>示例 - View</h4><h5 id="正向流程-1"><a href="#正向流程-1" class="headerlink" title="正向流程"></a>正向流程</h5><p>与MVC相似, 入口为Controller, Controller中负责获取Model、初始化View与Presenter, 将View于Model绑定与Persenter</p>
+<ul>
+<li>初始化View与Persenter</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvpView: <span class="type">MVPView</span> = &#123;[<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">let</span> mvpView = <span class="type">MVPView</span>(frame: <span class="keyword">self</span>.view.bounds)</div><div class="line">	<span class="keyword">self</span>.view.addSubview(mvpView)</div><div class="line">	<span class="keyword">return</span> mvpView</div><div class="line">&#125;()</div><div class="line"></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> presenter: <span class="type">Presenter</span> = &#123;</div><div class="line">	<span class="keyword">let</span> presenter = <span class="type">Presenter</span>()</div><div class="line">	<span class="keyword">return</span> presenter</div><div class="line">	&#125;()</div></pre></td></tr></table></figure>
+<ul>
+<li>获取Model</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvpModel: <span class="type">MVPModel</span> = &#123;</div><div class="line">	<span class="keyword">let</span> mvpModel = <span class="type">MVPModel</span>()</div><div class="line">	<span class="keyword">return</span> mvpModel</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
+<ul>
+<li>关联Presenter</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"> presenter.mvpView = mvpView</div><div class="line"> presenter.mvpModel = mvpModel</div></pre></td></tr></table></figure>
+<ul>
+<li>Presenter操作Model, 更新View的展示</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line">presenter.setName()</div><div class="line"></div><div class="line">presenter:</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setName</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">let</span> index = arc4random() % <span class="number">9</span></div><div class="line">	mvpModel?.name = <span class="string">"simon"</span> + <span class="string">"<span class="subst">\(index)</span>"</span></div><div class="line">	mvpView?.setName(mvpModel?.name)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="反向流程-1"><a href="#反向流程-1" class="headerlink" title="反向流程"></a>反向流程</h5><p>View接收来自用户的事件, 将事件传递给Persenter, Persenter通知Model更改数据。</p>
+<ul>
+<li>View接收用户事件, 并将事件传递给Presenter</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// View</span></div><div class="line"><span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">clickName</span><span class="params">()</span></span> &#123;</div><div class="line">	clickNameClosure?()</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">clickText</span><span class="params">()</span></span> &#123;</div><div class="line">	delegate?.mvpView?(<span class="keyword">self</span>, didClickText: <span class="string">"simon"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Presenter接收到事件, 并更新Model</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Presenter</span></div><div class="line"></div><div class="line">mvpView?.delegate = <span class="keyword">self</span> <span class="keyword">as</span> <span class="type">MVPViewDelegate</span></div><div class="line">          </div><div class="line">mvpView?.clickNameClosure = &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">self</span>?.setName()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Presenter</span>: <span class="title">MVPViewDelegate</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setName</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> index = arc4random() % <span class="number">9</span></div><div class="line">        </div><div class="line">        mvpModel?.name = <span class="string">"simon"</span> + <span class="string">"<span class="subst">\(index)</span>"</span></div><div class="line">        </div><div class="line">        mvpView?.setName(mvpModel?.name)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">mvpView</span><span class="params">(<span class="number">_</span> mvpView: MVPView, didClickText text: String)</span></span> &#123;</div><div class="line">        mvpModel?.name = text</div><div class="line">        <span class="keyword">self</span>.mvpView?.setName(text)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><p>MVP模式会增加一定量代码量, 在业务逻辑复杂, 规模较大的场景下Presenter也很容易成为代码聚集的重灾区, 相对的此模式下代码的可测性良好, 任务也比较均摊。</p>
+<blockquote>
+<ul>
+<li><p>以上基于PV(Passive View) MVP。顾名思义, PV是一个被动的View, View中的操作由Presenter来操作。</p>
+</li>
+<li><p>与之对应的是SoC(Supervising Controller) MVP, 此模式主要是为了降低Presenter的复杂度, 将数据绑定和格式化等简单的UI处理逻辑转移到View中。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="MVVM模式"><a href="#MVVM模式" class="headerlink" title="MVVM模式"></a>MVVM模式</h3><p>MVVM是MV“X”系列中最新的模式, 对于MVVM的使用, 颇具争议。<a href="http://www.infoq.com/cn/articles/rethinking-mvc-mvvm/" target="_blank" rel="external">被误解的MVC和被神化的MVVM</a><br>在MVVM模式中引入了一个ViewModel来协调处理View与Model之间的联系。 MVVM中View中, 除了子View, 只拥有ViewModel, 并负责绑定ViewModel。ViewModel中拥有Model, 负责更新Model。Controller与MVP模式中类似, 负责组装三者的关系与路由。</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fix45ry1x1j30be03bjri.jpg" alt=""></p>
+<h4 id="示例-View-2"><a href="#示例-View-2" class="headerlink" title="示例 - View"></a>示例 - View</h4><h5 id="正向流程-2"><a href="#正向流程-2" class="headerlink" title="正向流程"></a>正向流程</h5><p>与MVC、MVVM相似, 入口为Controller, Controller中负责初始化ViewModel与View, 获取model, 关联三者</p>
+<ul>
+<li>初始化View与ViewModel</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvvmView: <span class="type">MVVMView</span> = &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">let</span> mvvmView = <span class="type">MVVMView</span>(frame: <span class="keyword">self</span>.view.bounds)</div><div class="line">	<span class="keyword">self</span>.view.addSubview(mvvmView)</div><div class="line">	<span class="keyword">return</span> mvvmView</div><div class="line">&#125;()</div><div class="line"></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvvmVM: <span class="type">MVVMViewModel</span> = &#123;</div><div class="line">	<span class="keyword">let</span> mvvmVM = <span class="type">MVVMViewModel</span>()</div><div class="line">	<span class="keyword">return</span> mvvmVM</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
+<ul>
+<li>获取model</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvvmModel: <span class="type">MVVMModel</span> = &#123;</div><div class="line"> 	<span class="keyword">let</span> mvvmModel = <span class="type">MVVMModel</span>()</div><div class="line">	mvvmModel.name = <span class="string">"simon Init"</span></div><div class="line">	<span class="keyword">return</span> mvvmModel</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
+<ul>
+<li>关联彼此</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"></div><div class="line">mvvmView.mvvmVM = mvvmVM <span class="comment">// 绑定</span></div><div class="line">mvvmVM.mvvmModel = mvvmModel</div></pre></td></tr></table></figure>
+<ul>
+<li>View中绑定ViewModel</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// View</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> mvvmVM: <span class="type">MVVMViewModel</span>? &#123;</div><div class="line">	<span class="keyword">didSet</span> &#123;</div><div class="line">	mvvmVM?.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">"name"</span>, options: [.new, .initial], context: <span class="literal">nil</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">observeValue</span><span class="params">(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)</span></span> &#123;</div><div class="line">        </div><div class="line">	<span class="keyword">if</span> keyPath == <span class="string">"name"</span> &#123;</div><div class="line">	<span class="keyword">let</span> name = change?[.newKey] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">	setName(name)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="反向流程-2"><a href="#反向流程-2" class="headerlink" title="反向流程"></a>反向流程</h5><p>View接收来自用户的事件, 将事件传递给ViewModel, ViewModel通知Model更改数据。</p>
+<ul>
+<li>View接收用户事件, 并将事件传递给ViewModel</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// ViewModel</span></div><div class="line"></div><div class="line"><span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">clickName</span><span class="params">()</span></span> &#123;</div><div class="line">	mvvmVM?.clickName()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>ViewModel接收到事件, 并更新Model与ViewModel的Name, 由于监听了ViewModel的Name属性, 所以View的视图也会随之跟着更改</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// ViewModel</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MVVMViewModel</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">clickName</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> index = arc4random() % <span class="number">9</span></div><div class="line">        <span class="keyword">let</span> mvvmModel = <span class="type">MVVMModel</span>()</div><div class="line">        mvvmModel.name = <span class="string">"simon"</span> + <span class="string">"<span class="subst">\(index)</span>"</span></div><div class="line">        <span class="keyword">self</span>.mvvmModel = mvvmModel</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="思考1"><a href="#思考1" class="headerlink" title="思考1"></a>思考1</h4><p>在示例中, MVVM的任务均摊非常合理, 可测试性也非常的高; 但是MVVM的View需要设置绑定ViewModel来更新状态, 而MVP中的View只需要监听Presenter的事件。</p>
+<h4 id="示例-TableView"><a href="#示例-TableView" class="headerlink" title="示例 - TableView"></a>示例 - TableView</h4><p>此tableView中并未使用双向绑定, 是笔者觉得在不引入RxSwift的基础上, 比较合适的划分。ViewModel中拥有Model, 并负责与Cell视图的数据关联。Controller作为入口, 负责初始化View与ViewModel, 并成为代理与数据源和提供路由。</p>
+<h5 id="正向流程-3"><a href="#正向流程-3" class="headerlink" title="正向流程"></a>正向流程</h5><ul>
+<li>初始化TableView与ViewModel</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"></div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> mvvmVM: <span class="type">MVVMVM</span> = &#123;<span class="keyword">return</span> $<span class="number">0</span>&#125;(<span class="type">MVVMVM</span>())</div><div class="line">    </div><div class="line">fileprivate <span class="built_in">lazy</span> <span class="keyword">var</span> tableView: <span class="type">UITableView</span> = &#123;[<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">let</span> tableView = <span class="type">UITableView</span>(frame: <span class="keyword">self</span>.view.bounds)</div><div class="line">	tableView.delegate = <span class="keyword">self</span></div><div class="line">	tableView.dataSource = <span class="keyword">self</span></div><div class="line">	tableView.backgroundColor = .yellow</div><div class="line">	tableView.rowHeight = <span class="number">70</span></div><div class="line">	tableView.register(<span class="type">UINib</span>(nibName: <span class="string">"MVVMCell"</span>, bundle: <span class="literal">nil</span>), forCellReuseIdentifier: <span class="string">"cellId"</span>)</div><div class="line">	<span class="keyword">return</span> tableView</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
+<ul>
+<li>Controller成为数据源与代理, 并让ViewModel与Cell绑定</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MVVMController</span>: <span class="title">UITableViewDelegate</span>, <span class="title">UITableViewDataSource</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> mvvmVM.models.<span class="built_in">count</span> </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"cellId"</span>) </div><div class="line">        mvvmVM.setCell(cell!, indexPath.row)</div><div class="line">        <span class="keyword">return</span> cell!</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>获取Model</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// ViewModel</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">MVVMVM</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">loadData</span><span class="params">()</span></span> &#123;</div><div class="line">        </div><div class="line"><span class="type">DispatchQueue</span>.main.asyncAfter(deadline: .now() + <span class="number">2</span>) &#123; </div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">20</span> &#123;</div><div class="line">                <span class="keyword">let</span> model = <span class="type">MVVMModel</span>()</div><div class="line">                model.name = <span class="string">"simon"</span> + <span class="string">"<span class="subst">\(i)</span>"</span></div><div class="line">                <span class="keyword">self</span>.models.append(model)</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">self</span>.reloadData?()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>通知TableView刷新</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"></div><div class="line">mvvmVM.reloadData = &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">self</span>?.tableView.reloadData()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="反向流程-3"><a href="#反向流程-3" class="headerlink" title="反向流程"></a>反向流程</h5><ul>
+<li>Cell接收用户的事件, 传递给ViewMode</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Cell</span></div><div class="line"></div><div class="line"><span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">clickName</span><span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</div><div class="line">	clickNameClosure?(index)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>ViewMode更新Model</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// ViewModel</span></div><div class="line"></div><div class="line">cell.clickNameClosure = &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] index <span class="keyword">in</span></div><div class="line">                </div><div class="line">	<span class="keyword">let</span> model = <span class="keyword">self</span>?.models[index]</div><div class="line">	model?.name = <span class="string">"test test.."</span></div><div class="line">	<span class="keyword">self</span>?.reloadData?()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>通知TableView刷新</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Controller</span></div><div class="line"></div><div class="line">mvvmVM.reloadData = &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">	<span class="keyword">self</span>?.tableView.reloadData()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="思考2"><a href="#思考2" class="headerlink" title="思考2"></a>思考2</h4><p>在示例中, Controller负责代理与数据源和路由。ViewModel负责加工Model, 绑定Cell。从方便开发的角度看, 假设代理和数据源交给ViewModel去处理, 当cell发出跳转至下一控制器, 需要ViewModel通知当前的Controller去执行相应的操作, 与其这样需要中转, 不如让Controller直接去处理。从职责明确的角度看, 需要将数据源与代理交由ViewModel接管。</p>
+<blockquote>
+<ul>
+<li><p>在MVVM有一个核心就是双向绑定, 实现双向绑定需要引入更多复杂的框架:</p>
+<ul>
+<li>基于KVO的绑定库如 <a href="https://github.com/Raizlabs/RZDataBinding">RZDataBinding</a> 和 <a href="https://github.com/SwiftBond/Bond">SwiftBond</a></li>
+<li>函数响应式编程，<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a>、<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">RxSwift</a>等</li>
+</ul>
+</li>
+<li><p>函数响应式编程的学习曲线相对比较陡峭, 在团队中推广需要一定的时间。</p>
+</li>
+<li>数据的绑定会使得Bug很难被调试,开发者需要非常清楚整个函数调用的流程, 如果是引入的框架处了问题, 那更是地狱级的惨状。</li>
+<li>大量数据的绑定肯定需要花费更多的内存</li>
+</ul>
+</blockquote>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>没有最好的架构, 只有最合适的架构。应用层架构的选择需要根据公司的业务特点、开发者的能力等, 视具体情况具体分析。假设业务逻辑比较单一,并不需要单元测试, 选择Cocoa的MVC模式开发就是非常好的选择; 假设你的业务逻辑比较复杂, 那么采用MVVM, 甚至于VIPER模式(笔者没实际用过, 可以确定的是, 各模块间的逻辑会相对复杂, 代码量也会加倍的递增)都是非常合适的。这总结貌似有点多余, 感受确是如此。</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><a href="https://github.com/icoderRo/SMDemo/tree/master/SMDemo/iOS-MVX">示例Demo</a></p>
+<p><a href="https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52" target="_blank" rel="external">iOS 架构模式</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/20/RealmSwift/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Realm-Swift3.0</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC模式"><span class="nav-number">2.</span> <span class="nav-text">MVC模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传统的MVC"><span class="nav-number">2.1.</span> <span class="nav-text">传统的MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推荐的MVC"><span class="nav-number">2.2.</span> <span class="nav-text">推荐的MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实际的MVC"><span class="nav-number">2.3.</span> <span class="nav-text">实际的MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-View"><span class="nav-number">2.4.</span> <span class="nav-text">示例 - View</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正向流程"><span class="nav-number">2.4.1.</span> <span class="nav-text">正向流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反向流程"><span class="nav-number">2.4.2.</span> <span class="nav-text">反向流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVP模式"><span class="nav-number">3.</span> <span class="nav-text">MVP模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-View-1"><span class="nav-number">3.1.</span> <span class="nav-text">示例 - View</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正向流程-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">正向流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反向流程-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">反向流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考"><span class="nav-number">3.2.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVVM模式"><span class="nav-number">4.</span> <span class="nav-text">MVVM模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-View-2"><span class="nav-number">4.1.</span> <span class="nav-text">示例 - View</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正向流程-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">正向流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反向流程-2"><span class="nav-number">4.1.2.</span> <span class="nav-text">反向流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考1"><span class="nav-number">4.2.</span> <span class="nav-text">思考1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-TableView"><span class="nav-number">4.3.</span> <span class="nav-text">示例 - TableView</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正向流程-3"><span class="nav-number">4.3.1.</span> <span class="nav-text">正向流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反向流程-3"><span class="nav-number">4.3.2.</span> <span class="nav-text">反向流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思考2"><span class="nav-number">4.4.</span> <span class="nav-text">思考2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2014 - 2017 simon小📚坊 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            simon小📚坊
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Mr.Simon All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
